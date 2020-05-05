@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>io.github.jmgarridopaz.bluezone</groupId>
+		<artifactId>bluezone-parent</artifactId>
+		<version>1.0</version>
+		<relativePath>../bluezone-parent</relativePath>
+	</parent>
+
+	<artifactId>bluezone-startup</artifactId>
+
+	<packaging>jar</packaging>
+
+	<name>BlueZone Startup</name>
+
+	<properties>
+			<mavenDependencyPlugin.version>3.1.1</mavenDependencyPlugin.version>
+			<bluezone.cp>${project.build.directory}/bzclasspath</bluezone.cp>
+			<bluezone.mp>${project.build.directory}/bzmodulepath</bluezone.mp>
+	</properties>
+	
+	<dependencies>
+		<dependency>
+			<groupId>io.github.jmgarridopaz.bluezone</groupId>
+			<artifactId>bluezone-hexagon</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jmgarridopaz.bluezone</groupId>
+			<artifactId>bluezone-adapter-forparkingcars-test</artifactId>
+			<version>1.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<sourceDirectory>src/main/bluezone.startup</sourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>${mavenDependencyPlugin.version}</version><!--$NO-MVN-MAN-VER$ -->
+				<executions>
+					<execution>
+						<!-- Copy dependencies (including transitive) to modulepath directory. 
+							Excluding those that don't work with modules. In 'verify' phase: After package, 
+							before install. -->
+						<id>copy-to-modulepath</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${bluezone.mp}</outputDirectory>
+ 							<excludeArtifactIds>datatable-dependencies</excludeArtifactIds>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+							<excludeTransitive>false</excludeTransitive>
+						</configuration>
+					</execution>
+					<!-- Copy excluded dependencies to classpath directory. In 'verify' 
+							phase: After package, before install. -->
+					<execution>
+						<id>copy-to-classpath</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<outputDirectory>${bluezone.cp}</outputDirectory>
+									<groupId>io.cucumber</groupId>
+									<artifactId>datatable-dependencies</artifactId>
+									<version>1.1.14</version>
+									<type>jar</type>
+									<overWrite>true</overWrite>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+					<!-- Copy startup jar to modulepath directory. In 'verify' phase: After 
+						package, before install. -->
+					<execution>
+						<id>copy-startup-to-modulepath</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<outputDirectory>${bluezone.mp}</outputDirectory>
+									<groupId>${project.groupId}</groupId>
+									<artifactId>${project.artifactId}</artifactId>
+									<version>${project.version}</version>
+									<type>jar</type>
+									<overWrite>true</overWrite>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
