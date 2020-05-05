@@ -3,7 +3,7 @@
 
 See the article series: https://jmgarridopaz.github.io/content/hexagonalarchitecture-ig/intro.html
 
-Development environment:
+### Development environment:
 
 - Java 9 (jdk-9.0.4)
 
@@ -13,23 +13,30 @@ Development environment:
 
 - Ubuntu 16.04 LTS (Linux v.4.13.0-45-generic)
 
-INSTRUCTIONS FOR COMPILING AND RUNNING THE PROJECT:
+### Compile and Run Instructions:
 
 - Download and extract this github repo to a local directory on your computer ( <bluezone_root_dir> )
 
-- Go to <bluezone_root_dir>
+- Test hardcoded hexagon: 
 
-- Test hardcoded hexagon:
+  - Compile:
+  
+  ```
+  cd <bluezone_root_dir>
+  ./scripts/hardcoded/build.sh
+  ```
 
-  - Compile ===> ./scripts/hardcoded/build.sh
+  - Run:
+  
+  ```
+  cd <bluezone_root_dir>
+  ./scripts/hardcoded/run.sh
+  ```
 
-  - Run ===> ./scripts/hardcoded/run.sh
+  Tests results ===> <bluezone_root_dir>/output/test/forparkingcars/index.html
+  (configurable at "<bluezone_root_dir>/scripts/input/bz_hardcoded.properties")
 
-  - Conigurable properties ===> ./scripts/input/bz_hardcoded.properties
-
-    - Tests results ===> ./output/test/forparkingcars/index.html
-
-TODO:
+### TODO:
 
   - ForCheckingCars port tests
 
