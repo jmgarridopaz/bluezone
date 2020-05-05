@@ -34,6 +34,7 @@ See the article series: https://jmgarridopaz.github.io/content/hexagonalarchitec
   ```
 
   Tests results ===> <bluezone_root_dir>/output/test/forparkingcars/index.html
+  
   (configurable at "<bluezone_root_dir>/scripts/input/bz_hardcoded.properties")
 
 ### TODO:
