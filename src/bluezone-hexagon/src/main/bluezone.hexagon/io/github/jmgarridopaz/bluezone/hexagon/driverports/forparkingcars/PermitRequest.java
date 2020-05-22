@@ -2,7 +2,14 @@ package io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars;
 
 import java.util.Objects;
 
-
+/**
+ * DTO class with the input needed for issuing a permit:
+ * 
+ * 		carPlate		Plate of the car to get the permit for
+ * 		rateName		Rate name of the regulated area where the car will be parked at
+ * 		endingDateTime	Expiration datetime of the permit period. Format: "2020/12/31 13:59"
+ * 		paymentCardInfo	Information about the card to charge the permit price to. @see PaymentCardInfo
+ */
 public final class PermitRequest {
 
 	private final String			carPlate;

@@ -1,7 +1,7 @@
 # BlueZone
 ## An example application implementing Hexagonal Architecture
 
-See the article series: https://jmgarridopaz.github.io/content/hexagonalarchitecture-ig/intro.html
+See the article series: [https://jmgarridopaz.github.io/content/hexagonalarchitecture-ig/intro.html]
 
 ### Development environment:
 
@@ -15,27 +15,27 @@ See the article series: https://jmgarridopaz.github.io/content/hexagonalarchitec
 
 ### Compile and Run Instructions:
 
-- Download and extract this github repo to a local directory on your computer ( <bluezone_root_dir> )
+- Download and extract this github repo to a local directory on your computer ( `<bluezone_root_dir>` )
 
 - Test hardcoded hexagon: 
 
   - Compile:
   
-  ```
+  ~~~
   cd <bluezone_root_dir>
   ./scripts/hardcoded/build.sh
-  ```
+  ~~~
 
   - Run:
   
-  ```
+  ~~~
   cd <bluezone_root_dir>
   ./scripts/hardcoded/run.sh
-  ```
+  ~~~
 
-  Tests results ===> <bluezone_root_dir>/output/test/forparkingcars/index.html
+  Tests results ===> `<bluezone_root_dir>/output/test/forparkingcars/index.html`
   
-  (configurable at "<bluezone_root_dir>/scripts/input/bz_hardcoded.properties")
+  (configurable at `<bluezone_root_dir>/scripts/input/bz_hardcoded.properties`)
 
 ### TODO:
 

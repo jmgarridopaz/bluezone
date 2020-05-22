@@ -2,7 +2,16 @@ package io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars;
 
 import java.util.Objects;
 
-
+/**
+ * DTO class with the output returned when issuing a permit:
+ * 
+ * 		code				Unique identifier of the permit
+ * 		carPlate			Plate of the car the permit has been issued for
+ * 		rateName			Rate name of the regulated area where the car is parked at
+ * 		startingDateTime	When the permit period begins. Format: "2020/12/31 13:59"
+ * 		endingDateTime		When the permit period expires. Format: "2020/12/31 13:59"
+ * 		price				Amount of money payed for the permit. Format example: "1.70 €"
+ */
 public final class PermitTicket {
 
 	private final String code;

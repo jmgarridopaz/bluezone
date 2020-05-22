@@ -1,1 +1,1 @@
-java -cp $PWD/output/classpath/* -p $PWD/output/modulepath --add-modules ALL-SYSTEM -m bluezone.startup/io.github.jmgarridopaz.bluezone.startup.BlueZone $PWD/scripts/input/bz_hardcoded.properties
+java -cp $PWD/scripts/hardcoded/output/classpath/* -p $PWD/scripts/hardcoded/output/modulepath --add-modules ALL-SYSTEM -m bluezone.startup/io.github.jmgarridopaz.bluezone.startup.BlueZone $PWD/scripts/hardcoded/input/bluezone.properties

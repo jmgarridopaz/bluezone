@@ -2,7 +2,14 @@ package io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars;
 
 import java.util.Objects;
 
-
+/**
+ * DTO class with information about a rate:
+ * 
+ * 		name					Unique identifier of the rate
+ * 		costPerHour				Amount of money to pay for parking the car for one hour. Format example: "1.70 €"
+ * 		minutesAllowedInterval	Minimum and maximum number of minutes allowed to pay for when requesting a permit. Format example: "30-60"
+ * 		timetable				Time intervals when the rate applies, depending on the day of the week. @see Timetable
+ */
 public final class RateInfo {
 	
 	private final String	name;

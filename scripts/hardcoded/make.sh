@@ -1,0 +1,1 @@
+jlink --module-path $PWD/scripts/hardcoded/output/modulepath:$JAVA_HOME/jmods --add-modules bluezone.startup --output $PWD/scripts/hardcoded/output/image --launcher launch=bluezone.startup/io.github.jmgarridopaz.bluezone.startup.BlueZone

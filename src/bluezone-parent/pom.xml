@@ -5,37 +5,88 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>io.github.jmgarridopaz</groupId>
-		<artifactId>parent</artifactId>
-		<version>1.0</version>
-	</parent>
-	
 	<!-- Parent POM for BlueZone projects -->
 	<groupId>io.github.jmgarridopaz.bluezone</groupId>
 	<artifactId>bluezone-parent</artifactId>
+	<version>${revision}</version>
 
 	<packaging>pom</packaging>
 
 	<name>BlueZone Parent Project</name>
 
 	<properties>
+		<!-- Char encoding -->
+		<project.enconding>UTF-8</project.enconding>
+		<project.build.sourceEncoding>${project.enconding}</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>${project.enconding}</project.reporting.outputEncoding>
 		<!-- Java -->
 		<java.version>9</java.version>
-		<!-- Skip maven test compilation and execution -->
-		<maven.test.skip>false</maven.test.skip>
+		<!-- Plugins -->
+		<mavenCompilerPlugin.version>3.8.1</mavenCompilerPlugin.version>
+		<!-- Version of this parent project -->
+		<revision>1.0.0</revision>
+		<!-- Version of BlueZone projects -->
+		<bluezone.hexagon.version>1.0.0</bluezone.hexagon.version>
+		<bluezone.sartup.version>1.0.0</bluezone.startup.version>
+		<bluezone.adapter.forparkingcars.test.version>1.0.0</bluezone.adapter.forparkingcars.test.version>
+		<bluezone.adapter.forcheckingcars.test.version>1.0.0</bluezone.adapter.forcheckingcars.test.version>
+		<!-- Version of external dependencies -->
+		<javalangutils.version>1.0.0</javalangutils.version>
+		<portsadapters.version>1.0.0</portsadapters.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- My Java language Utils Library -->
+			<dependency>
+				<groupId>io.github.jmgarridopaz.lib</groupId>
+				<artifactId>java-lang-utils</artifactId>
+				<version>${javalangutils.version}</version>
+			</dependency>
 			<!-- My Ports And Adapters Pattern Library -->
 			<dependency>
 				<groupId>io.github.jmgarridopaz.lib</groupId>
 				<artifactId>ports-adapters</artifactId>
-				<version>1.0</version>
+				<version>${portsadapters.version}</version>
+			</dependency>
+			<!-- BlueZone projects -->
+			<dependency>
+				<groupId>io.github.jmgarridopaz.bluezone</groupId>
+				<artifactId>bluezone-hexagon</artifactId>
+				<version>${bluezone.hexagon.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.jmgarridopaz.bluezone</groupId>
+				<artifactId>bluezone-adapter-forparkingcars-test</artifactId>
+				<version>${bluezone.adapter.forparkingcars.test.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.jmgarridopaz.bluezone</groupId>
+				<artifactId>bluezone-adapter-forcheckingcars-test</artifactId>
+				<version>${bluezone.adapter.forcheckingcars.test.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<!-- Compiler -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${mavenCompilerPlugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<verbose>false</verbose>
+					<optimize>true</optimize>
+					<showDeprecation>true</showDeprecation>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>
+		</plugins>  		
+	</build>
 
 	<!-- Repository with my own artifacts -->
     <repositories>
@@ -56,5 +107,16 @@
 			</snapshots>
 		</repository>
      </repositories>
+
+	<!-- Deploy the artifact to a project local repository -->
+	<distributionManagement>
+		<repository>
+			<id>local-repo</id>
+			<name>Local Repository</name>
+            <url>file://${project.build.directory}/localrepo</url>
+			<layout>default</layout>
+			<uniqueVersion>false</uniqueVersion>
+		</repository>
+ 	</distributionManagement>
 
 </project>

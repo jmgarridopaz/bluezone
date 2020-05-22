@@ -10,6 +10,13 @@ public final class PaymentCardInfo {
 	private final String expirationDate;
 
 	
+	/**
+	 * DTO class with information about a payment card:
+	 * 
+	 * 		number			Card number. Format: 16 digits
+	 * 		cvv				Card verification value. Format: 3 digits
+	 * 		expirationDate	Date (year and month) which the card will no longer be valid. Format: "2020/12"
+	 */
 	public PaymentCardInfo ( String number, String cvv, String expirationDate ) {
 		this.number = number;
 		this.cvv = cvv;

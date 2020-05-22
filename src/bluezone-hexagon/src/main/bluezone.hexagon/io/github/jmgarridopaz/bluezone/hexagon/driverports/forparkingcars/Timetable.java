@@ -2,6 +2,18 @@ package io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars;
 
 import java.util.Objects;
 
+/**
+ * DTO class defining time intervals for every day of the week.
+ * Every field is a concatenation of "hour:minute" strings in ascendent order.
+ * 
+ * Format example:
+ * 
+ * The field value "08:00-14:00-17:00-20:00" defines two intervals:
+ * 
+ * - From 08:00 until 14:00
+ * - From 17:00 until 20:00
+ * 
+ */
 public class Timetable {
 	
 	private final String monday;

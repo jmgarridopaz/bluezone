@@ -7,11 +7,12 @@
 	<parent>
 		<groupId>io.github.jmgarridopaz.bluezone</groupId>
 		<artifactId>bluezone-parent</artifactId>
-		<version>1.0</version>
+		<version>${revision}</version>
 		<relativePath>../bluezone-parent</relativePath>
 	</parent>
 
 	<artifactId>bluezone-adapter-forparkingcars-test</artifactId>
+	<version>${bluezone.adapter.forparkingcars.test.version}</version>
 
 	<packaging>jar</packaging>
 
@@ -25,7 +26,6 @@
 		<dependency>
 			<groupId>io.github.jmgarridopaz.bluezone</groupId>
 			<artifactId>bluezone-hexagon</artifactId>
-			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>io.github.jmgarridopaz.lib</groupId>
