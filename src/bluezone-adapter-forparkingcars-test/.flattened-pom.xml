@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>io.github.jmgarridopaz.bluezone</groupId>
+    <artifactId>bluezone-parent</artifactId>
+    <version>1.0.0</version>
+    <relativePath>../bluezone-parent</relativePath>
+  </parent>
+  <groupId>io.github.jmgarridopaz.bluezone</groupId>
+  <artifactId>bluezone-adapter-forparkingcars-test</artifactId>
+  <version>1.0.0</version>
+  <name>BlueZone - ForParkingCars Test Adapter</name>
+  <properties>
+    <cucumber.version>6.6.0</cucumber.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>io.github.jmgarridopaz.bluezone</groupId>
+      <artifactId>bluezone-hexagon</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.github.jmgarridopaz.lib</groupId>
+      <artifactId>ports-adapters</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>${cucumber.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-junit</artifactId>
+      <version>${cucumber.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-picocontainer</artifactId>
+      <version>${cucumber.version}</version>
+    </dependency>
+  </dependencies>
+  <build>
+    <sourceDirectory>src/main/bluezone.adapter.forparkingcars.test</sourceDirectory>
+  </build>
+</project>

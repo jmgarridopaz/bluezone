@@ -6,23 +6,21 @@ module bluezone.adapter.forparkingcars.test {
 	requires bluezone.hexagon;	
 	
 	requires io.github.jmgarridopaz.lib.portsadapters;
-	requires io.github.jmgarridopaz.lib.javalangutils;
 	
 	requires io.cucumber.java;
-	requires io.cucumber.core;
-	requires io.cucumber.datatable;
 	requires junit;
+	requires io.cucumber.datatable;
+	requires io.cucumber.core;
 	
 	
 /*
  * PUBLISH: adapter class, runtime access to frameworks
  */
-	exports io.github.jmgarridopaz.bluezone.driveradapters.forparkingcars.test
-	to		bluezone.startup;
+	exports io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test;
 	
-	opens	io.github.jmgarridopaz.bluezone.driveradapters.forparkingcars.test.stepdefs
-	to		io.cucumber.core,
-			io.cucumber.java,
-			picocontainer;
+	opens	io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test.stepdefs
+	to		picocontainer,
+			io.cucumber.java;
+//			io.cucumber.core;
 	
 }

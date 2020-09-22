@@ -11,7 +11,6 @@ module bluezone.adapter.forcheckingcars.test {
 /*
  * PUBLISH: adapter class
  */
-	exports io.github.jmgarridopaz.bluezone.driveradapters.forcheckingcars.test
-	to		bluezone.startup;
+	exports io.github.jmgarridopaz.bluezone.adapters.forcheckingcars.test;
 	
 }

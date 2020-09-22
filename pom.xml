@@ -18,12 +18,24 @@
 			<id>hardcoded</id>
 			<modules>
 				<module>src/bluezone-parent</module>
-				<module>src/bluezone-hexagon</module>
-				<module>src/bluezone-startup</module>
+ 				<module>src/bluezone-hexagon</module>
 				<module>src/bluezone-adapter-forparkingcars-test</module>
+				<module>src/bluezone-startup</module>
+<!--  				
 				<module>src/bluezone-adapter-forcheckingcars-test</module>
-			</modules>
+ -->			</modules>
 		</profile>
 	</profiles>
+
+	<!-- Deploy the artifact to a project local repository -->
+	<distributionManagement>
+		<repository>
+			<id>local-repo</id>
+			<name>Local Repository</name>
+            <url>file://${project.build.directory}/localrepo</url>
+			<layout>default</layout>
+			<uniqueVersion>false</uniqueVersion>
+		</repository>
+ 	</distributionManagement>
 
 </project>

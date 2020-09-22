@@ -20,7 +20,6 @@
 
 	<properties>
 			<mavenDependencyPlugin.version>3.1.1</mavenDependencyPlugin.version>
-			<bluezone.cp>${project.build.directory}/bzclasspath</bluezone.cp>
 			<bluezone.mp>${project.build.directory}/bzmodulepath</bluezone.mp>
 	</properties>
 	
@@ -44,9 +43,10 @@
 				<version>${mavenDependencyPlugin.version}</version><!--$NO-MVN-MAN-VER$ -->
 				<executions>
 					<execution>
-						<!-- Copy dependencies (including transitive) to modulepath directory. 
-							Excluding those that don't work with modules. In 'verify' phase: After package, 
-							before install. -->
+						<!--
+							Copy dependencies (including transitive) to modulepath directory.
+							In 'verify' phase: After package, before install.
+						-->
 						<id>copy-to-modulepath</id>
 						<phase>verify</phase>
 						<goals>
@@ -54,36 +54,16 @@
 						</goals>
 						<configuration>
 							<outputDirectory>${bluezone.mp}</outputDirectory>
- 							<excludeArtifactIds>datatable-dependencies</excludeArtifactIds>
 							<overWriteReleases>false</overWriteReleases>
 							<overWriteSnapshots>false</overWriteSnapshots>
 							<overWriteIfNewer>true</overWriteIfNewer>
 							<excludeTransitive>false</excludeTransitive>
 						</configuration>
 					</execution>
-					<!-- Copy excluded dependencies to classpath directory. In 'verify' 
-							phase: After package, before install. -->
-					<execution>
-						<id>copy-to-classpath</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>copy</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<outputDirectory>${bluezone.cp}</outputDirectory>
-									<groupId>io.cucumber</groupId>
-									<artifactId>datatable-dependencies</artifactId>
-									<version>1.1.14</version>
-									<type>jar</type>
-									<overWrite>true</overWrite>
-								</artifactItem>
-							</artifactItems>
-						</configuration>
-					</execution>
-					<!-- Copy startup jar to modulepath directory. In 'verify' phase: After 
-						package, before install. -->
+					<!--
+						Copy startup jar to modulepath directory.
+						In 'verify' phase: After package, before install.
+					-->
 					<execution>
 						<id>copy-startup-to-modulepath</id>
 						<phase>verify</phase>

@@ -1,9 +1,9 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
-import io.github.jmgarridopaz.bluezone.hexagon.driverports.forcheckingcars.ForCheckingCars;
-import io.github.jmgarridopaz.bluezone.hexagon.driverports.forcheckingcars.implementation.HardCodedCarChecker;
-import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.ForParkingCars;
-import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.implementation.HardCodedCarParker;
+import io.github.jmgarridopaz.bluezone.hexagon.forcheckingcars.ForCheckingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.forcheckingcars.implementation.HardCodedCarChecker;
+import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.ForParkingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.implementation.HardCodedCarParker;
 
 /**
  * Test double for the Hexagon.

@@ -19,7 +19,7 @@
 	<name>BlueZone - ForParkingCars Test Adapter</name>
 
 	<properties>
-		<cucumber.version>4.8.1</cucumber.version>
+		<cucumber.version>6.6.0</cucumber.version>
 	</properties>
 
 	<dependencies>
@@ -30,10 +30,6 @@
 		<dependency>
 			<groupId>io.github.jmgarridopaz.lib</groupId>
 			<artifactId>ports-adapters</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.github.jmgarridopaz.lib</groupId>
-			<artifactId>java-lang-utils</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
