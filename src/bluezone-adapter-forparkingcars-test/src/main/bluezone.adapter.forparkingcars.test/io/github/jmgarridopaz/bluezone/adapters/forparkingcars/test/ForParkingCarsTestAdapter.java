@@ -14,13 +14,15 @@ import io.github.jmgarridopaz.lib.portsadapters.DriverAdapter;
  */
 public class ForParkingCarsTestAdapter extends DriverAdapter<ForParkingCars> {
 	
-	private static final String TESTCASES_DIRECTORY		= "classpath:testcases";
 	private static final String GLUECODE_PACKAGE		= ScenarioContext.class.getPackageName();
 	private static final String HTML_PLUGIN_PREFIX		= "html:";
-	private static final String HTML_REPORT_FILE_PATH	= "output/test/forparkingcarsreport.html";
+	private static final String HTML_REPORT_FILE_PATH	= "output/test/forparkingcars.html";
 	private static final String HTML_PLUGIN				= HTML_PLUGIN_PREFIX + HTML_REPORT_FILE_PATH;	
+	private static final String PRETTY_PLUGIN			= "pretty";
 	private static final String HARDCODED_HEXAGON_TAG	= "@hardcoded";
 	private static final String REAL_HEXAGON_TAG		= "not @hardcoded";
+	private static final String SNIPPETS_CAMELCASE		= "camelcase";
+	private static final String TESTCASES_DIRECTORY		= "classpath:testcases";
 
 	
 	public ForParkingCarsTestAdapter ( ForParkingCars forParkingCars ) {
@@ -43,13 +45,16 @@ public class ForParkingCarsTestAdapter extends DriverAdapter<ForParkingCars> {
 				{
 				"--glue",		GLUECODE_PACKAGE,
 				"--plugin",		HTML_PLUGIN,
-				"--plugin",		"pretty",
+				"--plugin",		PRETTY_PLUGIN,
 				"--tags",		tagsToRun,
-				"--snippets",	"camelcase",
+				"--snippets",	SNIPPETS_CAMELCASE,
+				"--publish-quiet",
 				TESTCASES_DIRECTORY
 				};
 
-		System.out.println ( "HTML report generated at: " + HTML_REPORT_FILE_PATH );
+		System.out.println ( "-----------------------" );
+		System.out.println ( "HTML report: " + HTML_REPORT_FILE_PATH );
+		System.out.println ( "-----------------------" );
 		
 		io.cucumber.core.cli.Main.main ( cucumberArgs );
 		

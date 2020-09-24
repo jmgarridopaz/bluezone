@@ -19,6 +19,7 @@
 	<name>BlueZone - ForCheckingCars Test Adapter</name>
 
 	<properties>
+		<junit5.version>5.7.0</junit5.version>
 	</properties>
 
 	<dependencies>
@@ -29,6 +30,11 @@
 		<dependency>
 			<groupId>io.github.jmgarridopaz.lib</groupId>
 			<artifactId>ports-adapters</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit5.version}</version>
 		</dependency>
 	</dependencies>
 

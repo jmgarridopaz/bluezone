@@ -19,7 +19,7 @@
 	<name>BlueZone - ForParkingCars Test Adapter</name>
 
 	<properties>
-		<cucumber.version>6.6.0</cucumber.version>
+		<cucumber.version>6.7.0</cucumber.version>
 	</properties>
 
 	<dependencies>

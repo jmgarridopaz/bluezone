@@ -1,7 +1,6 @@
 package io.github.jmgarridopaz.bluezone.adapters.forcheckingcars.test;
 
-import io.github.jmgarridopaz.bluezone.hexagon.driverports.forcheckingcars.ForCheckingCars;
-import io.github.jmgarridopaz.lib.portsadapters.AbstractDriverAdapter;
+import io.github.jmgarridopaz.bluezone.hexagon.forcheckingcars.ForCheckingCars;
 import io.github.jmgarridopaz.lib.portsadapters.DriverAdapter;
 
 
@@ -13,7 +12,20 @@ public class ForCheckingCarsTestAdapter extends DriverAdapter<ForCheckingCars> {
 
 	
 	@Override
-	public void run ( String[] args ) {		
+	public void run ( String[] args ) {
+		
+		boolean hardCodedHexagon = false;
+		if ( (args.length > 0) && "--hardcoded".equals(args[0]) ) {
+			hardCodedHexagon = true;
+		}
+		
+		if ( hardCodedHexagon ) {
+			HardCodedHexagonTest hardCodedHexagonTest = new HardCodedHexagonTest ( this.driverPort() );
+			hardCodedHexagonTest.run();
+			return;
+		}
+
+		
 	}
 	
 }
