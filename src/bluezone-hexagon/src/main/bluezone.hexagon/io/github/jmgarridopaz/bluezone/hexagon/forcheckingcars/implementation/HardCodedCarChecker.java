@@ -12,13 +12,13 @@ public class HardCodedCarChecker implements ForCheckingCars {
 	private static final String			EXPECTED_CAR_PLATE			= "0000AAA";
 	private static final String			EXPECTED_RATE_NAME			= "GREEN_ZONE";
 	private static final LocalDateTime	EXPECTED_CURRENT_DATE_TIME	= LocalDateTime.of(2020,Month.APRIL,22,9,0);
-	private static final boolean		IS_PARKED_CORRECTLY			= true;
+	private static final boolean		ILLEGALLY_PARKED_CAR		= false;
 	
 	public HardCodedCarChecker() {}
 
 
 	@Override
-	public boolean isParkedCorrectly ( Clock clock, String carPlate, String rateName ) {
+	public boolean illegallyParkedCar ( Clock clock, String carPlate, String rateName ) {
 		if ( ! EXPECTED_CURRENT_DATE_TIME.equals ( LocalDateTime.now(clock).truncatedTo(ChronoUnit.MINUTES) ) ) {
 			throw new IllegalArgumentException("clock");
 		}
@@ -28,7 +28,7 @@ public class HardCodedCarChecker implements ForCheckingCars {
 		if ( ! EXPECTED_RATE_NAME.equals(rateName) ) {
 			throw new IllegalArgumentException("rateName");			
 		}
-		return IS_PARKED_CORRECTLY;
+		return ILLEGALLY_PARKED_CAR;
 	}
 
 }

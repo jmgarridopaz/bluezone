@@ -19,7 +19,8 @@
 	<name>BlueZone - ForCheckingCars Test Adapter</name>
 
 	<properties>
-		<junit5.version>5.7.0</junit5.version>
+		<junit5.jupiter.engine.version>5.7.0</junit5.jupiter.engine.version>
+		<junit5.platform.launcher.version>1.7.0</junit5.platform.launcher.version>
 	</properties>
 
 	<dependencies>
@@ -34,7 +35,12 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit5.version}</version>
+			<version>${junit5.jupiter.engine.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-launcher</artifactId>
+			<version>${junit5.platform.launcher.version}</version>
 		</dependency>
 	</dependencies>
 

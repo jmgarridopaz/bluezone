@@ -8,6 +8,8 @@ module bluezone.adapter.forcheckingcars.test {
 	requires io.github.jmgarridopaz.lib.portsadapters;
 	
 	requires org.junit.jupiter.engine;
+	requires org.junit.jupiter.api;
+	requires org.junit.platform.launcher;
 	
 	
 /*
