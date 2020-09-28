@@ -19,13 +19,12 @@ public class ForCheckingCarsTestAdapter extends DriverAdapter<ForCheckingCars> {
 			hardCodedHexagon = true;
 		}
 		
-		if ( hardCodedHexagon ) {
-			HardCodedHexagonTest hardCodedHexagonTest = new HardCodedHexagonTest ( this.driverPort() );
-			hardCodedHexagonTest.run();
-			return;
-		}
-
+		TestRunner testRunner = new TestRunner ( this.driverPort(), hardCodedHexagon );
 		
+		testRunner.runAllFeatures();
+		
+		testRunner.printExecutionSummary();
+
 	}
 	
 }
