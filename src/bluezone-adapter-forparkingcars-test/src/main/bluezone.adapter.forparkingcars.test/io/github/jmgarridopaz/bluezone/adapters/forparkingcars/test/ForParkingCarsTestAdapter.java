@@ -20,7 +20,7 @@ public class ForParkingCarsTestAdapter extends DriverAdapter<ForParkingCars> {
 	
 	private static final String GLUECODE_PACKAGE		= ScenarioContext.class.getPackageName();
 	private static final String HTML_PLUGIN_PREFIX		= "html:";
-	private static final String HTML_REPORT_FILE_NAME	= "forparkingcarsTestReport.html";
+	private static final String HTML_REPORT_FILE_PATH	= "forparkingcarsTestReport.html";
 	private static final String PRETTY_PLUGIN			= "pretty";
 	private static final String HARDCODED_HEXAGON_TAG	= "@hardCodedHexagon";
 	private static final String REAL_HEXAGON_TAG		= "not @hardCodedHexagon";
@@ -45,9 +45,6 @@ public class ForParkingCarsTestAdapter extends DriverAdapter<ForParkingCars> {
 			tagsToRun = HARDCODED_HEXAGON_TAG;
 		}
 		
-		
-		String htmlReportFilePath = buildHtmlReportFilePath();
-		String htmlPlugin = HTML_PLUGIN_PREFIX + htmlReportFilePath;
 		System.out.println ( "=================================================" );
 		System.out.println ( "HTML report: " + htmlReportFilePath );
 		System.out.println ( "=================================================" );
@@ -55,7 +52,7 @@ public class ForParkingCarsTestAdapter extends DriverAdapter<ForParkingCars> {
 		String[] cucumberArgs = new String[]
 				{
 				"--glue",		GLUECODE_PACKAGE,
-				"--plugin",		htmlPlugin,
+				"--plugin",		HTML_PLUGIN_PREFIX + HTML_REPORT_FILE_PATH,
 				"--plugin",		PRETTY_PLUGIN,
 				"--tags",		tagsToRun,
 				"--snippets",	SNIPPETS_CAMELCASE,

@@ -6,7 +6,6 @@ module bluezone.adapter.forparkingcars.test {
 	requires bluezone.hexagon;	
 	
 	requires io.github.jmgarridopaz.lib.portsadapters;
-	requires io.github.jmgarridopaz.lib.javalangutils;
 	
 	requires io.cucumber.java;
 	requires junit;
