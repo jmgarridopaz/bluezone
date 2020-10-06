@@ -6,6 +6,7 @@ module bluezone.adapter.forparkingcars.test {
 	requires bluezone.hexagon;	
 	
 	requires io.github.jmgarridopaz.lib.portsadapters;
+	requires io.github.jmgarridopaz.lib.javalangutils;
 	
 	requires io.cucumber.java;
 	requires junit;
@@ -21,6 +22,5 @@ module bluezone.adapter.forparkingcars.test {
 	opens	io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test.stepdefs
 	to		picocontainer,
 			io.cucumber.java;
-//			io.cucumber.core;
 	
 }

@@ -12,7 +12,7 @@ public class Main {
 		
 		ForParkingCarsTestAdapter forParkingCarsTestAdapter = new ForParkingCarsTestAdapter ( hardCodedHexagon.forParkingCars() );
 		
-		forParkingCarsTestAdapter.run ( new String[]{"--hardcoded"} );
+		forParkingCarsTestAdapter.run ( new String[]{"--hardcodedhexagon"} );
 		
 	}
 

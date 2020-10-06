@@ -9,11 +9,12 @@
     <relativePath>../bluezone-parent</relativePath>
   </parent>
   <groupId>io.github.jmgarridopaz.bluezone</groupId>
-  <artifactId>bluezone-adapter-forparkingcars-test</artifactId>
+  <artifactId>bluezone-adapter-forcheckingcars-test</artifactId>
   <version>1.0.0</version>
-  <name>BlueZone - ForParkingCars Test Adapter</name>
+  <name>BlueZone - ForCheckingCars Test Adapter</name>
   <properties>
-    <cucumber.version>6.7.0</cucumber.version>
+    <junit5.platform.version>1.7.0</junit5.platform.version>
+    <junit5.jupiter.engine.version>5.7.0</junit5.jupiter.engine.version>
   </properties>
   <dependencies>
     <dependency>
@@ -25,32 +26,22 @@
       <artifactId>ports-adapters</artifactId>
     </dependency>
     <dependency>
-      <groupId>io.github.jmgarridopaz.lib</groupId>
-      <artifactId>java-lang-utils</artifactId>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>${junit5.jupiter.engine.version}</version>
     </dependency>
     <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-java</artifactId>
-      <version>${cucumber.version}</version>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-launcher</artifactId>
+      <version>${junit5.platform.version}</version>
     </dependency>
     <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-junit</artifactId>
-      <version>${cucumber.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-picocontainer</artifactId>
-      <version>${cucumber.version}</version>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-reporting</artifactId>
+      <version>${junit5.platform.version}</version>
     </dependency>
   </dependencies>
   <build>
-    <sourceDirectory>src/main/bluezone.adapter.forparkingcars.test</sourceDirectory>
-    <resources>
-      <resource>
-        <filtering>true</filtering>
-        <directory>src/main/resources</directory>
-      </resource>
-    </resources>
+    <sourceDirectory>src/main/bluezone.adapter.forcheckingcars.test</sourceDirectory>
   </build>
 </project>

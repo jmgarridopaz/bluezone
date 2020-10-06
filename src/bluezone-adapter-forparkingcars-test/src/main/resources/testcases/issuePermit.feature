@@ -10,7 +10,7 @@ Feature: Issue permit
   I can park the car without being fined
 
 
-@hardcoded
+@hardCodedHexagon
 Scenario: Hardcoded permit
 
 Given current date time is "2020/04/22 08:00"

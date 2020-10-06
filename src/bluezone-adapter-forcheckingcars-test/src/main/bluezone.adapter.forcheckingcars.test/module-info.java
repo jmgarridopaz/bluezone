@@ -10,11 +10,16 @@ module bluezone.adapter.forcheckingcars.test {
 	requires org.junit.jupiter.engine;
 	requires org.junit.jupiter.api;
 	requires org.junit.platform.launcher;
+	requires org.junit.platform.engine;
+	requires org.junit.platform.reporting;
 	
 	
 /*
- * PUBLISH: adapter class
+ * PUBLISH: adapter class, test cases to framework
  */
 	exports io.github.jmgarridopaz.bluezone.adapters.forcheckingcars.test;
+	
+	exports io.github.jmgarridopaz.bluezone.adapters.forcheckingcars.test.testcases
+	to		org.junit.platform.commons;
 	
 }

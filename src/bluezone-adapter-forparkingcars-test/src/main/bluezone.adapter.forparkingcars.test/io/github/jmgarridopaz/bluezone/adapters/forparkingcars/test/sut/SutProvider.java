@@ -3,9 +3,9 @@ package io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test.sut;
 import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.ForParkingCars;
 
 
-public enum ForParkingCarsProvider {
+public enum SutProvider {
 
-	INSTANCE;
+	FOR_PARKING_CARS;
 	
 	private ForParkingCars forParkingCars;
 	

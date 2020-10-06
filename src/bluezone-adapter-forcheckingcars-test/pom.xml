@@ -20,7 +20,7 @@
 
 	<properties>
 		<junit5.jupiter.engine.version>5.7.0</junit5.jupiter.engine.version>
-		<junit5.platform.launcher.version>1.7.0</junit5.platform.launcher.version>
+		<junit5.platform.version>1.7.0</junit5.platform.version>
 	</properties>
 
 	<dependencies>
@@ -40,7 +40,12 @@
 		<dependency>
 			<groupId>org.junit.platform</groupId>
 			<artifactId>junit-platform-launcher</artifactId>
-			<version>${junit5.platform.launcher.version}</version>
+			<version>${junit5.platform.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-reporting</artifactId>
+			<version>${junit5.platform.version}</version>
 		</dependency>
 	</dependencies>
 

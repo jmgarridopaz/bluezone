@@ -2,7 +2,7 @@ package io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test.stepdefs;
 
 import java.time.Clock;
 import java.util.Map;
-import io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test.sut.ForParkingCarsProvider;
+import io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test.sut.SutProvider;
 import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.ForParkingCars;
 import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.PermitTicket;
 import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.RateData;
@@ -23,7 +23,7 @@ public class ScenarioContext {
 	private Clock clock;
 
 	public ScenarioContext() {
-		this.forParkingCars = ForParkingCarsProvider.INSTANCE.get();
+		this.forParkingCars = SutProvider.FOR_PARKING_CARS.get();
 	}
 	
 	

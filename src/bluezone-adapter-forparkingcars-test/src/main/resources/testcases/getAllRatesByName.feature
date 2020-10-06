@@ -10,7 +10,7 @@ Feature: Get all rates by name
   I can choose the rate name of the area I want to park the car at
   
 
-@hardcoded
+@hardCodedHexagon
 Scenario: Hardcoded rates indexed by name
 
 When I request all the rates indexed by name

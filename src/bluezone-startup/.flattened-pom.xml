@@ -25,6 +25,10 @@
       <groupId>io.github.jmgarridopaz.bluezone</groupId>
       <artifactId>bluezone-adapter-forparkingcars-test</artifactId>
     </dependency>
+    <dependency>
+      <groupId>io.github.jmgarridopaz.bluezone</groupId>
+      <artifactId>bluezone-adapter-forcheckingcars-test</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <sourceDirectory>src/main/bluezone.startup</sourceDirectory>
