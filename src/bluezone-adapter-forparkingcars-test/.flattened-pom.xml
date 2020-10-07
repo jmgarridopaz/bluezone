@@ -25,10 +25,6 @@
       <artifactId>ports-adapters</artifactId>
     </dependency>
     <dependency>
-      <groupId>io.github.jmgarridopaz.lib</groupId>
-      <artifactId>java-lang-utils</artifactId>
-    </dependency>
-    <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java</artifactId>
       <version>${cucumber.version}</version>
@@ -46,11 +42,5 @@
   </dependencies>
   <build>
     <sourceDirectory>src/main/bluezone.adapter.forparkingcars.test</sourceDirectory>
-    <resources>
-      <resource>
-        <filtering>true</filtering>
-        <directory>src/main/resources</directory>
-      </resource>
-    </resources>
   </build>
 </project>

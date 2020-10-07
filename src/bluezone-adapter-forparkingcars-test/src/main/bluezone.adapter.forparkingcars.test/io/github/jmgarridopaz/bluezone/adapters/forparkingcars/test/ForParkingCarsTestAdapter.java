@@ -1,26 +1,25 @@
 package io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test;
 
-import java.io.IOException;
 import java.nio.file.Paths;
-
 import io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test.stepdefs.ScenarioContext;
 import io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test.sut.SutProvider;
 import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.ForParkingCars;
-import io.github.jmgarridopaz.lib.javalangutils.FileUtils;
 import io.github.jmgarridopaz.lib.portsadapters.DriverAdapter;
 
 
 /**
- * Adapter that uses Cucumber to run test cases against "for parking cars" port.
- * Test cases are feature files with cucumber scenarios.
+ * Driver adapter that run test cases against "for parking cars" port.
+ * It uses Cucumber testing tool.
+ * Test cases are feature files with Cucumber scenarios.
  * There will be a feature file for each port operation.
- * Test cases execution results are shown in console and in html report.
+ * It creates a html report file with the test execution results.
  */
 public class ForParkingCarsTestAdapter extends DriverAdapter<ForParkingCars> {
 	
 	private static final String GLUECODE_PACKAGE		= ScenarioContext.class.getPackageName();
 	private static final String HTML_PLUGIN_PREFIX		= "html:";
-	private static final String HTML_REPORT_FILE_PATH	= "forparkingcarsTestReport.html";
+	private static final String HTML_REPORT_PATH		= "output";
+	private static final String HTML_REPORT_FILENAME	= "forparkingcarsTestReport.html";
 	private static final String PRETTY_PLUGIN			= "pretty";
 	private static final String HARDCODED_HEXAGON_TAG	= "@hardCodedHexagon";
 	private static final String REAL_HEXAGON_TAG		= "not @hardCodedHexagon";
@@ -44,15 +43,14 @@ public class ForParkingCarsTestAdapter extends DriverAdapter<ForParkingCars> {
 		if ( (args.length > 0) && "--hardcodedhexagon".equals(args[0]) ) {
 			tagsToRun = HARDCODED_HEXAGON_TAG;
 		}
-		
-		System.out.println ( "=================================================" );
-		System.out.println ( "HTML report: " + htmlReportFilePath );
-		System.out.println ( "=================================================" );
+
+		String htmlReportFilePath = Paths.get ( HTML_REPORT_PATH, HTML_REPORT_FILENAME ).toAbsolutePath().toString();
+		printMessage ( "||     VIEW THE HTML REPORT AT: " + htmlReportFilePath + "     ||" );
 				
 		String[] cucumberArgs = new String[]
 				{
 				"--glue",		GLUECODE_PACKAGE,
-				"--plugin",		HTML_PLUGIN_PREFIX + HTML_REPORT_FILE_PATH,
+				"--plugin",		HTML_PLUGIN_PREFIX + htmlReportFilePath,
 				"--plugin",		PRETTY_PLUGIN,
 				"--tags",		tagsToRun,
 				"--snippets",	SNIPPETS_CAMELCASE,
@@ -64,15 +62,20 @@ public class ForParkingCarsTestAdapter extends DriverAdapter<ForParkingCars> {
 	}
 
 
-	private String buildHtmlReportFilePath() {
-		String targetDiretory = FileUtils.valueOfKeyFromPropertiesFile ( Paths.get("project.properties"), "target.dir" ).orElseThrow(() -> new RuntimeException("Could not read target directory"));
-		String filePath;
-		try {
-			filePath = Paths.get(targetDiretory,HTML_REPORT_FILE_NAME).toRealPath().toString();
-		} catch (IOException e) {
-			throw new RuntimeException("Could not build html report file path",e);
+	private void printMessage ( String aMessagge ) {
+		System.out.println();
+		printLineForMessage(aMessagge);
+		printLineForMessage(aMessagge);
+		System.out.println(aMessagge);
+		printLineForMessage(aMessagge);
+		printLineForMessage(aMessagge);
+	}
+
+	private void printLineForMessage ( String aMessage ) {
+		for ( int i=0; i < aMessage.length(); i++ ) {
+			System.out.print("=");
 		}
-		return filePath;
+		System.out.println();
 	}
 	
 }

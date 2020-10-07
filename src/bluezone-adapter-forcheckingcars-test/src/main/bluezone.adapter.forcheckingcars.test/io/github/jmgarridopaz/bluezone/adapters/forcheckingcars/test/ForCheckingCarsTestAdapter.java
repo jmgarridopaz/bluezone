@@ -6,9 +6,11 @@ import io.github.jmgarridopaz.bluezone.adapters.forcheckingcars.test.testcases.I
 import io.github.jmgarridopaz.bluezone.hexagon.forcheckingcars.ForCheckingCars;
 import io.github.jmgarridopaz.lib.portsadapters.DriverAdapter;
 
-/*
- * Driver adapter for testing the "forCheckingCars" port.
- * Uses JUnit5 framework.
+/**
+ * Driver adapter that run test cases against "for checking cars" port.
+ * It uses JUnit5 framework.
+ * There will be a Java class for each port operation.
+ * Test cases are @Test annotated methods at such Java classes.
  */
 public class ForCheckingCarsTestAdapter extends DriverAdapter<ForCheckingCars> {
 	
