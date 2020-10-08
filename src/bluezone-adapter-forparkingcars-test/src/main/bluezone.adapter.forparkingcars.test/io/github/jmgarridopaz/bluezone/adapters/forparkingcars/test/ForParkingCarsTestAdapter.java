@@ -10,9 +10,9 @@ import io.github.jmgarridopaz.lib.portsadapters.DriverAdapter;
 /**
  * Driver adapter that run test cases against "for parking cars" port.
  * It uses Cucumber testing tool.
- * Test cases are feature files with Cucumber scenarios.
- * There will be a feature file for each port operation.
  * It creates a html report file with the test execution results.
+ * Test cases are Cucumber scenarios in feature files.
+ * There will be a feature file for each port operation.
  */
 public class ForParkingCarsTestAdapter extends DriverAdapter<ForParkingCars> {
 	
@@ -31,7 +31,10 @@ public class ForParkingCarsTestAdapter extends DriverAdapter<ForParkingCars> {
 		super(forParkingCars);
 	}
 
-	
+
+	/**
+	 * Run test cases located at "src/main/resources/testcases/"
+	 */
 	@Override
 	public void run ( String[] args ) {
 
