@@ -27,20 +27,25 @@ public class ForParkingCarsTestAdapter extends DriverAdapter<ForParkingCars> {
 	private static final String TESTCASES_DIRECTORY		= "classpath:testcases";
 
 	
+	// The adapter has a configurable dependency on the port
 	public ForParkingCarsTestAdapter ( ForParkingCars forParkingCars ) {
 		super(forParkingCars);
 	}
 
 
 	/**
-	 * Run test cases located at "src/main/resources/testcases/"
+	 * Run Cucumber for the test cases located at "src/main/resources/testcases/"
+	 * 
+	 * Args:
+	 * 
+	 * --hardcodedhexagon		Optional flag. If present, run the tests cases for hardcoded driver port operations.
 	 */
 	@Override
 	public void run ( String[] args ) {
 
 		// the SUT (system under test) is the driver port (forParkingCars)
 		SutProvider.FOR_PARKING_CARS.set ( this.driverPort() );
-		
+
 		String tagsToRun = REAL_HEXAGON_TAG;
 		
 		if ( (args.length > 0) && "--hardcodedhexagon".equals(args[0]) ) {
