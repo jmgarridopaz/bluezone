@@ -1,7 +1,7 @@
 module bluezone.startup {
 
 	/*
-	 * Depends on all the other modules: hexagon and adapers
+	 * Depends on all the other modules: hexagon and adapters
 	 */
 	requires bluezone.hexagon;
 	requires bluezone.adapter.forparkingcars.test;
@@ -9,7 +9,7 @@ module bluezone.startup {
 	
 	/*
 	 * Services:	the driver ports
-	 * 				(providers are the implementations at hexagon module)
+	 * Providers:	the implementations at hexagon module
 	 */
 	uses io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.ForParkingCars;
 	uses io.github.jmgarridopaz.bluezone.hexagon.driverports.forcheckingcars.ForCheckingCars;
