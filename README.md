@@ -11,28 +11,27 @@ See the article series: [https://jmgarridopaz.github.io/content/hexagonalarchite
 
 - Eclipse IDE 2019-12 (4.14.0)
 
-- Ubuntu 18.04.5 LTS
+- Ubuntu 18.04.5 LTS (Linux 5.4.0-48-generic)
 
 ### Compile and Run Instructions:
 
-- Download and extract this github repo to a local directory on your computer ( `<bluezone_root_dir>` )
+- Download and extract this github repo to a local directory on your computer ( `<bluezone_dir>` )
 
-- Test hardcoded hexagon: 
+- Compile all modules (you need to do this just the first time before running):
+  
+  ~~~
+  cd <bluezone_dir>
+  ./scripts/build.sh
+  ~~~
 
-  - Compile:
+- Run hardcoded driver ports tests:
+  
+  ~~~
+  cd <bluezone_dir>
+  ./scripts/hardcodedhexagon/run_forparkingcars_test.sh
+  ~~~
   
   ~~~
   cd <bluezone_root_dir>
-  ./scripts/hardcoded/build.sh
+  ./scripts/hardcodedhexagon/run_forcheckingcars_test.sh
   ~~~
-
-  - Run:
-  
-  ~~~
-  cd <bluezone_root_dir>
-  ./scripts/hardcoded/run.sh
-  ~~~
-
-  Tests results ===> `<bluezone_root_dir>/output/test/forparkingcars/index.html`
-  
-  (configurable at `<bluezone_root_dir>/scripts/input/bz_hardcoded.properties`)

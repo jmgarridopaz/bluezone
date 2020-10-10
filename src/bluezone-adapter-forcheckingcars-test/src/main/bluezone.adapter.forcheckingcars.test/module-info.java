@@ -13,13 +13,12 @@ module bluezone.adapter.forcheckingcars.test {
 	requires org.junit.platform.engine;
 	requires org.junit.platform.reporting;
 	
-	
 /*
- * PUBLISH: adapter class, test cases to framework
+ * PUBLISH: adapter class, runtime access to framework
  */
 	exports io.github.jmgarridopaz.bluezone.adapters.forcheckingcars.test;
 	
-	exports io.github.jmgarridopaz.bluezone.adapters.forcheckingcars.test.testcases
+	opens	io.github.jmgarridopaz.bluezone.adapters.forcheckingcars.test.testcases
 	to		org.junit.platform.commons;
 	
 }

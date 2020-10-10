@@ -1,14 +1,14 @@
-package io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.implementation;
+package io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.implementation.hardcoded;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.YearMonth;
 
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.MoneyDto;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.PaymentCardData;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.PermitRequest;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.PermitTicket;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.MoneyDto;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.PaymentCardData;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.PermitRequest;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.PermitTicket;
 
 
 public final class HardCodedIssuePermit {
@@ -21,7 +21,7 @@ public final class HardCodedIssuePermit {
 	private static final String			EXPECTED_PAYMENT_CARD_CVV		= "123";
 	private static final YearMonth		EXPECTED_CARD_EXPIRATION_DATE	= YearMonth.of(2025, Month.JUNE);
 	
-	private static final String			RETURNED_PERMIT_TICKET_CODE		= "PT/0000000000/202004220800";
+	private static final String			RETURNED_PERMIT_TICKET_CODE		= "PT-2020-000000000-161760";
 	private static final String			RETURNED_CAR_PLATE				= "0000AAA";
 	private static final LocalDateTime	RETURNED_STARTING_DATE_TIME		= LocalDateTime.of(2020,Month.APRIL,22,8,0);;
 	private static final LocalDateTime	RETURNED_ENDING_DATE_TIME		= LocalDateTime.of(2020,Month.APRIL,22,10,0);;

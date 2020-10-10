@@ -13,7 +13,7 @@ import io.github.jmgarridopaz.bluezone.adapters.forcheckingcars.test.ForChecking
 import io.github.jmgarridopaz.bluezone.adapters.forcheckingcars.test.sut.SutProvider;
 
 /*
-	Class with the tests (Given-When-Then scenarios) for one feature (use case, operation) of the port
+	Class with the test cases (Given-When-Then scenarios) for one feature (operation) of the port
 
 	FEATURE: Illegaly parked car
 	----------------------------	
@@ -35,26 +35,24 @@ public class IllegallyParkedCarTest {
 	// Scenario context
 	private Clock clock;
 	private Boolean illegallyParkedCar;
-	
-	
+		
 	// Before running each test in this class
 	@BeforeEach
 	public void resetScenarioContext() {
 		this.clock = null;
 		this.illegallyParkedCar = null;
-	}
-	
+	}	
 
-/*
-	Test hardcoded hexagon
-	----------------------
-		GIVEN
-			current date time is "2020/04/22 09:00"
-		WHEN
-			I check if the car with plate "0000AAA" is illegaly parked at a "GREEN_ZONE" rate area
-		THEN
-			illegaly parked car should be "false"
-*/
+	/*
+		Test hardcoded hexagon
+		----------------------
+			GIVEN
+				current date time is "2020/04/22 09:00"
+			WHEN
+				I check if the car with plate "0000AAA" is illegaly parked at a "GREEN_ZONE" rate area
+			THEN
+				illegaly parked car should be "false"
+	 */
 	@Test
 	@DisplayName("HardCoded Hexagon Test")
 	@Tag ( ForCheckingCarsTestAdapter.HARDCODED_HEXAGON_TAG )

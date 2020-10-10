@@ -1,4 +1,4 @@
-package io.github.jmgarridopaz.bluezone.hexagon.forparkingcars;
+package io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars;
 
 import java.math.BigDecimal;
 import java.util.Objects;

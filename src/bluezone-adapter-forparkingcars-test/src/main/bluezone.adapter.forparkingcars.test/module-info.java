@@ -11,15 +11,14 @@ module bluezone.adapter.forparkingcars.test {
 	requires junit;
 	requires io.cucumber.datatable;
 	requires io.cucumber.core;
-	
-	
+		
 /*
  * PUBLISH: adapter class, runtime access to frameworks
  */
 	exports io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test;
 	
 	opens	io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test.stepdefs
-	to		picocontainer,
-			io.cucumber.java;
+	to		io.cucumber.java,
+			picocontainer;
 	
 }

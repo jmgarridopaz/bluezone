@@ -10,9 +10,9 @@ import org.junit.platform.launcher.core.LauncherFactory;
 import org.junit.platform.launcher.listeners.SummaryGeneratingListener;
 
 
-public class TestRunner {	
+public class JUnit5Runner {	
 	
-	public TestRunner () {}
+	public JUnit5Runner () {}
 
 	
 	public void runTaggedTestsOfPackage ( String testCasesPackage, String tagExpressionToRun ) {

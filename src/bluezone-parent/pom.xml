@@ -8,7 +8,7 @@
 	<!-- Parent POM for BlueZone projects -->
 	<groupId>io.github.jmgarridopaz.bluezone</groupId>
 	<artifactId>bluezone-parent</artifactId>
-	<version>${revision}</version>
+	<version>1.0.0</version>
 
 	<packaging>pom</packaging>
 
@@ -23,9 +23,6 @@
 		<java.version>9</java.version>
 		<!-- Plugins -->
 		<mavenCompilerPlugin.version>3.8.1</mavenCompilerPlugin.version>
-		<flattenMavenPlugin.version>1.2.2</flattenMavenPlugin.version>
-		<!-- Version of this parent project -->
-		<revision>1.0.0</revision>
 		<!-- Version of BlueZone projects -->
 		<bluezone.hexagon.version>1.0.0</bluezone.hexagon.version>
 		<bluezone.startup.version>1.0.0</bluezone.startup.version>
@@ -85,32 +82,6 @@
 					<showDeprecation>true</showDeprecation>
 					<showWarnings>true</showWarnings>
 				</configuration>
-			</plugin>
-			<!-- Version management -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>flatten-maven-plugin</artifactId>
-				<version>${flattenMavenPlugin.version}</version>
-				<configuration>
-					<updatePomFile>true</updatePomFile>
-					<flattenMode>resolveCiFriendliesOnly</flattenMode>
-				</configuration>
-				<executions>
-					<execution>
-						<id>flatten</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>flatten</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>flatten.clean</id>
-						<phase>clean</phase>
-						<goals>
-							<goal>clean</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>  		
 	</build>

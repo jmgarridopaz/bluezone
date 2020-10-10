@@ -1,3 +1,4 @@
+
 package io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test.stepdefs;
 
 
@@ -14,10 +15,10 @@ import java.util.Map;
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.MoneyDto;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.RateData;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.TimeIntervalDto;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.TimeTableDto;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.MoneyDto;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.RateData;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.TimeIntervalDto;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.TimeTableDto;
 
 
 public class RateStepDefs {

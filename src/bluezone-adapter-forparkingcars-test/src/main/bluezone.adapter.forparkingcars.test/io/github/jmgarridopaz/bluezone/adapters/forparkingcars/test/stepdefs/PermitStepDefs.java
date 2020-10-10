@@ -10,10 +10,10 @@ import java.util.Map;
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.MoneyDto;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.PaymentCardData;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.PermitRequest;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.PermitTicket;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.MoneyDto;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.PaymentCardData;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.PermitRequest;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.PermitTicket;
 
 
 public class PermitStepDefs {

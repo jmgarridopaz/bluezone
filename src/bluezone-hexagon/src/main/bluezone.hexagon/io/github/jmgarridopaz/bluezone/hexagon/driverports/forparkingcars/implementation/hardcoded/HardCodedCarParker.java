@@ -1,15 +1,26 @@
-package io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.implementation;
+package io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.implementation.hardcoded;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Map;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.ForParkingCars;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.PermitRequest;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.PermitTicket;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.RateData;
 
+import io.github.jmgarridopaz.bluezone.hexagon.HardCodedHexagon;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.ForParkingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.PermitRequest;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.PermitTicket;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.RateData;
 
+/**
+ * 
+ * Test double for the driver port.
+ * Useful for testing driver adapters 'mocking' the hexagon.
+ * 
+ * It doesn't depend on any driven port.
+ * 
+ * Port operations takes/return hardcoded values.
+ */
+@HardCodedHexagon
 public class HardCodedCarParker implements ForParkingCars {
 	
 	public HardCodedCarParker() {}

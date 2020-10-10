@@ -1,12 +1,23 @@
-package io.github.jmgarridopaz.bluezone.hexagon.forcheckingcars.implementation;
+package io.github.jmgarridopaz.bluezone.hexagon.driverports.forcheckingcars.implementation.hardcoded;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
-import io.github.jmgarridopaz.bluezone.hexagon.forcheckingcars.ForCheckingCars;
 
+import io.github.jmgarridopaz.bluezone.hexagon.HardCodedHexagon;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forcheckingcars.ForCheckingCars;
 
+/**
+ * 
+ * Test double for the driver port.
+ * Useful for testing driver adapters 'mocking' the hexagon.
+ * 
+ * It doesn't depend on any driven port.
+ * 
+ * Port operations takes/return hardcoded values.
+ */
+@HardCodedHexagon
 public class HardCodedCarChecker implements ForCheckingCars {
 	
 	private static final String			EXPECTED_CAR_PLATE			= "0000AAA";

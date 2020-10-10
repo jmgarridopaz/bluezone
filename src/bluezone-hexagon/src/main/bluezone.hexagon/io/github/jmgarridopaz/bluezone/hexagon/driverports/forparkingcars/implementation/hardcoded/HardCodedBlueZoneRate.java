@@ -1,4 +1,4 @@
-package io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.implementation;
+package io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.implementation.hardcoded;
 
 import java.math.BigDecimal;
 import java.time.DayOfWeek;
@@ -6,10 +6,10 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Map;
 
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.MoneyDto;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.RateData;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.TimeIntervalDto;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.TimeTableDto;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.MoneyDto;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.RateData;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.TimeIntervalDto;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.TimeTableDto;
 
 
 final class HardCodedBlueZoneRate {

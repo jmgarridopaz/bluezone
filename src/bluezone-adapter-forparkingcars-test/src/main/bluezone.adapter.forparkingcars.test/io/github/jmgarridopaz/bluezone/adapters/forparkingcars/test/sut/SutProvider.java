@@ -1,6 +1,6 @@
 package io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test.sut;
 
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.ForParkingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.ForParkingCars;
 
 
 public enum SutProvider {

@@ -1,4 +1,4 @@
-package io.github.jmgarridopaz.bluezone.hexagon.forparkingcars;
+package io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars;
 
 import java.time.YearMonth;
 import java.util.Objects;

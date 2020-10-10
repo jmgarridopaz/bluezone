@@ -20,5 +20,5 @@ When I do the following permit issuing request:
 | 0000AAA  | GREEN_ZONE | 2020/04/22 10:00 | 1234567890123456  | 123            | 2025/06                   |
 
 Then I should get the following permit ticket:
-| code                       | carPlate | startingDateTime | endingDateTime   | rateName   | priceAmount | priceCurrencySymbol |
-| PT/0000000000/202004220800 | 0000AAA  | 2020/04/22 08:00 | 2020/04/22 10:00 | GREEN_ZONE | 1.30        | €                   |
+| code                     | carPlate | startingDateTime | endingDateTime   | rateName   | priceAmount | priceCurrencySymbol |
+| PT-2020-000000000-161760 | 0000AAA  | 2020/04/22 08:00 | 2020/04/22 10:00 | GREEN_ZONE | 1.30        | €                   |

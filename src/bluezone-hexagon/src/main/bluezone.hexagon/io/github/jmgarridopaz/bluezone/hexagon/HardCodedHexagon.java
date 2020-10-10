@@ -1,43 +1,14 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
-import io.github.jmgarridopaz.bluezone.hexagon.forcheckingcars.ForCheckingCars;
-import io.github.jmgarridopaz.bluezone.hexagon.forcheckingcars.implementation.HardCodedCarChecker;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.ForParkingCars;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.implementation.HardCodedCarParker;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
- * Test double for the Hexagon.
- * 
- * For testing driver adapters 'mocking' the hexagon.
- * 
- * It doesn't depend on any driven port.
- * It returns driver ports with methods that receive/return hardcoded values.
- * 
- * It is used by the startup module to inject driver ports into driver adapters.
+ * Annotation to declare hardcoded implementations of driver ports
  */
-public class HardCodedHexagon {
-
-	// Driver Ports
-	private ForParkingCars	forParkingCars;
-	private ForCheckingCars	forCheckingCars;
-	
-
-	public HardCodedHexagon() {
-	}
-
-	
-	public ForParkingCars forParkingCars() {
-		if ( this.forParkingCars == null ) {
-			this.forParkingCars = new HardCodedCarParker();
-		}
-		return this.forParkingCars;
-	}
-
-	public ForCheckingCars forCheckingCars() {
-		if ( this.forCheckingCars == null ) {
-			this.forCheckingCars = new HardCodedCarChecker();
-		}
-		return this.forCheckingCars;
-	}
-	
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+public @interface HardCodedHexagon {
 }

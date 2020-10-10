@@ -3,22 +3,25 @@ package io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test;
 import java.nio.file.Paths;
 import io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test.stepdefs.ScenarioContext;
 import io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test.sut.SutProvider;
-import io.github.jmgarridopaz.bluezone.hexagon.forparkingcars.ForParkingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.ForParkingCars;
 import io.github.jmgarridopaz.lib.portsadapters.DriverAdapter;
 
-
 /**
- * Driver adapter that run test cases against "for parking cars" port.
+ * Driver adapter that runs "forparkingcars" port test cases.
+ * 
  * It uses Cucumber testing tool.
- * It creates a html report file with the test execution results.
- * Test cases are Cucumber scenarios in feature files.
- * There will be a feature file for each port operation.
+ * 
+ * Test cases are Cucumber scenarios ("given-when-then" format) defined in feature files.
+ * 
+ * A feature ("As a <<role>> I want <<goal>> So that <<benefit>>" format) describes a port operation.
+ * 
+ * There will be a file for each feature (port operation).
  */
 public class ForParkingCarsTestAdapter extends DriverAdapter<ForParkingCars> {
 	
 	private static final String GLUECODE_PACKAGE		= ScenarioContext.class.getPackageName();
 	private static final String HTML_PLUGIN_PREFIX		= "html:";
-	private static final String HTML_REPORT_PATH		= "output";
+	private static final String HTML_REPORT_PATH		= "target";
 	private static final String HTML_REPORT_FILENAME	= "forparkingcarsTestReport.html";
 	private static final String PRETTY_PLUGIN			= "pretty";
 	private static final String HARDCODED_HEXAGON_TAG	= "@hardCodedHexagon";
@@ -26,24 +29,29 @@ public class ForParkingCarsTestAdapter extends DriverAdapter<ForParkingCars> {
 	private static final String SNIPPETS_CAMELCASE		= "camelcase";
 	private static final String TESTCASES_DIRECTORY		= "classpath:testcases";
 
-	
-	// The adapter has a configurable dependency on the port
+	/*
+	 * The driver adapter has a configurable dependency on the port
+	 */
 	public ForParkingCarsTestAdapter ( ForParkingCars forParkingCars ) {
 		super(forParkingCars);
 	}
 
-
 	/**
-	 * Run Cucumber for the test cases located at "src/main/resources/testcases/"
+	 * Runs the driver adapter with the given args.
 	 * 
-	 * Args:
+	 * Launches Cucumber to run feature files at "src/main/resources/testcases/"
 	 * 
-	 * --hardcodedhexagon		Optional flag. If present, run the tests cases for hardcoded driver port operations.
+	 * Creates a html report file ("output/forparkingcarsTestReport.html") under the working directory.
+	 * 
+	 * Args: --hardcodedhexagon		Optional flag.
+	 * 								If present, run test cases tagged with '@hardCodedHexagon'
+	 * 								Otherwise, run test cases not tagged with '@hardCodedHexagon'
 	 */
 	@Override
 	public void run ( String[] args ) {
-
-		// the SUT (system under test) is the driver port (forParkingCars)
+		/*
+		 * The SUT (System Under Test) is the driver port (forParkingCars)
+		 */
 		SutProvider.FOR_PARKING_CARS.set ( this.driverPort() );
 
 		String tagsToRun = REAL_HEXAGON_TAG;

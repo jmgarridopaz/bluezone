@@ -1,4 +1,4 @@
-package io.github.jmgarridopaz.bluezone.hexagon.forparkingcars;
+package io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars;
 
 import java.time.Clock;
 import java.util.Map;
@@ -9,7 +9,7 @@ public interface ForParkingCars {
 	/**
 	 * Returns the information of all the available rates in the city.
 	 * 
-	 * @return	a set of RateInfo objects. @see RateInfo
+	 * @return	a map of RateData objects, indexed by rate name. @see RateInfo
 	 */
 	public Map<String, RateData> getAllRatesByName();
 
