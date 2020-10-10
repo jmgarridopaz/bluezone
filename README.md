@@ -3,6 +3,8 @@
 
 See the article series: [https://jmgarridopaz.github.io/content/hexagonalarchitecture-ig/intro.html]
 
+![BlueZone: Hexagonal Application Figure](bluezone.png)
+
 ### Development environment:
 
 - Java 9 (jdk-9.0.4)
