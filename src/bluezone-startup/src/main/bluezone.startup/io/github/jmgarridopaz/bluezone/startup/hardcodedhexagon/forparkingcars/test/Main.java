@@ -2,9 +2,10 @@ package io.github.jmgarridopaz.bluezone.startup.hardcodedhexagon.forparkingcars.
 
 import java.util.ServiceLoader;
 import java.util.stream.Collectors;
-import io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test.ForParkingCarsTestAdapter;
+
+import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.ForParkingCarsTestAdapter;
 import io.github.jmgarridopaz.bluezone.hexagon.HardCodedHexagon;
-import io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.ForParkingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.ForParkingCars;
 
 /**
  * One of the fixed entry points to the application.

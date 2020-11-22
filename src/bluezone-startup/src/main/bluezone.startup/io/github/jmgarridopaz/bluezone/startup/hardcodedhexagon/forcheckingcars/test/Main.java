@@ -2,9 +2,10 @@ package io.github.jmgarridopaz.bluezone.startup.hardcodedhexagon.forcheckingcars
 
 import java.util.ServiceLoader;
 import java.util.stream.Collectors;
-import io.github.jmgarridopaz.bluezone.adapters.forcheckingcars.test.ForCheckingCarsTestAdapter;
+
+import io.github.jmgarridopaz.bluezone.adapter.forcheckingcars.test.ForCheckingCarsTestAdapter;
 import io.github.jmgarridopaz.bluezone.hexagon.HardCodedHexagon;
-import io.github.jmgarridopaz.bluezone.hexagon.driverports.forcheckingcars.ForCheckingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.driver.forcheckingcars.ForCheckingCars;
 
 /**
  * One of the fixed entry points to the application.

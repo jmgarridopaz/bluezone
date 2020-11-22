@@ -15,9 +15,9 @@ module bluezone.adapter.forparkingcars.test {
 /*
  * PUBLISH: adapter class, runtime access to frameworks
  */
-	exports io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test;
+	exports io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test;
 	
-	opens	io.github.jmgarridopaz.bluezone.adapters.forparkingcars.test.stepdefs
+	opens	io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.stepdefs
 	to		io.cucumber.java,
 			picocontainer;
 	

@@ -16,9 +16,9 @@ module bluezone.adapter.forcheckingcars.test {
 /*
  * PUBLISH: adapter class, runtime access to framework
  */
-	exports io.github.jmgarridopaz.bluezone.adapters.forcheckingcars.test;
+	exports io.github.jmgarridopaz.bluezone.adapter.forcheckingcars.test;
 	
-	opens	io.github.jmgarridopaz.bluezone.adapters.forcheckingcars.test.testcases
+	opens	io.github.jmgarridopaz.bluezone.adapter.forcheckingcars.test.testcases
 	to		org.junit.platform.commons;
 	
 }

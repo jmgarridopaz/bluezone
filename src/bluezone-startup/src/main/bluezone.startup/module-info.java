@@ -11,7 +11,7 @@ module bluezone.startup {
 	 * Services:	the driver ports
 	 * Providers:	the implementations at hexagon module
 	 */
-	uses io.github.jmgarridopaz.bluezone.hexagon.driverports.forparkingcars.ForParkingCars;
-	uses io.github.jmgarridopaz.bluezone.hexagon.driverports.forcheckingcars.ForCheckingCars;
+	uses io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.ForParkingCars;
+	uses io.github.jmgarridopaz.bluezone.hexagon.driver.forcheckingcars.ForCheckingCars;
 
 }
