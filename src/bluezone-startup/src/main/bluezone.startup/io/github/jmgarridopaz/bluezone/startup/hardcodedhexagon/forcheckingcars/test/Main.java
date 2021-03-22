@@ -31,7 +31,7 @@ public class Main {
 		
 		ForCheckingCarsTestAdapter forCheckingCarsTestAdapter = new ForCheckingCarsTestAdapter ( forCheckingCars );
 		
-		forCheckingCarsTestAdapter.run ( new String[]{"--hardcodedhexagon"} );
+		forCheckingCarsTestAdapter.run ( new String[]{"-hch"} );
 		
 	}
 

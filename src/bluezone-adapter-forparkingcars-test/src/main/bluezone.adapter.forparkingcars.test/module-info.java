@@ -8,9 +8,9 @@ module bluezone.adapter.forparkingcars.test {
 	requires io.github.jmgarridopaz.lib.portsadapters;
 	
 	requires io.cucumber.java;
-	requires junit;
 	requires io.cucumber.datatable;
 	requires io.cucumber.core;
+	requires org.hamcrest;
 		
 /*
  * PUBLISH: adapter class, runtime access to frameworks

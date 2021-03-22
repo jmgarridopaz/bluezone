@@ -1,9 +1,8 @@
 
 package io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.stepdefs;
 
-
-import static org.junit.Assert.assertEquals;
-
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import java.math.BigDecimal;
 import java.time.DayOfWeek;
 import java.time.LocalTime;
@@ -40,8 +39,7 @@ public class RateStepDefs {
 	@Then("I should get the following rates:")
 	public void iShouldGetTheFollowingRates ( Map<String,RateData> expectedRates ) {
 		Map<String,RateData> returnedRates = this.scenarioContext.rates();
-		String assertionErrorMsg = "Expected rates ("+expectedRates+") is not equal to returned rates ("+returnedRates+")";
-		assertEquals ( assertionErrorMsg, expectedRates, returnedRates );
+		assertThat ( returnedRates, is(expectedRates) );
 	}
 
 	

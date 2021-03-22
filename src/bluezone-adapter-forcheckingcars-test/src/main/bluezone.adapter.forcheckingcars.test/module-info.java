@@ -7,11 +7,8 @@ module bluezone.adapter.forcheckingcars.test {
 	
 	requires io.github.jmgarridopaz.lib.portsadapters;
 	
-	requires org.junit.jupiter.engine;
-	requires org.junit.jupiter.api;
-	requires org.junit.platform.launcher;
-	requires org.junit.platform.engine;
-	requires org.junit.platform.reporting;
+	requires org.testng;
+	requires org.hamcrest;
 	
 /*
  * PUBLISH: adapter class, runtime access to framework
@@ -19,6 +16,6 @@ module bluezone.adapter.forcheckingcars.test {
 	exports io.github.jmgarridopaz.bluezone.adapter.forcheckingcars.test;
 	
 	opens	io.github.jmgarridopaz.bluezone.adapter.forcheckingcars.test.testcases
-	to		org.junit.platform.commons;
+	to		org.testng;
 	
 }

@@ -18,8 +18,8 @@
 	<name>BlueZone - ForCheckingCars Test Adapter</name>
 
 	<properties>
-		<junit5.jupiter.engine.version>5.7.0</junit5.jupiter.engine.version>
-		<junit5.platform.version>1.7.0</junit5.platform.version>
+		<testng.version>7.1.0</testng.version>
+		<hamcrest.version>2.2</hamcrest.version>
 	</properties>
 
 	<dependencies>
@@ -32,19 +32,14 @@
 			<artifactId>ports-adapters</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
-			<version>${junit5.jupiter.engine.version}</version>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.junit.platform</groupId>
-			<artifactId>junit-platform-launcher</artifactId>
-			<version>${junit5.platform.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.platform</groupId>
-			<artifactId>junit-platform-reporting</artifactId>
-			<version>${junit5.platform.version}</version>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+			<version>${hamcrest.version}</version>
 		</dependency>
 	</dependencies>
 

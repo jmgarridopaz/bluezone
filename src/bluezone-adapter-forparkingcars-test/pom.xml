@@ -18,7 +18,8 @@
 	<name>BlueZone - ForParkingCars Test Adapter</name>
 
 	<properties>
-		<cucumber.version>6.7.0</cucumber.version>
+		<cucumber.version>6.10.1</cucumber.version>
+		<hamcrest.version>2.2</hamcrest.version>
 	</properties>
 
 	<dependencies>
@@ -36,9 +37,9 @@
 			<version>${cucumber.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-junit</artifactId>
-			<version>${cucumber.version}</version>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+			<version>${hamcrest.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>

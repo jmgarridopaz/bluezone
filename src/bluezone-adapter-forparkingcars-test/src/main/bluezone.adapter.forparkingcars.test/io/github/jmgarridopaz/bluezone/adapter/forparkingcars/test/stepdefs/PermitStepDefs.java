@@ -1,7 +1,5 @@
 package io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.stepdefs;
 
-import static org.junit.Assert.assertEquals;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.YearMonth;
@@ -14,6 +12,8 @@ import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.MoneyDto;
 import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.PaymentCardData;
 import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.PermitRequest;
 import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.PermitTicket;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 
 
 public class PermitStepDefs {
@@ -34,8 +34,7 @@ public class PermitStepDefs {
 	@Then("I should get the following permit ticket:")
 	public void iShouldGetTheFollowingPermitTicket ( PermitTicket expectedPermitTicket ) {
 		PermitTicket returnedPermitTicket = this.scenarioContext.permitTicket();
-		String assertionErrorMsg =  "Expected permit ticket ("+expectedPermitTicket+") is not equal to returned permit ticket ("+returnedPermitTicket+")";
-		assertEquals ( assertionErrorMsg , expectedPermitTicket, returnedPermitTicket );
+		assertThat(returnedPermitTicket,is(expectedPermitTicket));
 	}
 
 	
