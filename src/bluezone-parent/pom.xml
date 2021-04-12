@@ -83,15 +83,15 @@
 					<showWarnings>true</showWarnings>
 				</configuration>
 			</plugin>
-		</plugins>  		
+		</plugins>
 	</build>
 
 	<!-- Repository with my own artifacts -->
-    <repositories>
+	<repositories>
 		<repository>
 			<id>github-repo</id>
 			<name>Github Repository</name>
-            <url>https://raw.githubusercontent.com/jmgarridopaz/jmgarridopaz.github.io/mavenrepo/</url>
+			<url>https://raw.githubusercontent.com/jmgarridopaz/jmgarridopaz.github.io/mavenrepo/</url>
 			<layout>default</layout>
 			<releases>
 				<enabled>true</enabled>
@@ -104,17 +104,17 @@
 				<checksumPolicy>fail</checksumPolicy>
 			</snapshots>
 		</repository>
-     </repositories>
+	</repositories>
 
 	<!-- Deploy the artifact to a project local repository -->
 	<distributionManagement>
 		<repository>
 			<id>local-repo</id>
 			<name>Local Repository</name>
-            <url>file://${project.build.directory}/localrepo</url>
+			<url>file://${project.build.directory}/localrepo</url>
 			<layout>default</layout>
 			<uniqueVersion>false</uniqueVersion>
 		</repository>
- 	</distributionManagement>
+	</distributionManagement>
 
 </project>

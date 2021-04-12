@@ -29,6 +29,7 @@ import io.github.jmgarridopaz.lib.portsadapters.DriverAdapter;
 public class ForCheckingCarsTestAdapter extends DriverAdapter<ForCheckingCars> {
 	
 	public static final String	HARDCODED_HEXAGON_GROUP	= "hardcodedHexagon";
+	private static final String OUTPUT_DIRECTORY = OutputDirectory.get();
 
 	// The driver adapter has a configurable dependency on the port
 	public ForCheckingCarsTestAdapter ( ForCheckingCars forCheckingCars ) {
@@ -82,6 +83,15 @@ public class ForCheckingCarsTestAdapter extends DriverAdapter<ForCheckingCars> {
 		TestNG testng = new TestNG();
 		
 		testng.setXmlSuites(suites);
+		
+		testng.setOutputDirectory ( OUTPUT_DIRECTORY );
+		
+		System.out.println();
+		System.out.println("=====");
+		System.out.println("Reports will be generated in the following output directory:");
+		System.out.println( testng.getOutputDirectory() );
+		System.out.println("=====");
+		System.out.println();
 		
 		testng.run();
 	}

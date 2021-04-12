@@ -38,7 +38,7 @@ public class IllegallyParkedCarTest {
 	// Test case context
 	private Clock clock;
 	private Boolean illegallyParkedCar;
-		
+
 	// Before running each test case in this class
 	@BeforeMethod
 	public void resetTestCaseContext() {

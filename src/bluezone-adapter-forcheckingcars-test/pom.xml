@@ -18,8 +18,10 @@
 	<name>BlueZone - ForCheckingCars Test Adapter</name>
 
 	<properties>
+		<propertiesMavenPlugin.version>1.0.0</propertiesMavenPlugin.version>
 		<testng.version>7.1.0</testng.version>
 		<hamcrest.version>2.2</hamcrest.version>
+		<reports.output.directory>${project.build.directory}/reports</reports.output.directory>
 	</properties>
 
 	<dependencies>
@@ -45,6 +47,25 @@
 
 	<build>
 		<sourceDirectory>src/main/bluezone.adapter.forcheckingcars.test</sourceDirectory>
+		<plugins>
+			<!-- Generate file with properties defined in the project pom -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>properties-maven-plugin</artifactId>
+				<version>${propertiesMavenPlugin.version}</version>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>write-project-properties</goal>
+						</goals>
+						<configuration>
+							<outputFile>${project.build.outputDirectory}/maven-pom.properties</outputFile>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 
 </project>
