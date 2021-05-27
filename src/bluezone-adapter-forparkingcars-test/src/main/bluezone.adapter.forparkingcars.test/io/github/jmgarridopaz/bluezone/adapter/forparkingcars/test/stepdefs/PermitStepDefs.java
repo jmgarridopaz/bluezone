@@ -8,10 +8,11 @@ import java.util.Map;
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.MoneyDto;
-import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.PaymentCardData;
-import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.PermitRequest;
-import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.PermitTicket;
+import io.github.jmgarridopaz.bluezone.hexagon.permit.MoneyDto;
+import io.github.jmgarridopaz.bluezone.hexagon.permit.PaymentCardData;
+import io.github.jmgarridopaz.bluezone.hexagon.permit.PermitRequest;
+import io.github.jmgarridopaz.bluezone.hexagon.permit.PermitTicket;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 

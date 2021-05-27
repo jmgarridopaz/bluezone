@@ -14,10 +14,10 @@ import java.util.Map;
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.MoneyDto;
 import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.RateData;
-import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.TimeIntervalDto;
-import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.TimeTableDto;
+import io.github.jmgarridopaz.bluezone.hexagon.permit.MoneyDto;
+import io.github.jmgarridopaz.bluezone.hexagon.rate.TimeIntervalDto;
+import io.github.jmgarridopaz.bluezone.hexagon.rate.TimeTableDto;
 
 
 public class RateStepDefs {

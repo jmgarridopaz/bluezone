@@ -1,9 +1,9 @@
 package io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test;
 
+import java.util.function.Function;
 import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.stepdefs.ScenarioContext;
 import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.sut.SutProvider;
 import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.ForParkingCars;
-import io.github.jmgarridopaz.lib.portsadapters.DriverAdapter;
 
 /**
  * 
@@ -22,13 +22,17 @@ import io.github.jmgarridopaz.lib.portsadapters.DriverAdapter;
  * ( "GIVEN some context WHEN some action is carried out THEN a set of consequences should be obtained" ).
  * 
  */
-public class ForParkingCarsTestAdapter extends DriverAdapter<ForParkingCars> {
+public class ForParkingCarsTestAdapter {
 	
+	private final Function<InitialData,ForParkingCars> forParkingCarsSetup;
+
+
 	// The driver adapter has a configurable dependency on the port
-	public ForParkingCarsTestAdapter ( ForParkingCars forParkingCars ) {
-		super(forParkingCars);
+	public ForParkingCarsTestAdapter ( Function<InitialData,ForParkingCars> forParkingCarsSetup ) {
+		this.forParkingCarsSetup = forParkingCarsSetup;
 	}
 
+	
 	/**
 	 * Runs the driver adapter with the given args.
 	 * 
@@ -40,11 +44,10 @@ public class ForParkingCarsTestAdapter extends DriverAdapter<ForParkingCars> {
 	 * 					If present, run test cases tagged with '@hardCodedHexagon'
 	 * 					Otherwise, run test cases not tagged with '@hardCodedHexagon'
 	 */
-	@Override
 	public void run ( String[] args ) {
 		
 		// The SUT (System Under Test) is the driver port (forParkingCars)
-		SutProvider.FOR_PARKING_CARS.set ( this.driverPort() );
+		SutProvider.FOR_PARKING_CARS.set ( this.forParkingCarsSetup );
 
 		// Defining tags to run
 		String tagsToRun = "not @hardCodedHexagon";

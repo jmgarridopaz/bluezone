@@ -20,3 +20,20 @@ Then I should get the following rates:
 |            | name         | costPerHourAmount | costPerHourCurrencySymbol | minMinutesAllowed | maxMinutesAllowed | monday                  | tuesday                 | wednesday               | thursday                | friday                  | saturday    | sunday      |
 | GREEN_ZONE | GREEN_ZONE   | 0.65              | €                         | 60                | 180               | 08:00-22:00             | 08:00-22:00             | 08:00-22:00             | 08:00-22:00             | 08:00-22:00             | 08:00-22:00 | 08:00-22:00 |
 | BLUE_ZONE  | BLUE_ZONE    | 0.85              | €                         | 35                | 120               | 09:00-14:00 17:00-20:00 | 09:00-14:00 17:00-20:00 | 09:00-14:00 17:00-20:00 | 09:00-14:00 17:00-20:00 | 09:00-14:00 17:00-20:00 | 10:00-14:00 |             |
+
+
+Scenario: Working-days and Full-time rates
+
+Given there exist these rates:
+
+| name      | costPerHourAmount | costPerHourCurrencySymbol | minMinutesAllowed | maxMinutesAllowed | monday                  | tuesday                 | wednesday               | thursday                | friday                  | saturday    | sunday      |
+| BLUE_ZONE | 0.85              | €                         | 30                | 120               | 09:00-14:00 17:00-20:00 | 09:00-14:00 17:00-20:00 | 09:00-14:00 17:00-20:00 | 09:00-14:00 17:00-20:00 | 09:00-14:00 17:00-20:00 | 10:00-14:00 |             |
+| RED_ZONE  | 0.50              | €                         | 60                | 480               | 00:00-23:59             | 00:00-23:59             | 00:00-23:59             | 00:00-23:59             | 00:00-23:59             | 00:00-23:59 | 00:00-23:59 |
+
+When I request all the rates indexed by name
+
+Then I should get the following rates:
+
+|           | name      | costPerHourAmount | costPerHourCurrencySymbol | minMinutesAllowed | maxMinutesAllowed | monday                  | tuesday                 | wednesday               | thursday                | friday                  | saturday    | sunday      |
+| BLUE_ZONE | BLUE_ZONE | 0.85              | €                         | 30                | 120               | 09:00-14:00 17:00-20:00 | 09:00-14:00 17:00-20:00 | 09:00-14:00 17:00-20:00 | 09:00-14:00 17:00-20:00 | 09:00-14:00 17:00-20:00 | 10:00-14:00 |             |
+| RED_ZONE  | RED_ZONE  | 0.50              | €                         | 60                | 480               | 00:00-23:59             | 00:00-23:59             | 00:00-23:59             | 00:00-23:59             | 00:00-23:59             | 00:00-23:59 | 00:00-23:59 |

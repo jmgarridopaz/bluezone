@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>io.github.jmgarridopaz.bluezone</groupId>
+		<artifactId>bluezone-parent</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../bluezone-parent</relativePath>
+	</parent>
+
+	<artifactId>bluezone-adapter-forobtainingrates-stub</artifactId>
+
+	<packaging>jar</packaging>
+
+	<name>BlueZone - ForObtainingRates Stub Adapter</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>io.github.jmgarridopaz.bluezone</groupId>
+			<artifactId>bluezone-hexagon</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jmgarridopaz.lib</groupId>
+			<artifactId>ports-adapters</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<sourceDirectory>src/main/bluezone.adapter.forobtainingrates.stub</sourceDirectory>
+	</build>
+
+</project>

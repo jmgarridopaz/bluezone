@@ -5,8 +5,8 @@ import java.util.Map;
 
 import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.sut.SutProvider;
 import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.ForParkingCars;
-import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.PermitTicket;
 import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.RateData;
+import io.github.jmgarridopaz.bluezone.hexagon.permit.PermitTicket;
 
 /**
  * Class for sharing state between different steps files in one scenario.
@@ -25,7 +25,6 @@ public class ScenarioContext {
 	private Clock clock;
 
 	public ScenarioContext() {
-		this.forParkingCars = SutProvider.FOR_PARKING_CARS.get();
 	}
 	
 	
