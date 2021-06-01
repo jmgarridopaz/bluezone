@@ -8,10 +8,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import io.github.jmgarridopaz.bluezone.hexagon.HardCodedHexagon;
-import io.github.jmgarridopaz.bluezone.hexagon.permit.PermitRequest;
-import io.github.jmgarridopaz.bluezone.hexagon.permit.PermitTicket;
 import io.github.jmgarridopaz.bluezone.hexagon.rate.ForObtainingRates;
+import io.github.jmgarridopaz.bluezone.hexagon.rate.Rate;
 import io.github.jmgarridopaz.bluezone.hexagon.rate.RateData;
+import io.github.jmgarridopaz.bluezone.hexagon.usecases.forparkingcars.ForParkingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.usecases.forparkingcars.PermitRequest;
+import io.github.jmgarridopaz.bluezone.hexagon.usecases.forparkingcars.PermitTicket;
 
 /**
  * Driver Port interface implementation.

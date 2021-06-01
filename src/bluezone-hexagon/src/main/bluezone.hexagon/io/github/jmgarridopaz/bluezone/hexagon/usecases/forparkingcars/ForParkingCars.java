@@ -1,11 +1,11 @@
-package io.github.jmgarridopaz.bluezone.hexagon.permit;
+package io.github.jmgarridopaz.bluezone.hexagon.usecases.forparkingcars;
 
 import java.time.Clock;
 import java.util.Map;
 
-import io.github.jmgarridopaz.bluezone.hexagon.permit.PermitRequest;
-import io.github.jmgarridopaz.bluezone.hexagon.permit.PermitTicket;
 import io.github.jmgarridopaz.bluezone.hexagon.rate.RateData;
+import io.github.jmgarridopaz.bluezone.hexagon.usecases.forparkingcars.PermitRequest;
+import io.github.jmgarridopaz.bluezone.hexagon.usecases.forparkingcars.PermitTicket;
 
 
 public interface ForParkingCars {

@@ -15,10 +15,10 @@ module bluezone.hexagon {
 	exports io.github.jmgarridopaz.bluezone.hexagon.permit;
 	
 	// hardcoded hexagon implementation (providers of driver ports services)
-	provides	io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.ForParkingCars
+	provides	io.github.jmgarridopaz.bluezone.hexagon.usecases.forparkingcars.io.github.jmgarridopaz.bluezone.hexagon.permit.forparkingcars.ForParkingCars
 	with		io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.implementation.hardcoded.HardCodedCarParker;
 	
-	provides	io.github.jmgarridopaz.bluezone.hexagon.driver.forcheckingcars.ForCheckingCars
+	provides	io.io.github.jmgarridopaz.bluezone.hexagon.usecases.forchekingcars.ForCheckingCars
 	with		io.github.jmgarridopaz.bluezone.hexagon.driver.forcheckingcars.implementation.hardcoded.HardCodedCarChecker;
 	
 }

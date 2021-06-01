@@ -1,4 +1,4 @@
-package io.github.jmgarridopaz.bluezone.hexagon.permit;
+package io.github.jmgarridopaz.bluezone.hexagon.usecases.forchekingcars;
 
 import java.time.Clock;
 

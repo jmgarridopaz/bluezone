@@ -6,6 +6,7 @@ import java.time.Month;
 import java.time.temporal.ChronoUnit;
 
 import io.github.jmgarridopaz.bluezone.hexagon.HardCodedHexagon;
+import io.github.jmgarridopaz.bluezone.hexagon.usecases.forchekingcars.ForCheckingCars;
 
 /**
  * 

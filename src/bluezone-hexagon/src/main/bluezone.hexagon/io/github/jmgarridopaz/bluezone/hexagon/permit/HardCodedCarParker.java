@@ -6,11 +6,12 @@ import java.time.temporal.ChronoUnit;
 import java.util.Map;
 
 import io.github.jmgarridopaz.bluezone.hexagon.HardCodedHexagon;
-import io.github.jmgarridopaz.bluezone.hexagon.permit.PermitRequest;
-import io.github.jmgarridopaz.bluezone.hexagon.permit.PermitTicket;
 import io.github.jmgarridopaz.bluezone.hexagon.rate.HardCodedBlueZoneRate;
 import io.github.jmgarridopaz.bluezone.hexagon.rate.HardCodedGreenZoneRate;
 import io.github.jmgarridopaz.bluezone.hexagon.rate.RateData;
+import io.github.jmgarridopaz.bluezone.hexagon.usecases.forparkingcars.ForParkingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.usecases.forparkingcars.PermitRequest;
+import io.github.jmgarridopaz.bluezone.hexagon.usecases.forparkingcars.PermitTicket;
 
 /**
  * 

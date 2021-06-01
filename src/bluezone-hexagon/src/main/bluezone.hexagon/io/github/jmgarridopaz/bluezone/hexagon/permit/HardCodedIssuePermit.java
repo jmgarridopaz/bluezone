@@ -7,8 +7,8 @@ import java.time.YearMonth;
 
 import io.github.jmgarridopaz.bluezone.hexagon.payment.MoneyDto;
 import io.github.jmgarridopaz.bluezone.hexagon.payment.PaymentCardData;
-import io.github.jmgarridopaz.bluezone.hexagon.permit.PermitRequest;
-import io.github.jmgarridopaz.bluezone.hexagon.permit.PermitTicket;
+import io.github.jmgarridopaz.bluezone.hexagon.usecases.forparkingcars.PermitRequest;
+import io.github.jmgarridopaz.bluezone.hexagon.usecases.forparkingcars.PermitTicket;
 
 
 public final class HardCodedIssuePermit {

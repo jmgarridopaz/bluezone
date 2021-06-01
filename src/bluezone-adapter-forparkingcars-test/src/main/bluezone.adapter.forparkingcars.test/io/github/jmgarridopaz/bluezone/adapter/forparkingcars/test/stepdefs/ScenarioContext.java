@@ -6,7 +6,7 @@ import java.util.Map;
 import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.sut.SutProvider;
 import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.ForParkingCars;
 import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.RateData;
-import io.github.jmgarridopaz.bluezone.hexagon.permit.PermitTicket;
+import io.github.jmgarridopaz.bluezone.hexagon.usecases.forparkingcars.PermitTicket;
 
 /**
  * Class for sharing state between different steps files in one scenario.
