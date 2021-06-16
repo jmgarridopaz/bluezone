@@ -2,6 +2,7 @@
 package io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.stepdefs;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+
 import static org.hamcrest.Matchers.is;
 import java.math.BigDecimal;
 import java.time.DayOfWeek;
@@ -9,15 +10,19 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import io.cucumber.java.DataTableType;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.RateData;
-import io.github.jmgarridopaz.bluezone.hexagon.permit.MoneyDto;
-import io.github.jmgarridopaz.bluezone.hexagon.rate.TimeIntervalDto;
-import io.github.jmgarridopaz.bluezone.hexagon.rate.TimeTableDto;
+import io.github.jmgarridopaz.bluezone.hexagon.MoneyDto;
+import io.github.jmgarridopaz.bluezone.hexagon.RateData;
+import io.github.jmgarridopaz.bluezone.hexagon.TimeIntervalDto;
+import io.github.jmgarridopaz.bluezone.hexagon.TimeTableDto;
 
 
 public class RateStepDefs {
@@ -28,17 +33,24 @@ public class RateStepDefs {
 		this.scenarioContext = scenarioContext;
 	}
 
+
+	
+	@Given("there exist these rates:")
+	public void thereExistTheseRates ( List<RateData> rateList ) {
+		Set<RateData> rates = new HashSet<RateData>(rateList);
+		this.scenarioContext.setInitialRates(rates);
+	}
 	
 	@When("I request all the rates indexed by name")
 	public void iRequestAllTheRatesIndexedByName() {
-		Map<String,RateData> rates = this.scenarioContext.forParkingCars().getAllRatesByName();
-		this.scenarioContext.setRates(rates);
+		Map<String,	RateData> ratesByName = this.scenarioContext.forParkingCars().getAllRatesByName();
+		this.scenarioContext.setRatesByName(ratesByName);
 	}
 
 
 	@Then("I should get the following rates:")
 	public void iShouldGetTheFollowingRates ( Map<String,RateData> expectedRates ) {
-		Map<String,RateData> returnedRates = this.scenarioContext.rates();
+		Map<String,RateData> returnedRates = this.scenarioContext.ratesByName();
 		assertThat ( returnedRates, is(expectedRates) );
 	}
 

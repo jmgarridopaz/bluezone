@@ -1,12 +1,15 @@
 package io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.stepdefs;
 
 import java.time.Clock;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.InitialData;
 import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.sut.SutProvider;
-import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.ForParkingCars;
-import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.RateData;
-import io.github.jmgarridopaz.bluezone.hexagon.usecases.forparkingcars.PermitTicket;
+import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.PermitTicket;
+import io.github.jmgarridopaz.bluezone.hexagon.RateData;
 
 /**
  * Class for sharing state between different steps files in one scenario.
@@ -20,25 +23,30 @@ import io.github.jmgarridopaz.bluezone.hexagon.usecases.forparkingcars.PermitTic
 public class ScenarioContext {
 
 	private ForParkingCars forParkingCars;
-	private Map<String,RateData> rates;
+	private Map<String,RateData> ratesByName;
 	private PermitTicket permitTicket;
 	private Clock clock;
+	private Set<RateData> initialRates;
 
 	public ScenarioContext() {
 	}
 	
 	
 	ForParkingCars forParkingCars() {
+		if ( this.forParkingCars==null ) {
+			InitialData initialData = new InitialData(this.initialRates);
+			this.forParkingCars = SutProvider.FOR_PARKING_CARS.from(initialData);
+		}
 		return this.forParkingCars;
 	}
 
 	
-	void setRates(Map<String,RateData> rates) {
-		this.rates = rates;
+	void setRatesByName(Map<String,RateData> ratesByName) {
+		this.ratesByName = ratesByName;
 	}
 
-	Map<String, RateData> rates() {
-		return this.rates;
+	Map<String, RateData> ratesByName() {
+		return this.ratesByName;
 	}
 
 
@@ -57,6 +65,11 @@ public class ScenarioContext {
 
 	Clock clock() {
 		return this.clock;
+	}
+
+
+	void setInitialRates(Set<RateData> initialRates) {
+		this.initialRates = initialRates;
 	}
 	
 }

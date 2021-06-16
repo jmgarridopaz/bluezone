@@ -6,12 +6,17 @@ module bluezone.startup {
 	requires bluezone.hexagon;
 	requires bluezone.adapter.forparkingcars.test;
 	requires bluezone.adapter.forcheckingcars.test;
+	requires bluezone.adapter.forobtainingrates.stub;
+	
 	
 	/*
-	 * Services:	the driver ports
-	 * Providers:	the implementations at hexagon module
+	 * Service:		hexagon provider
+	 * Providers:	real and hardcoded
 	 */
-	uses io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.ForParkingCars;
-	uses io.github.jmgarridopaz.bluezone.hexagon.driver.forcheckingcars.ForCheckingCars;
+	uses io.github.jmgarridopaz.bluezone.startup.HexagonProvider;
+	
+	provides	io.github.jmgarridopaz.bluezone.startup.HexagonProvider
+	with		io.github.jmgarridopaz.bluezone.startup.RealHexagonProvider,
+				io.github.jmgarridopaz.bluezone.startup.HardcodedHexagonProvider;
 
 }

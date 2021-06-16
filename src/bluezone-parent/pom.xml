@@ -28,6 +28,7 @@
 		<bluezone.startup.version>1.0.0</bluezone.startup.version>
 		<bluezone.adapter.forparkingcars.test.version>1.0.0</bluezone.adapter.forparkingcars.test.version>
 		<bluezone.adapter.forcheckingcars.test.version>1.0.0</bluezone.adapter.forcheckingcars.test.version>
+		<bluezone.adapter.forobtainingrates.stub.version>1.0.0</bluezone.adapter.forobtainingrates.stub.version>
 		<!-- Version of external dependencies -->
 		<javalangutils.version>1.0.0</javalangutils.version>
 		<portsadapters.version>1.0.0</portsadapters.version>
@@ -63,6 +64,12 @@
 				<artifactId>bluezone-adapter-forcheckingcars-test</artifactId>
 				<version>${bluezone.adapter.forcheckingcars.test.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>io.github.jmgarridopaz.bluezone</groupId>
+				<artifactId>bluezone-adapter-forobtainingrates-stub</artifactId>
+				<version>${bluezone.adapter.forobtainingrates.stub.version}</version>
+			</dependency>
+			
 		</dependencies>
 	</dependencyManagement>
 

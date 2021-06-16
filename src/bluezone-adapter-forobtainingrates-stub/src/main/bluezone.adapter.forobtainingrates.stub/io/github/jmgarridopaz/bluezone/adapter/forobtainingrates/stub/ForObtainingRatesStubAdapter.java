@@ -1,11 +1,8 @@
 package io.github.jmgarridopaz.bluezone.adapter.forobtainingrates.stub;
 
-import java.util.List;
 import java.util.Set;
-
-import io.github.jmgarridopaz.bluezone.hexagon.driven.forobtainingrates.ForObtainingRates;
-import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.RateData;
-import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.implementation.Rate;
+import io.github.jmgarridopaz.bluezone.hexagon.ForObtainingRates;
+import io.github.jmgarridopaz.bluezone.hexagon.RateData;
 
 /**
  * 
@@ -14,18 +11,15 @@ import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.implementat
  */
 public class ForObtainingRatesStubAdapter implements ForObtainingRates {
 	
-	public ForObtainingRatesStubAdapter ( List<RateData> rates ) {
-	}
-
-	public static ForObtainingRates provider() {
-		// TODO Auto-generated method stub
-		return null;
+	private Set<RateData> rates;
+	
+	public ForObtainingRatesStubAdapter ( Set<RateData> rates ) {
+		this.rates = rates;
 	}
 
 	@Override
-	public Set<Rate> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public Set<RateData> getAll() {
+		return this.rates;
 	}
-	
+
 }

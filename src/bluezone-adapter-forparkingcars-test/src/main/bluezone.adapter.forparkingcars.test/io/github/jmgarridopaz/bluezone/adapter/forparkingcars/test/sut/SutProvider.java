@@ -3,7 +3,7 @@ package io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.sut;
 import java.util.function.Function;
 
 import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.InitialData;
-import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.ForParkingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
 
 
 public enum SutProvider {
@@ -12,7 +12,7 @@ public enum SutProvider {
 	
 	private Function<InitialData,ForParkingCars> forParkingCarsSetup;
 	
-	public void set ( Function<InitialData,ForParkingCars> forParkingCarsSetup ) {
+	public void configureWith ( Function<InitialData,ForParkingCars> forParkingCarsSetup ) {
 		this.forParkingCarsSetup = forParkingCarsSetup;
 	}
 

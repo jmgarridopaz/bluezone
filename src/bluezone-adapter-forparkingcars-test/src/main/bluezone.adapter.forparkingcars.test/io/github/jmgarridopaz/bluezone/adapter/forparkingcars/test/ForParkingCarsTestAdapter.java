@@ -3,7 +3,7 @@ package io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test;
 import java.util.function.Function;
 import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.stepdefs.ScenarioContext;
 import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.sut.SutProvider;
-import io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars.ForParkingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
 
 /**
  * 
@@ -27,7 +27,7 @@ public class ForParkingCarsTestAdapter {
 	private final Function<InitialData,ForParkingCars> forParkingCarsSetup;
 
 
-	// The driver adapter has a configurable dependency on the port
+	// The test driver adapter has a configurable dependency on a port factory
 	public ForParkingCarsTestAdapter ( Function<InitialData,ForParkingCars> forParkingCarsSetup ) {
 		this.forParkingCarsSetup = forParkingCarsSetup;
 	}
@@ -47,7 +47,7 @@ public class ForParkingCarsTestAdapter {
 	public void run ( String[] args ) {
 		
 		// The SUT (System Under Test) is the driver port (forParkingCars)
-		SutProvider.FOR_PARKING_CARS.set ( this.forParkingCarsSetup );
+		SutProvider.FOR_PARKING_CARS.configureWith ( this.forParkingCarsSetup );
 
 		// Defining tags to run
 		String tagsToRun = "not @hardCodedHexagon";

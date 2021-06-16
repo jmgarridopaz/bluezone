@@ -1,6 +1,7 @@
 package io.github.jmgarridopaz.bluezone.adapter.forcheckingcars.test;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.testng.TestNG;
@@ -12,7 +13,7 @@ import org.testng.xml.XmlTest;
 
 import io.github.jmgarridopaz.bluezone.adapter.forcheckingcars.test.sut.SutProvider;
 import io.github.jmgarridopaz.bluezone.adapter.forcheckingcars.test.testcases.IllegallyParkedCarTest;
-import io.github.jmgarridopaz.bluezone.hexagon.driver.forcheckingcars.ForCheckingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.ForCheckingCars;
 import io.github.jmgarridopaz.lib.portsadapters.DriverAdapter;
 
 /**
