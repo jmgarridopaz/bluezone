@@ -1,18 +1,14 @@
 package io.github.jmgarridopaz.bluezone.startup.forparkingcars.test;
 
-import java.util.ServiceLoader;
-import java.util.ServiceLoader.Provider;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import io.github.jmgarridopaz.bluezone.adapter.forobtainingrates.stub.ForObtainingRatesStubAdapter;
-import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.ForParkingCarsTestAdapter;
-import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.InitialData;
+import io.github.jmgarridopaz.bluezone.adapter.forpaying.mock.ForPayingMockAdapter;
+import io.github.jmgarridopaz.bluezone.adapter.forstoringpermits.fake.ForStoringPermitsFakeAdapter;
 import io.github.jmgarridopaz.bluezone.hexagon.ForObtainingRates;
-import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
-import io.github.jmgarridopaz.bluezone.hexagon.RateData;
+import io.github.jmgarridopaz.bluezone.hexagon.ForPaying;
+import io.github.jmgarridopaz.bluezone.hexagon.ForStoringPermits;
 import io.github.jmgarridopaz.bluezone.startup.HardCodedHexagon;
-import io.github.jmgarridopaz.bluezone.startup.HexagonProvider;
+import io.github.jmgarridopaz.bluezone.startup.Hexagon;
+import io.github.jmgarridopaz.bluezone.startup.RealHexagon;
 
 
 public class DependencyConfigurator {
@@ -23,53 +19,23 @@ public class DependencyConfigurator {
 		this.hardcodedHexagon = hardcodedHexagon;
 	}
 
-	static DependencyConfigurator withHardcodedHexagon() {
+	static DependencyConfigurator forHardcodedHexagon() {
 		return new DependencyConfigurator(true);
 	}
 
-	static DependencyConfigurator withRealHexagon() {
+	static DependencyConfigurator forRealHexagon() {
 		return new DependencyConfigurator(false);
 	}
 
 	
-	ForParkingCarsTestAdapter instantiateForParkingCarsTestAdapter() {
-		Function<InitialData,ForParkingCars> forParkingCarsSetup = ( (initialData) -> getForParkingCarsInstance(initialData) );
-		return new ForParkingCarsTestAdapter ( forParkingCarsSetup );
-	}
-
-	
-	private ForParkingCars getForParkingCarsInstance ( InitialData initialData ) {
-		ForObtainingRates forObtainingRates = instantiateForObtainingRates(initialData.rates());
-		return instantiateForParkingCars(forObtainingRates);
-	}
-
-
-	private ForObtainingRates instantiateForObtainingRates ( Set<RateData> rates ) {
+	Hexagon instantiateHexagon() {
 		if ( this.hardcodedHexagon ) {
-			return null;
+			return new HardCodedHexagon();
 		}
-		return new ForObtainingRatesStubAdapter ( rates );
-	}
-
-
-	private ForParkingCars instantiateForParkingCars ( ForObtainingRates forObtainingRates ) {
-		return	ServiceLoader.
-				load(HexagonProvider.class).
-				stream().
-				filter ( p -> isSelected(p) ).
-				collect ( Collectors.toList() ).
-				get(0).
-				get().
-				getForParkingCarsInstance(forObtainingRates);
-	}
-	
-	
-	private boolean isSelected ( Provider<HexagonProvider> provider ) {
-		boolean isProviderAnnotatedWithHardcoded = provider.type().isAnnotationPresent(HardCodedHexagon.class);
-		if ( this.hardcodedHexagon ) {
-			return isProviderAnnotatedWithHardcoded;
-		}
-		return ( ! isProviderAnnotatedWithHardcoded );
+		ForObtainingRates forObtainingRates = new ForObtainingRatesStubAdapter();
+		ForStoringPermits forStoringPermits = new ForStoringPermitsFakeAdapter();
+		ForPaying forPaying = new ForPayingMockAdapter();
+		return new RealHexagon(forObtainingRates,forStoringPermits,forPaying);
 	}
 
 }

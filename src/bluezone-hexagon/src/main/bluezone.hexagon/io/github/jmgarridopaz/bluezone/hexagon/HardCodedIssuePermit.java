@@ -16,13 +16,13 @@ public final class HardCodedIssuePermit {
 	private static final String			EXPECTED_PAYMENT_CARD_CVV		= "123";
 	private static final YearMonth		EXPECTED_CARD_EXPIRATION_DATE	= YearMonth.of(2025, Month.JUNE);
 	
-	private static final String			RETURNED_PERMIT_TICKET_CODE		= "PT-2020-000000000-161760";
+	private static final String			RETURNED_PERMIT_TICKET_CODE		= "PT0000000000202004220800";
 	private static final String			RETURNED_CAR_PLATE				= "0000AAA";
 	private static final LocalDateTime	RETURNED_STARTING_DATE_TIME		= LocalDateTime.of(2020,Month.APRIL,22,8,0);;
 	private static final LocalDateTime	RETURNED_ENDING_DATE_TIME		= LocalDateTime.of(2020,Month.APRIL,22,10,0);;
 	private static final String			RETURNED_RATE_NAME				= "GREEN_ZONE";
 	private static final BigDecimal		RETURNED_PRICE_AMOUNT			= new BigDecimal("1.30");
-	private static final String			RETURNED_PRICE_CURRENCY_SYMBOL	= "€";
+	private static final String			RETURNED_PRICE_CURRENCY_CODE	= "EUR";
 
 	
 	private HardCodedIssuePermit() {}
@@ -64,10 +64,10 @@ public final class HardCodedIssuePermit {
 	}
 
 
-	private static MoneyDto returnedPrice() {
-		MoneyDto price			= new MoneyDto();
+	private static MoneyData returnedPrice() {
+		MoneyData price			= new MoneyData();
 		price.setAmount			(RETURNED_PRICE_AMOUNT);
-		price.setCurrencySymbol	(RETURNED_PRICE_CURRENCY_SYMBOL);
+		price.setCurrencyCode	(RETURNED_PRICE_CURRENCY_CODE);
 		return price;
 	}
 	

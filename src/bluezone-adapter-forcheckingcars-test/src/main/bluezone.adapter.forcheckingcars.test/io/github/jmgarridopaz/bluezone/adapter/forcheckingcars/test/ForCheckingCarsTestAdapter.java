@@ -15,6 +15,7 @@ import io.github.jmgarridopaz.bluezone.adapter.forcheckingcars.test.sut.SutProvi
 import io.github.jmgarridopaz.bluezone.adapter.forcheckingcars.test.testcases.IllegallyParkedCarTest;
 import io.github.jmgarridopaz.bluezone.hexagon.ForCheckingCars;
 import io.github.jmgarridopaz.lib.portsadapters.DriverAdapter;
+import io.github.jmgarridopaz.lib.portsadapters.RealDriverAdapter;
 
 /**
  * 
@@ -27,7 +28,7 @@ import io.github.jmgarridopaz.lib.portsadapters.DriverAdapter;
  * Test cases are '@Test' methods in those classes.
  * 
  */
-public class ForCheckingCarsTestAdapter extends DriverAdapter<ForCheckingCars> {
+public class ForCheckingCarsTestAdapter extends RealDriverAdapter<ForCheckingCars> {
 	
 	public static final String	HARDCODED_HEXAGON_GROUP	= "hardcodedHexagon";
 	private static final String OUTPUT_DIRECTORY = OutputDirectory.get();

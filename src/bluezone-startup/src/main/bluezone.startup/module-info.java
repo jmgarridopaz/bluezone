@@ -7,16 +7,7 @@ module bluezone.startup {
 	requires bluezone.adapter.forparkingcars.test;
 	requires bluezone.adapter.forcheckingcars.test;
 	requires bluezone.adapter.forobtainingrates.stub;
+	requires bluezone.adapter.forstoringpermits.fake;
+	requires bluezone.adapter.forpaying.mock;
 	
-	
-	/*
-	 * Service:		hexagon provider
-	 * Providers:	real and hardcoded
-	 */
-	uses io.github.jmgarridopaz.bluezone.startup.HexagonProvider;
-	
-	provides	io.github.jmgarridopaz.bluezone.startup.HexagonProvider
-	with		io.github.jmgarridopaz.bluezone.startup.RealHexagonProvider,
-				io.github.jmgarridopaz.bluezone.startup.HardcodedHexagonProvider;
-
 }

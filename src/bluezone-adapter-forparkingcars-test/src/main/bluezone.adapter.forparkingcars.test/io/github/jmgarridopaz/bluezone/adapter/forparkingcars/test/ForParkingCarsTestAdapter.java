@@ -1,9 +1,9 @@
 package io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test;
 
-import java.util.function.Function;
 import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.stepdefs.ScenarioContext;
 import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.sut.SutProvider;
 import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
+import io.github.jmgarridopaz.lib.portsadapters.RealDriverAdapter;
 
 /**
  * 
@@ -22,14 +22,11 @@ import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
  * ( "GIVEN some context WHEN some action is carried out THEN a set of consequences should be obtained" ).
  * 
  */
-public class ForParkingCarsTestAdapter {
+public class ForParkingCarsTestAdapter extends RealDriverAdapter<ForParkingCars> {
 	
-	private final Function<InitialData,ForParkingCars> forParkingCarsSetup;
-
-
 	// The test driver adapter has a configurable dependency on a port factory
-	public ForParkingCarsTestAdapter ( Function<InitialData,ForParkingCars> forParkingCarsSetup ) {
-		this.forParkingCarsSetup = forParkingCarsSetup;
+	public ForParkingCarsTestAdapter ( ForParkingCars forParkingCars ) {
+		super(forParkingCars);
 	}
 
 	
@@ -47,7 +44,7 @@ public class ForParkingCarsTestAdapter {
 	public void run ( String[] args ) {
 		
 		// The SUT (System Under Test) is the driver port (forParkingCars)
-		SutProvider.FOR_PARKING_CARS.configureWith ( this.forParkingCarsSetup );
+		SutProvider.FOR_PARKING_CARS.set ( this.driverPort() );
 
 		// Defining tags to run
 		String tagsToRun = "not @hardCodedHexagon";

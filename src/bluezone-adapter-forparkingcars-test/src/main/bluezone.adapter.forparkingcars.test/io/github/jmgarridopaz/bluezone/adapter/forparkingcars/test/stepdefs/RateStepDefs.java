@@ -2,27 +2,20 @@
 package io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.stepdefs;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-
 import static org.hamcrest.Matchers.is;
 import java.math.BigDecimal;
 import java.time.DayOfWeek;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.jmgarridopaz.bluezone.hexagon.MoneyDto;
+import io.github.jmgarridopaz.bluezone.hexagon.MoneyData;
 import io.github.jmgarridopaz.bluezone.hexagon.RateData;
-import io.github.jmgarridopaz.bluezone.hexagon.TimeIntervalDto;
-import io.github.jmgarridopaz.bluezone.hexagon.TimeTableDto;
+import io.github.jmgarridopaz.bluezone.hexagon.TimeTableData;
 
 
 public class RateStepDefs {
@@ -38,9 +31,16 @@ public class RateStepDefs {
 	@Given("there exist these rates:")
 	public void thereExistTheseRates ( List<RateData> rateList ) {
 		Set<RateData> rates = new HashSet<RateData>(rateList);
-		this.scenarioContext.setInitialRates(rates);
+		this.scenarioContext.forParkingCars().addRatesToRepo ( rates );
 	}
 	
+	@Given("there exist this rate")
+	public void thereExistThisRate ( RateData rate ) {
+		Set<RateData> rates = new HashSet<RateData>();
+		rates.add(rate);
+		this.scenarioContext.forParkingCars().addRatesToRepo ( rates );
+	}
+
 	@When("I request all the rates indexed by name")
 	public void iRequestAllTheRatesIndexedByName() {
 		Map<String,	RateData> ratesByName = this.scenarioContext.forParkingCars().getAllRatesByName();
@@ -58,13 +58,19 @@ public class RateStepDefs {
 	@DataTableType
     public RateData rateEntry ( Map<String, String> entry ) {
 		
-		MoneyDto costPerHour = new MoneyDto();
+		MoneyData costPerHour = new MoneyData();
 		costPerHour.setAmount(new BigDecimal(entry.get("costPerHourAmount")));
-		costPerHour.setCurrencySymbol(entry.get("costPerHourCurrencySymbol"));
+		costPerHour.setCurrencyCode(entry.get("costPerHourCurrencyCode"));
 		
-		TimeTableDto timeTable = new TimeTableDto();
-		timeTable.setIntervalsByDayOfWeek ( intervalsByDayOfWeek(entry) );
-		
+		TimeTableData timeTable = new TimeTableData();
+		timeTable.setMonday		( tableOfDay(entry, DayOfWeek.MONDAY));
+		timeTable.setTuesday	( tableOfDay(entry, DayOfWeek.TUESDAY));
+		timeTable.setWednesday	( tableOfDay(entry, DayOfWeek.WEDNESDAY));
+		timeTable.setThursday	( tableOfDay(entry, DayOfWeek.THURSDAY));
+		timeTable.setFriday		( tableOfDay(entry, DayOfWeek.FRIDAY));
+		timeTable.setSaturday	( tableOfDay(entry, DayOfWeek.SATURDAY));
+		timeTable.setSunday		( tableOfDay(entry, DayOfWeek.SUNDAY));
+				
 		RateData rate = new RateData();
 		rate.setName(entry.get("name"));
 		rate.setCostPerHour(costPerHour);
@@ -76,24 +82,12 @@ public class RateStepDefs {
     }
 	
 
-	private Map<DayOfWeek, List<TimeIntervalDto>> intervalsByDayOfWeek ( Map<String, String> dataTableEntry ) {
-    	Map<DayOfWeek, List<TimeIntervalDto>> intervalsByDayOfWeek = new HashMap<DayOfWeek, List<TimeIntervalDto>>();
-		for ( DayOfWeek dayOfWeek : DayOfWeek.values() ) {
-    		String intervals = dataTableEntry.get ( dayOfWeek.name().toLowerCase() );
-    		List<TimeIntervalDto> timeIntervals = new ArrayList<TimeIntervalDto>();
-    		if ( intervals != null ) {
-    			for ( String interval : intervals.split(" ") ) {
-    				TimeIntervalDto timeInterval = new TimeIntervalDto();
-    				LocalTime minTime = LocalTime.parse ( interval.split("-")[0], DateTimeFormatter.ofPattern("HH:mm") );
-    				LocalTime maxTime = LocalTime.parse ( interval.split("-")[1], DateTimeFormatter.ofPattern("HH:mm") );
-    				timeInterval.setMinTime(minTime);
-    				timeInterval.setMaxTime(maxTime);
-    				timeIntervals.add(timeInterval);
-    			}
-    		}
-    		intervalsByDayOfWeek.put ( dayOfWeek, timeIntervals );    		
+	private String[] tableOfDay ( Map<String, String> dataTableEntry, DayOfWeek aDayOfWeek ) {
+		String dayTableAsString = dataTableEntry.get ( aDayOfWeek.name().toLowerCase() );
+    	if ( dayTableAsString == null ) {
+    		return new String[0];
     	}
-		return intervalsByDayOfWeek;
+    	return dayTableAsString.split(" ");
 	}
 	
 }

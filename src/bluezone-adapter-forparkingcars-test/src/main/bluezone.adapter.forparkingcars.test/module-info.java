@@ -11,6 +11,7 @@ module bluezone.adapter.forparkingcars.test {
 	requires io.cucumber.datatable;
 	requires io.cucumber.core;
 	requires org.hamcrest;
+
 		
 /*
  * PUBLISH: adapter class, runtime access to frameworks

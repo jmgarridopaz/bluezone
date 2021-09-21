@@ -1,14 +1,25 @@
 package io.github.jmgarridopaz.bluezone.startup;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import io.github.jmgarridopaz.bluezone.hexagon.ForCheckingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.HardCodedCarChecker;
+import io.github.jmgarridopaz.bluezone.hexagon.HardCodedCarParker;
 
-/**
- * Annotation to declare hardcoded implementations of driver ports
- */
-@Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.TYPE)
-public @interface HardCodedHexagon {
+
+public class HardCodedHexagon implements Hexagon {
+
+	public HardCodedHexagon() { }
+
+	
+	@Override
+	public ForParkingCars forParkingCars() {
+		return new HardCodedCarParker();
+	}
+
+
+	@Override
+	public ForCheckingCars forCheckingCars() {
+		return new HardCodedCarChecker();
+	}
+
 }

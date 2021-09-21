@@ -8,7 +8,7 @@ import java.util.Map;
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.jmgarridopaz.bluezone.hexagon.MoneyDto;
+import io.github.jmgarridopaz.bluezone.hexagon.MoneyData;
 import io.github.jmgarridopaz.bluezone.hexagon.PaymentCardData;
 import io.github.jmgarridopaz.bluezone.hexagon.PermitRequest;
 import io.github.jmgarridopaz.bluezone.hexagon.PermitTicket;
@@ -38,6 +38,11 @@ public class PermitStepDefs {
 		assertThat(returnedPermitTicket,is(expectedPermitTicket));
 	}
 
+	@Then("the following permit ticket should have been stored:")
+	public void theFollowingPermitTicketShouldHaveBeenStored ( PermitTicket expectedPermitTicket ) {
+		PermitTicket storedPermitTicket = this.scenarioContext.forParkingCars().getPermitTicketByCode ( expectedPermitTicket.getCode() );
+		assertThat(storedPermitTicket,is(expectedPermitTicket));
+	}
 	
 	@DataTableType
     public PermitRequest permitRequestEntry ( Map<String, String> dataTableEntry ) {
@@ -66,9 +71,9 @@ public class PermitStepDefs {
 		LocalDateTime startingDateTime = LocalDateTime.parse ( dataTableEntry.get("startingDateTime"), DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm") );
 		LocalDateTime endingDateTime = LocalDateTime.parse ( dataTableEntry.get("endingDateTime"), DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm") );
 
-		MoneyDto price = new MoneyDto();
+		MoneyData price = new MoneyData();
 		price.setAmount ( new BigDecimal(dataTableEntry.get("priceAmount")) );
-		price.setCurrencySymbol ( dataTableEntry.get("priceCurrencySymbol") );
+		price.setCurrencyCode ( dataTableEntry.get("priceCurrencyCode") );
 		
 		PermitTicket permitTicket = new PermitTicket();
 		permitTicket.setCode(dataTableEntry.get("code"));

@@ -29,9 +29,12 @@
 		<bluezone.adapter.forparkingcars.test.version>1.0.0</bluezone.adapter.forparkingcars.test.version>
 		<bluezone.adapter.forcheckingcars.test.version>1.0.0</bluezone.adapter.forcheckingcars.test.version>
 		<bluezone.adapter.forobtainingrates.stub.version>1.0.0</bluezone.adapter.forobtainingrates.stub.version>
+		<bluezone.adapter.forstoringpermits.fake.version>1.0.0</bluezone.adapter.forstoringpermits.fake.version>
+		<bluezone.adapter.forpaying.mock.version>1.0.0</bluezone.adapter.forpaying.mock.version>
 		<!-- Version of external dependencies -->
 		<javalangutils.version>1.0.0</javalangutils.version>
 		<portsadapters.version>1.0.0</portsadapters.version>
+		<lombok.version>1.18.20</lombok.version>
 	</properties>
 
 	<dependencyManagement>
@@ -47,6 +50,12 @@
 				<groupId>io.github.jmgarridopaz.lib</groupId>
 				<artifactId>ports-adapters</artifactId>
 				<version>${portsadapters.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+				<version>${lombok.version}</version>
+				<scope>provided</scope>
 			</dependency>
 			<!-- BlueZone projects -->
 			<dependency>
@@ -69,7 +78,16 @@
 				<artifactId>bluezone-adapter-forobtainingrates-stub</artifactId>
 				<version>${bluezone.adapter.forobtainingrates.stub.version}</version>
 			</dependency>
-			
+			<dependency>
+				<groupId>io.github.jmgarridopaz.bluezone</groupId>
+				<artifactId>bluezone-adapter-forstoringpermits-fake</artifactId>
+				<version>${bluezone.adapter.forstoringpermits.fake.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.jmgarridopaz.bluezone</groupId>
+				<artifactId>bluezone-adapter-forpaying-mock</artifactId>
+				<version>${bluezone.adapter.forpaying.mock.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -88,6 +106,13 @@
 					<optimize>true</optimize>
 					<showDeprecation>true</showDeprecation>
 					<showWarnings>true</showWarnings>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
+						</path>
+					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
 		</plugins>

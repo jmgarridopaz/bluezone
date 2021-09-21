@@ -7,6 +7,8 @@ public interface ForObtainingRates {
 
 	public Set<RateData> getAll();
 
-//	public RateData getByName(String rateName);
+	public RateData findByName(String rateName);
+
+	public void addAll(Set<RateData> rates);
 	
 }

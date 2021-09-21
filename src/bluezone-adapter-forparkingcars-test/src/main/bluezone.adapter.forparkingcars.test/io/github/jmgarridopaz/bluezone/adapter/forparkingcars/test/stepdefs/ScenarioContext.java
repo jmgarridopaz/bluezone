@@ -1,11 +1,7 @@
-package io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.stepdefs;
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											package io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.stepdefs;
 
 import java.time.Clock;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
-import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.InitialData;
 import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.sut.SutProvider;
 import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
 import io.github.jmgarridopaz.bluezone.hexagon.PermitTicket;
@@ -26,7 +22,6 @@ public class ScenarioContext {
 	private Map<String,RateData> ratesByName;
 	private PermitTicket permitTicket;
 	private Clock clock;
-	private Set<RateData> initialRates;
 
 	public ScenarioContext() {
 	}
@@ -34,8 +29,7 @@ public class ScenarioContext {
 	
 	ForParkingCars forParkingCars() {
 		if ( this.forParkingCars==null ) {
-			InitialData initialData = new InitialData(this.initialRates);
-			this.forParkingCars = SutProvider.FOR_PARKING_CARS.from(initialData);
+			this.forParkingCars = SutProvider.FOR_PARKING_CARS.get();
 		}
 		return this.forParkingCars;
 	}
@@ -67,9 +61,4 @@ public class ScenarioContext {
 		return this.clock;
 	}
 
-
-	void setInitialRates(Set<RateData> initialRates) {
-		this.initialRates = initialRates;
-	}
-	
 }

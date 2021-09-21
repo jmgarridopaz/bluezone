@@ -2,6 +2,8 @@ module bluezone.hexagon {
 	
 	exports io.github.jmgarridopaz.bluezone.hexagon;
 	
+	requires static lombok;
+
 //	// driver ports
 //	exports io.github.jmgarridopaz.bluezone.hexagon.driver.forparkingcars;
 //	exports io.github.jmgarridopaz.bluezone.hexagon.driver.forcheckingcars;	

@@ -1,6 +1,7 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
 import java.time.Clock;
+import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -14,15 +15,14 @@ import java.util.stream.Collectors;
 public class CarParker implements ForParkingCars {
 	
 	private final ForObtainingRates forObtainingRates;
-//	private final ForStoringPermits forStoringPermits;
-//	private final ForPaying forPaying;
+	private final ForStoringPermits forStoringPermits;
+	private final ForPaying forPaying;
 
 	
-//	public CarParker ( ForObtainingRates forObtainingRates, ForStoringPermits forStoringPermits, ForPaying forPaying ) {
-	public CarParker ( ForObtainingRates forObtainingRates ) {
+	public CarParker ( ForObtainingRates forObtainingRates, ForStoringPermits forStoringPermits, ForPaying forPaying ) {
 		this.forObtainingRates = forObtainingRates;
-//		this.forStoringPermits = forStoringPermits;
-//		this.forPaying = forPaying;
+		this.forStoringPermits = forStoringPermits;
+		this.forPaying = forPaying;
 	}
 
 	
@@ -35,31 +35,46 @@ public class CarParker implements ForParkingCars {
 
 	@Override
 	public PermitTicket issuePermit ( Clock clock, PermitRequest permitRequest ) {
-		return null;
-//		// Gather data needed
-//		LocalDateTime	now			= LocalDateTime.now(clock);
-//		String			carPlate	= permitRequest.getCarPlate();
-//		String			rateName	= permitRequest.getRateName();
-//		LocalDateTime	until		= permitRequest.getEndingDateTime();
-//		PaymentCardData paymentCard	= permitRequest.getPaymentCard();
-//		
-//		// Check business rule
-//		if ( this.forStoringPermits.existsActive(now,carPlate,rateName) ) {
-//			throw new RuntimeException("You already have an active permit for the rate");
-//		}
-//		
-//		// Create the permit
-//		Rate rate = Rate.fromData ( this.forObtainingRates.getByName(rateName) );
-//		Permit permit = Permit.create ( carPlate, rate, now, until );
-//		permit.calculatePrice();
-//		
-//		// Pay the permit price
-//		this.forPaying.payWithCard ( paymentCard, permit.price() );
-//		
-//		// Store and return the permit ticket
-//		PermitTicket permitTicket = permit.ticket();
-//		this.forStoringPermits.save ( permitTicket );
-//		return permitTicket;
+		
+		// Gather data needed
+		LocalDateTime	now			= LocalDateTime.now(clock);
+		String			carPlate	= permitRequest.getCarPlate();
+		String			rateName	= permitRequest.getRateName();
+		LocalDateTime	until		= permitRequest.getEndingDateTime();
+		PaymentCardData paymentCard	= permitRequest.getPaymentCard();
+		
+		// Create the permit
+		RateData rateData = this.forObtainingRates.findByName(rateName);
+		Rate rate = Rate.fromData ( rateData );
+		Permit permit = Permit.untilDateTime ( carPlate, rate, now, until );
+
+		// Pay the permit price
+		this.forPaying.payWithCard ( paymentCard, permit.price(), permit.ticketCode() );
+
+		// Store and return the permit ticket
+		PermitTicket permitTicket = permit.toTicket();
+		this.forStoringPermits.save ( permitTicket );
+		return permitTicket;
+		
+	}
+
+
+	@Override
+	public void addRatesToRepo(Set<RateData> rates) {
+		this.forObtainingRates.addAll(rates);
+		return;
+	}
+
+
+	@Override
+	public PermitTicket getPermitTicketByCode(String permitTicketCode) {
+		return this.forStoringPermits.findByCode ( permitTicketCode );
+	}
+
+
+	@Override
+	public boolean paymentIsDone(String cardNumber, String amount, String currencyCode, String permitTicketCode) {
+		return this.forPaying.existsPayment(cardNumber,amount,currencyCode,permitTicketCode);
 	}
 
 }

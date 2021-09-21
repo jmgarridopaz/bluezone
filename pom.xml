@@ -20,6 +20,8 @@
 		<module>src/bluezone-adapter-forparkingcars-test</module>
 		<module>src/bluezone-adapter-forcheckingcars-test</module>
 		<module>src/bluezone-adapter-forobtainingrates-stub</module>
+		<module>src/bluezone-adapter-forstoringpermits-fake</module>
+		<module>src/bluezone-adapter-forpaying-mock</module>
 	</modules>
 
 	<!-- Deploy the artifact to a project local repository -->

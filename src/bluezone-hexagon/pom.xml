@@ -17,6 +17,13 @@
 
 	<name>BlueZone Hexagon</name>
 
+	<dependencies>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<sourceDirectory>src/main/bluezone.hexagon</sourceDirectory>
 	</build>

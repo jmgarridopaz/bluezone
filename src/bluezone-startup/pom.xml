@@ -39,6 +39,14 @@
 			<groupId>io.github.jmgarridopaz.bluezone</groupId>
 			<artifactId>bluezone-adapter-forobtainingrates-stub</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>io.github.jmgarridopaz.bluezone</groupId>
+			<artifactId>bluezone-adapter-forstoringpermits-fake</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jmgarridopaz.bluezone</groupId>
+			<artifactId>bluezone-adapter-forpaying-mock</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

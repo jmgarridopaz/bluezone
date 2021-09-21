@@ -4,6 +4,7 @@ import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Map;
+import java.util.Set;
 
 
 /**
@@ -41,6 +42,23 @@ public class HardCodedCarParker implements ForParkingCars {
 			throw new IllegalArgumentException("permitRequest");
 		}
 		return HardCodedIssuePermit.returnedPermitTicket();
+	}
+
+
+	@Override
+	public void addRatesToRepo(Set<RateData> rates) {
+	}
+
+
+	@Override
+	public PermitTicket getPermitTicketByCode(String permitTicketCode) {
+		return null;
+	}
+
+
+	@Override
+	public boolean paymentIsDone(String cardNumber, String amount, String currencyCode, String permitTicketCode) {
+		return true;
 	}
 
 }

@@ -2,6 +2,7 @@ package io.github.jmgarridopaz.bluezone.hexagon;
 
 import java.time.Clock;
 import java.util.Map;
+import java.util.Set;
 
 
 public interface ForParkingCars {
@@ -30,5 +31,14 @@ public interface ForParkingCars {
 	 * @return	permitTicket	DTO with the info of the issued permit. @see PermitTicket
 	 */
 	public PermitTicket issuePermit ( Clock clock, PermitRequest permitRequest );
+
+
+	public void addRatesToRepo(Set<RateData> rates);
+
+
+	public PermitTicket getPermitTicketByCode ( String permitTicketCode );
+
+
+	public boolean paymentIsDone(String cardNumber, String amount, String currencyCode, String permitTicketCode);
 
 }
