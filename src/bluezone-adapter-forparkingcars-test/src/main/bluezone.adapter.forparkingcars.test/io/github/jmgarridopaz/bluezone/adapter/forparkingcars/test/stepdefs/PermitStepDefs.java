@@ -8,6 +8,9 @@ import java.util.Map;
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.github.jmgarridopaz.bluezone.hexagon.ForObtainingRates;
+import io.github.jmgarridopaz.bluezone.hexagon.ForPaying;
+import io.github.jmgarridopaz.bluezone.hexagon.ForStoringPermits;
 import io.github.jmgarridopaz.bluezone.hexagon.MoneyData;
 import io.github.jmgarridopaz.bluezone.hexagon.PaymentCardData;
 import io.github.jmgarridopaz.bluezone.hexagon.PermitRequest;
@@ -28,19 +31,18 @@ public class PermitStepDefs {
 
 	@When("I do the following permit issuing request:")
 	public void iDoTheFollowingPermitIssuingRequest ( PermitRequest permitRequest ) {
-		PermitTicket permitTicket = this.scenarioContext.forParkingCars().issuePermit ( this.scenarioContext.clock(), permitRequest );
-		this.scenarioContext.setPermitTicket(permitTicket);
+		PermitTicket permitTicket = this.scenarioContext.hexagon().forParkingCars().issuePermit ( this.scenarioContext.clockWithCurrentDateTime(), permitRequest );
+		this.scenarioContext.setIssuedPermitTicket(permitTicket);
 	}
 
 	@Then("I should get the following permit ticket:")
 	public void iShouldGetTheFollowingPermitTicket ( PermitTicket expectedPermitTicket ) {
-		PermitTicket returnedPermitTicket = this.scenarioContext.permitTicket();
-		assertThat(returnedPermitTicket,is(expectedPermitTicket));
+		assertThat ( this.scenarioContext.issuedPermitTicket(), is(expectedPermitTicket) );
 	}
 
 	@Then("the following permit ticket should have been stored:")
 	public void theFollowingPermitTicketShouldHaveBeenStored ( PermitTicket expectedPermitTicket ) {
-		PermitTicket storedPermitTicket = this.scenarioContext.forParkingCars().getPermitTicketByCode ( expectedPermitTicket.getCode() );
+		PermitTicket storedPermitTicket = this.scenarioContext.permitStorage().getByTicketCode ( expectedPermitTicket.getCode() );
 		assertThat(storedPermitTicket,is(expectedPermitTicket));
 	}
 	

@@ -24,7 +24,7 @@ public class DateTimeStepDefs {
 		
 		Clock clock = Clock.fixed ( dateTime.toInstant(ZoneOffset.UTC), ZoneOffset.UTC );
 		
-		this.scenarioContext.setClock(clock);
+		this.scenarioContext.setClockWithCurrentDateTime(clock);
 
 	}
 	

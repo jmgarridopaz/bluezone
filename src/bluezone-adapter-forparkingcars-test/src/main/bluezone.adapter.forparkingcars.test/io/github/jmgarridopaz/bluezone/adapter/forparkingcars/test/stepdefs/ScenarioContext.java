@@ -2,8 +2,11 @@
 
 import java.time.Clock;
 import java.util.Map;
-import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.sut.SutProvider;
+import io.github.jmgarridopaz.bluezone.hexagon.ForObtainingRates;
 import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.ForPaying;
+import io.github.jmgarridopaz.bluezone.hexagon.ForStoringPermits;
+import io.github.jmgarridopaz.bluezone.hexagon.Hexagon;
 import io.github.jmgarridopaz.bluezone.hexagon.PermitTicket;
 import io.github.jmgarridopaz.bluezone.hexagon.RateData;
 
@@ -18,47 +21,62 @@ import io.github.jmgarridopaz.bluezone.hexagon.RateData;
  */
 public class ScenarioContext {
 
-	private ForParkingCars forParkingCars;
-	private Map<String,RateData> ratesByName;
-	private PermitTicket permitTicket;
-	private Clock clock;
+	private ForObtainingRates		rateProvider;
+	private ForStoringPermits		permitStorage;
+	private ForPaying				paymentService;
+	private Clock					clockWithCurrentDateTime;
+	private Map<String,RateData>	existingRatesByName;
+	private PermitTicket			issuedPermitTicket;
 
 	public ScenarioContext() {
 	}
 	
-	
-	ForParkingCars forParkingCars() {
-		if ( this.forParkingCars==null ) {
-			this.forParkingCars = SutProvider.FOR_PARKING_CARS.get();
+
+	Hexagon hexagon() {
+		return Hexagon.build ( this.rateProvider(), this.permitStorage(), this.paymentService() );
+	}
+
+
+	ForObtainingRates rateProvider() {
+		if ( this.rateProvider==null ) {
+			this.rateProvider = RateProvider.get();
 		}
-		return this.forParkingCars;
+		return this.rateProvider;
 	}
 
+	ForStoringPermits permitStorage() {
+		if ( this.permitStorage==null ) {
+			this.permitStorage = PermitStorage.get();
+		}
+		return this.permitStorage;
+	}
+
+	ForPaying paymentService() {
+		if ( this.paymentService==null ) {
+			this.paymentService = PaymentService.get();
+		}
+		return this.paymentService;
+	}
+
+	void setClockWithCurrentDateTime ( Clock clock ) {
+		this.clockWithCurrentDateTime = clock;		
+	}
+	Clock clockWithCurrentDateTime() {
+		return this.clockWithCurrentDateTime;
+	}
 	
-	void setRatesByName(Map<String,RateData> ratesByName) {
-		this.ratesByName = ratesByName;
+	void setExistingRatesByName(Map<String,RateData> ratesByName) {
+		this.existingRatesByName = ratesByName;
+	}
+	Map<String, RateData> existingRatesByName() {
+		return this.existingRatesByName;
 	}
 
-	Map<String, RateData> ratesByName() {
-		return this.ratesByName;
+	void setIssuedPermitTicket(PermitTicket permitTicket) {
+		this.issuedPermitTicket = permitTicket;
 	}
-
-
-	void setPermitTicket(PermitTicket permitTicket) {
-		this.permitTicket = permitTicket;
-	}
-
-	PermitTicket permitTicket() {
-		return this.permitTicket;
-	}
-
-	
-	void setClock(Clock clock) {
-		this.clock = clock;		
-	}
-
-	Clock clock() {
-		return this.clock;
+	PermitTicket issuedPermitTicket() {
+		return this.issuedPermitTicket;
 	}
 
 }

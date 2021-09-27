@@ -26,7 +26,7 @@ Then I should get the following permit ticket:
 
 
 
-Scenario: Successful permit
+Scenario: With 24x7 rate
 
 Given current date time is "2021/07/26 08:00"
 

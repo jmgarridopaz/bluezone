@@ -29,29 +29,27 @@ public class RateStepDefs {
 
 	
 	@Given("there exist these rates:")
-	public void thereExistTheseRates ( List<RateData> rateList ) {
-		Set<RateData> rates = new HashSet<RateData>(rateList);
-		this.scenarioContext.forParkingCars().addRatesToRepo ( rates );
+	public void thereExistTheseRates ( List<RateData> rates ) {
+		this.scenarioContext.configuration().initRateRepoWith ( new HashSet<RateData>(rates) );
 	}
 	
 	@Given("there exist this rate")
 	public void thereExistThisRate ( RateData rate ) {
 		Set<RateData> rates = new HashSet<RateData>();
 		rates.add(rate);
-		this.scenarioContext.forParkingCars().addRatesToRepo ( rates );
+		this.scenarioContext.configuration().initRateRepoWith ( rates );
 	}
 
 	@When("I request all the rates indexed by name")
 	public void iRequestAllTheRatesIndexedByName() {
-		Map<String,	RateData> ratesByName = this.scenarioContext.forParkingCars().getAllRatesByName();
-		this.scenarioContext.setRatesByName(ratesByName);
+		Map<String,	RateData> ratesByName = this.scenarioContext.configuration().forParkingCars().getAllRatesByName();
+		this.scenarioContext.setExistingRatesByName(ratesByName);
 	}
 
 
 	@Then("I should get the following rates:")
-	public void iShouldGetTheFollowingRates ( Map<String,RateData> expectedRates ) {
-		Map<String,RateData> returnedRates = this.scenarioContext.ratesByName();
-		assertThat ( returnedRates, is(expectedRates) );
+	public void iShouldGetTheFollowingRates ( Map<String,RateData> expectedRatesByName ) {
+		assertThat ( this.scenarioContext.existingRatesByName(), is(expectedRatesByName) );
 	}
 
 	
