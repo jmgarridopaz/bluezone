@@ -22,9 +22,9 @@ public class Rate {
 		return new Rate
 						(
 						RateName.parse(rateData.getName()),
-						Money.fromData(rateData.getCostPerHour()),
+						null, //Money.fromData(rateData.getCostPerHour())
 						IntegerInterval.of ( rateData.getMinMinutesAllowed(), rateData.getMaxMinutesAllowed() ), 
-						TimeTable.fromData(rateData.getTimetable())
+						null //TimeTable.fromData(rateData.getTimetable())
 						);
 	}
 

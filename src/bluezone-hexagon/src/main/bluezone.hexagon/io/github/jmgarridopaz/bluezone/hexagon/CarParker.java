@@ -58,23 +58,4 @@ public class CarParker implements ForParkingCars {
 		
 	}
 
-
-	@Override
-	public void addRatesToRepo(Set<RateData> rates) {
-		this.forObtainingRates.addAll(rates);
-		return;
-	}
-
-
-	@Override
-	public PermitTicket getPermitTicketByCode(String permitTicketCode) {
-		return this.forStoringPermits.findByCode ( permitTicketCode );
-	}
-
-
-	@Override
-	public boolean paymentIsDone(String cardNumber, String amount, String currencyCode, String permitTicketCode) {
-		return this.forPaying.existsPayment(cardNumber,amount,currencyCode,permitTicketCode);
-	}
-
 }

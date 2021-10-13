@@ -1,7 +1,6 @@
 package io.github.jmgarridopaz.bluezone.startup.forparkingcars.test;
 
 import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.ForParkingCarsTestAdapter;
-import io.github.jmgarridopaz.bluezone.startup.Hexagon;
 
 /**
  * Entry points to the application.
@@ -13,26 +12,18 @@ import io.github.jmgarridopaz.bluezone.startup.Hexagon;
  */
 public class Startup {
 	
-	private final boolean hardcodedHexagon;
-
-	private Startup ( String[] args ) {
-		this.hardcodedHexagon = ( (args.length > 0) && "-hch".equals(args[0]) );
-	}
+	private static boolean hardcodedHexagon;
 
 	
 	public static void main ( String[] args ) {
-		Startup startup = new Startup ( args );
-		Hexagon hexagon = startup.dependencyConfigurator().instantiateHexagon();
-		ForParkingCarsTestAdapter forParkingCarsTestAdapter = new ForParkingCarsTestAdapter(hexagon.forParkingCars());
+		Startup.hardcodedHexagon = ( (args.length > 0) && "-hch".equals(args[0]) );
+		ForParkingCarsTestAdapter forParkingCarsTestAdapter = new ForParkingCarsTestAdapter();
 		forParkingCarsTestAdapter.run(args);
 	}
 	
 	
-	private DependencyConfigurator dependencyConfigurator() {
-		if ( this.hardcodedHexagon ) {
-			return DependencyConfigurator.forHardcodedHexagon();
-		}
-		return DependencyConfigurator.forRealHexagon();
+	static boolean isHardcodedHexagon() {
+		return Startup.hardcodedHexagon;
 	}
 	
 }

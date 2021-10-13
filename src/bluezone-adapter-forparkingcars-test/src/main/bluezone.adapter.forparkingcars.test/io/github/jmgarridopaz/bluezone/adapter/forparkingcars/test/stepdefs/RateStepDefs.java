@@ -4,7 +4,7 @@ package io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.stepdefs;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import java.math.BigDecimal;
-import java.time.DayOfWeek;
+import java.math.RoundingMode;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -13,9 +13,11 @@ import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.jmgarridopaz.bluezone.hexagon.MoneyData;
+import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.DrivenSide;
+import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.DriverPortBuilder;
+import io.github.jmgarridopaz.bluezone.hexagon.ForObtainingRates;
+import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
 import io.github.jmgarridopaz.bluezone.hexagon.RateData;
-import io.github.jmgarridopaz.bluezone.hexagon.TimeTableData;
 
 
 public class RateStepDefs {
@@ -27,24 +29,58 @@ public class RateStepDefs {
 	}
 
 
+/////////////////////////////////////////////////////////////////////////////////////////7	
 	
-	@Given("there exist these rates:")
-	public void thereExistTheseRates ( List<RateData> rates ) {
-		this.scenarioContext.configuration().initRateRepoWith ( new HashSet<RateData>(rates) );
+	@Given("no rate repository is present")
+	public void noRateRepositoryIsPresent() {
+		this.scenarioContext.setNoRateRepositoryPresent(true);
 	}
-	
-	@Given("there exist this rate")
-	public void thereExistThisRate ( RateData rate ) {
-		Set<RateData> rates = new HashSet<RateData>();
-		rates.add(rate);
-		this.scenarioContext.configuration().initRateRepoWith ( rates );
+
+	@Given("no permit repository is present")
+	public void noPermitRepositoryIsPresent() {
+		this.scenarioContext.setNoPermitRepositoryPresent(true);
+	}
+
+	@Given("no payment recipient is present")
+	public void noPaymentRecipientIsPresent() {
+		this.scenarioContext.setNoPaymentRecipientPresent(true);
 	}
 
 	@When("I request all the rates indexed by name")
 	public void iRequestAllTheRatesIndexedByName() {
-		Map<String,	RateData> ratesByName = this.scenarioContext.configuration().forParkingCars().getAllRatesByName();
+		ForParkingCars forParkingCars = DriverPortBuilder.getInstance().forParkingCars ( rateRepository() , permitRepository, paymentRecipient );
+		Map<String,	RateData> ratesByName = forParkingCars.getAllRatesByName();
 		this.scenarioContext.setExistingRatesByName(ratesByName);
 	}
+
+
+	@Then("I should get the following rates:")
+	public void iShouldGetTheFollowingRates(io.cucumber.datatable.DataTable dataTable) {
+	    // Write code here that turns the phrase above into concrete actions
+	    // For automatic transformation, change DataTable to one of
+	    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+	    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+	    // Double, Byte, Short, Long, BigInteger or BigDecimal.
+	    //
+	    // For other transformations you can register a DataTableType.
+	    throw new io.cucumber.java.PendingException();
+	}
+	
+//////////////////////////////////////////////////////////////////////////////////////////////	
+	
+//	@Given("there exist these rates:")
+//	public void thereExistTheseRates ( List<RateData> rates ) {
+//		ForObtainingRates rateRepository = DrivenSide.getInstance().initRateRepositoryWith ( new HashSet<RateData>(rates) );
+//		this.scenarioContext.setRateRepository ( rateRepository );
+//	}
+//	
+//	@Given("there exist this rate")
+//	public void thereExistThisRate ( RateData rate ) {
+//		Set<RateData> rates = new HashSet<RateData>();
+//		rates.add(rate);
+//		ForObtainingRates rateRepository = DrivenSide.getInstance().initRateRepositoryWith ( rates );
+//		this.scenarioContext.setRateRepository ( rateRepository );
+//	}
 
 
 	@Then("I should get the following rates:")
@@ -55,37 +91,14 @@ public class RateStepDefs {
 	
 	@DataTableType
     public RateData rateEntry ( Map<String, String> entry ) {
-		
-		MoneyData costPerHour = new MoneyData();
-		costPerHour.setAmount(new BigDecimal(entry.get("costPerHourAmount")));
-		costPerHour.setCurrencyCode(entry.get("costPerHourCurrencyCode"));
-		
-		TimeTableData timeTable = new TimeTableData();
-		timeTable.setMonday		( tableOfDay(entry, DayOfWeek.MONDAY));
-		timeTable.setTuesday	( tableOfDay(entry, DayOfWeek.TUESDAY));
-		timeTable.setWednesday	( tableOfDay(entry, DayOfWeek.WEDNESDAY));
-		timeTable.setThursday	( tableOfDay(entry, DayOfWeek.THURSDAY));
-		timeTable.setFriday		( tableOfDay(entry, DayOfWeek.FRIDAY));
-		timeTable.setSaturday	( tableOfDay(entry, DayOfWeek.SATURDAY));
-		timeTable.setSunday		( tableOfDay(entry, DayOfWeek.SUNDAY));
-				
 		RateData rate = new RateData();
 		rate.setName(entry.get("name"));
-		rate.setCostPerHour(costPerHour);
+		BigDecimal amountPerHour = new BigDecimal(entry.get("amountPerHour"));
+		amountPerHour.setScale(2,RoundingMode.HALF_UP);
+		rate.setAmountPerHour(amountPerHour);
 		rate.setMinMinutesAllowed(Integer.parseInt(entry.get("minMinutesAllowed")));
-		rate.setMaxMinutesAllowed(Integer.parseInt(entry.get("maxMinutesAllowed")));
-		rate.setTimetable(timeTable);
-		
+		rate.setMaxMinutesAllowed(Integer.parseInt(entry.get("maxMinutesAllowed")));		
         return rate;
     }
-	
-
-	private String[] tableOfDay ( Map<String, String> dataTableEntry, DayOfWeek aDayOfWeek ) {
-		String dayTableAsString = dataTableEntry.get ( aDayOfWeek.name().toLowerCase() );
-    	if ( dayTableAsString == null ) {
-    		return new String[0];
-    	}
-    	return dayTableAsString.split(" ");
-	}
 	
 }

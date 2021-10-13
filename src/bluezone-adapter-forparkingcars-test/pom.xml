@@ -28,8 +28,8 @@
 			<artifactId>bluezone-hexagon</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>io.github.jmgarridopaz.lib</groupId>
-			<artifactId>ports-adapters</artifactId>
+			<groupId>io.github.jmgarridopaz.lib.portsadapters</groupId>
+			<artifactId>lib-portsadapters</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>

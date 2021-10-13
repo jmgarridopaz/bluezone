@@ -1,5 +1,7 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
+import java.math.BigDecimal;
+
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,10 +16,9 @@ import lombok.ToString;
 @ToString
 public class RateData {
 	
-	private String			name;
-	private MoneyData		costPerHour;
-	private int				minMinutesAllowed;
-	private int				maxMinutesAllowed;
-	private TimeTableData	timetable;
-	
+	private String		name;
+	private BigDecimal	amountPerHour;
+	private int			minMinutesAllowed;
+	private int			maxMinutesAllowed;
+
 }

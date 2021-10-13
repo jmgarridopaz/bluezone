@@ -8,9 +8,9 @@ import java.util.Set;
 public interface ForParkingCars {
 
 	/**
-	 * Returns the information of all the available rates in the city.
+	 * Returns all the available rates in the city, indexed by name.
 	 * 
-	 * @return	a map of RateData objects, indexed by rate name. @see RateInfo
+	 * @return	a map of RateData objects, with the rate name as the keyDD. @see RateData
 	 */
 	public Map<String, RateData> getAllRatesByName();
 
@@ -31,14 +31,5 @@ public interface ForParkingCars {
 	 * @return	permitTicket	DTO with the info of the issued permit. @see PermitTicket
 	 */
 	public PermitTicket issuePermit ( Clock clock, PermitRequest permitRequest );
-
-
-	public void addRatesToRepo(Set<RateData> rates);
-
-
-	public PermitTicket getPermitTicketByCode ( String permitTicketCode );
-
-
-	public boolean paymentIsDone(String cardNumber, String amount, String currencyCode, String permitTicketCode);
 
 }

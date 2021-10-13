@@ -9,6 +9,4 @@ public interface ForObtainingRates {
 
 	public RateData findByName(String rateName);
 
-	public void addAll(Set<RateData> rates);
-	
 }

@@ -32,8 +32,8 @@
 		<bluezone.adapter.forstoringpermits.fake.version>1.0.0</bluezone.adapter.forstoringpermits.fake.version>
 		<bluezone.adapter.forpaying.mock.version>1.0.0</bluezone.adapter.forpaying.mock.version>
 		<!-- Version of external dependencies -->
-		<javalangutils.version>1.0.0</javalangutils.version>
-		<portsadapters.version>1.0.0</portsadapters.version>
+		<lib.javalangutils.version>1.0.0</lib.javalangutils.version>
+		<lib.portsadapters.version>1.0.0</lib.portsadapters.version>
 		<lombok.version>1.18.20</lombok.version>
 	</properties>
 
@@ -41,15 +41,15 @@
 		<dependencies>
 			<!-- My Java language Utils Library -->
 			<dependency>
-				<groupId>io.github.jmgarridopaz.lib</groupId>
-				<artifactId>java-lang-utils</artifactId>
-				<version>${javalangutils.version}</version>
+				<groupId>io.github.jmgarridopaz.lib.javalangutils</groupId>
+				<artifactId>lib-javalangutils</artifactId>
+				<version>${lib.javalangutils.version}</version>
 			</dependency>
 			<!-- My Ports And Adapters Pattern Library -->
 			<dependency>
-				<groupId>io.github.jmgarridopaz.lib</groupId>
-				<artifactId>ports-adapters</artifactId>
-				<version>${portsadapters.version}</version>
+				<groupId>io.github.jmgarridopaz.lib.portsadapters</groupId>
+				<artifactId>lib-portsadapters</artifactId>
+				<version>${lib.portsadapters.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.projectlombok</groupId>

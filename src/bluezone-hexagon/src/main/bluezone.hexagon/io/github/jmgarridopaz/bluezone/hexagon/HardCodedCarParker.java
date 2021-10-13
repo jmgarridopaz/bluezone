@@ -23,11 +23,11 @@ public class HardCodedCarParker implements ForParkingCars {
 	
 	@Override
 	public Map<String,RateData> getAllRatesByName() {
-		RateData blueZoneRate = HardCodedBlueZoneRate.get();
+		RateData orangeZoneRate = HardCodedOrangeZoneRate.get();
 		RateData greenZoneRate = HardCodedGreenZoneRate.get();
 		return Map.of
 					(
-					blueZoneRate.getName(),blueZoneRate,
+					orangeZoneRate.getName(),orangeZoneRate,
 					greenZoneRate.getName(),greenZoneRate
 					);
 	}
@@ -42,23 +42,6 @@ public class HardCodedCarParker implements ForParkingCars {
 			throw new IllegalArgumentException("permitRequest");
 		}
 		return HardCodedIssuePermit.returnedPermitTicket();
-	}
-
-
-	@Override
-	public void addRatesToRepo(Set<RateData> rates) {
-	}
-
-
-	@Override
-	public PermitTicket getPermitTicketByCode(String permitTicketCode) {
-		return null;
-	}
-
-
-	@Override
-	public boolean paymentIsDone(String cardNumber, String amount, String currencyCode, String permitTicketCode) {
-		return true;
 	}
 
 }

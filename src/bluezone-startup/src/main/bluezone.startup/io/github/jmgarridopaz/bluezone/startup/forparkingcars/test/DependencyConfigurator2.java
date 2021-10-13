@@ -18,19 +18,32 @@
 //import io.github.jmgarridopaz.bluezone.startup.RealHexagon;
 //
 //
-//public class DependencyConfigurator implements DrivenSide, DriverPortBuilder {
+//public class DependencyConfigurator2 implements DrivenSide, DriverPortBuilder {
 //
 //	private final boolean hardcodedHexagon;
 //
-//	private DependencyConfigurator ( boolean hardcodedHexagon ) {
+//	private DependencyConfigurator2 ( boolean hardcodedHexagon ) {
 //		this.hardcodedHexagon = hardcodedHexagon;
 //	}
 //
-//	
-//	public static DependencyConfigurator provider() {
-//		return new DependencyConfigurator ( Startup.isHardcodedHexagon() );
+//	static DependencyConfigurator2 forHardcodedHexagon() {
+//		return new DependencyConfigurator2(true);
 //	}
+//
+//	static DependencyConfigurator2 forRealHexagon() {
+//		return new DependencyConfigurator2(false);
+//	}
+//
 //	
+//	Hexagon instantiateHexagon() {
+//		if ( this.hardcodedHexagon ) {
+//			return new HardCodedHexagon();
+//		}
+//		ForObtainingRates forObtainingRates = new ForObtainingRatesStubAdapter();
+//		ForStoringPermits forStoringPermits = new ForStoringPermitsFakeAdapter();
+//		ForPaying forPaying = new ForPayingMockAdapter();
+//		return new RealHexagon(forObtainingRates,forStoringPermits,forPaying);
+//	}
 //
 //	@Override
 //	public ForParkingCars forParkingCars(ForObtainingRates forObtainingRates, ForStoringPermits forStoringPermits, ForPaying forPaying) {
