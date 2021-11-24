@@ -1,4 +1,3 @@
-
 package io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.stepdefs;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -13,8 +12,6 @@ import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.DrivenSide;
-import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.DriverPortBuilder;
 import io.github.jmgarridopaz.bluezone.hexagon.ForObtainingRates;
 import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
 import io.github.jmgarridopaz.bluezone.hexagon.RateData;
@@ -28,43 +25,55 @@ public class RateStepDefs {
 		this.scenarioContext = scenarioContext;
 	}
 
-
-/////////////////////////////////////////////////////////////////////////////////////////7	
 	
-	@Given("no rate repository is present")
-	public void noRateRepositoryIsPresent() {
-		this.scenarioContext.setNoRateRepositoryPresent(true);
+	@Given("it does not exist any rate repository")
+	public void itDoesNotExistAnyRateRepository() {
+		this.scenarioContext.setExistSomeRateRepository(false);
 	}
 
-	@Given("no permit repository is present")
-	public void noPermitRepositoryIsPresent() {
-		this.scenarioContext.setNoPermitRepositoryPresent(true);
+	@Given("there are the following rates at the repository:")
+	public void thereAreTheFollowingRatesAtTheRepository ( List<RateData> rates ) {
+		this.scenarioContext.setInitialRates ( new HashSet<RateData>(rates) );
 	}
 
-	@Given("no payment recipient is present")
-	public void noPaymentRecipientIsPresent() {
-		this.scenarioContext.setNoPaymentRecipientPresent(true);
-	}
 
-	@When("I request all the rates indexed by name")
-	public void iRequestAllTheRatesIndexedByName() {
-		ForParkingCars forParkingCars = DriverPortBuilder.getInstance().forParkingCars ( rateRepository() , permitRepository, paymentRecipient );
+	@When("I do a get all rates by name request")
+	public void iDoAGetAllRatesByNameRequest() {
+		ForParkingCars forParkingCars = this.scenarioContext.systemUnderTest();
 		Map<String,	RateData> ratesByName = forParkingCars.getAllRatesByName();
 		this.scenarioContext.setExistingRatesByName(ratesByName);
 	}
 
-
-	@Then("I should get the following rates:")
-	public void iShouldGetTheFollowingRates(io.cucumber.datatable.DataTable dataTable) {
-	    // Write code here that turns the phrase above into concrete actions
-	    // For automatic transformation, change DataTable to one of
-	    // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
-	    // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
-	    // Double, Byte, Short, Long, BigInteger or BigDecimal.
-	    //
-	    // For other transformations you can register a DataTableType.
-	    throw new io.cucumber.java.PendingException();
+	@Then("I should obtain the following get all rates by name response:")
+	public void iShouldObtainTheFollowingGetAllRatesByNameResponse ( Map<String,RateData> expectedRatesByName ) {
+		assertThat ( this.scenarioContext.getExistingRatesByName(), is(expectedRatesByName) );
 	}
+	
+	
+	@DataTableType
+	public RateData rateEntry ( Map<String, String> entry ) {
+		RateData rate = new RateData();
+		rate.setName(entry.get("name"));
+		rate.setAmountPerHour(new BigDecimal(entry.get("amountPerHour")));
+		rate.setMinMinutesAllowed(Integer.parseInt(entry.get("minMinutesAllowed")));
+		rate.setMaxMinutesAllowed(Integer.parseInt(entry.get("maxMinutesAllowed")));		
+		return rate;
+	}
+
+/////////////////////////////////////////////////////////////////////////////////////////7	
+//	
+//	@Given("it does not exist any rate repository")
+//	public void noRateRepositoryIsPresent() {
+//		this.scenarioContext.setNoRateRepositoryPresent(true);
+//	}
+//
+//	@When("I request all the rates indexed by name")
+//	public void iRequestAllTheRatesIndexedByName() {
+//		ForParkingCars forParkingCars = this.scenarioContext.systemUnderTest();
+//		Map<String,	RateData> ratesByName = forParkingCars.getAllRatesByName();
+//		this.scenarioContext.setExistingRatesByName(ratesByName);
+//	}
+//
 	
 //////////////////////////////////////////////////////////////////////////////////////////////	
 	
@@ -82,23 +91,23 @@ public class RateStepDefs {
 //		this.scenarioContext.setRateRepository ( rateRepository );
 //	}
 
-
-	@Then("I should get the following rates:")
-	public void iShouldGetTheFollowingRates ( Map<String,RateData> expectedRatesByName ) {
-		assertThat ( this.scenarioContext.existingRatesByName(), is(expectedRatesByName) );
-	}
-
-	
-	@DataTableType
-    public RateData rateEntry ( Map<String, String> entry ) {
-		RateData rate = new RateData();
-		rate.setName(entry.get("name"));
-		BigDecimal amountPerHour = new BigDecimal(entry.get("amountPerHour"));
-		amountPerHour.setScale(2,RoundingMode.HALF_UP);
-		rate.setAmountPerHour(amountPerHour);
-		rate.setMinMinutesAllowed(Integer.parseInt(entry.get("minMinutesAllowed")));
-		rate.setMaxMinutesAllowed(Integer.parseInt(entry.get("maxMinutesAllowed")));		
-        return rate;
-    }
-	
+//
+//	@Then("I should get the following rates:")
+//	public void iShouldGetTheFollowingRates ( Map<String,RateData> expectedRatesByName ) {
+//		assertThat ( this.scenarioContext.getExistingRatesByName(), is(expectedRatesByName) );
+//	}
+//
+//	
+//	@DataTableType
+//    public RateData rateEntry ( Map<String, String> entry ) {
+//		RateData rate = new RateData();
+//		rate.setName(entry.get("name"));
+//		BigDecimal amountPerHour = new BigDecimal(entry.get("amountPerHour"));
+//		amountPerHour.setScale(2,RoundingMode.HALF_UP);
+//		rate.setAmountPerHour(amountPerHour);
+//		rate.setMinMinutesAllowed(Integer.parseInt(entry.get("minMinutesAllowed")));
+//		rate.setMaxMinutesAllowed(Integer.parseInt(entry.get("maxMinutesAllowed")));		
+//        return rate;
+//    }
+//	
 }

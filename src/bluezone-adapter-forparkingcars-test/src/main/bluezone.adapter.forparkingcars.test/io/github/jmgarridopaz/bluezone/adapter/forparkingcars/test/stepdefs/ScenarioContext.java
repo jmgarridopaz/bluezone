@@ -5,8 +5,10 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.DrivenSide;
+import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.TestFixture;
+import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.SystemUnderTest;
 import io.github.jmgarridopaz.bluezone.hexagon.ForObtainingRates;
+import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
 import io.github.jmgarridopaz.bluezone.hexagon.ForPaying;
 import io.github.jmgarridopaz.bluezone.hexagon.ForStoringPermits;
 import io.github.jmgarridopaz.bluezone.hexagon.PermitTicket;
@@ -23,102 +25,85 @@ import io.github.jmgarridopaz.bluezone.hexagon.RateData;
  */
 public class ScenarioContext {
 
-	private boolean					noRateRepositoryPresent;
-	private boolean					noPermitRepositoryPresent;
-	private boolean					noPaymentRecipientPresent;
+	private boolean					existSomeRateRepository;
+	private boolean					existSomePermitRepository;
+	private boolean					existSomePaymentRecipient;
 	private Set<RateData>			initialRates;
 	private Set<PermitTicket>		initialPermits;
-	private Clock					clockWithCurrentDateTime;
 	private Map<String,RateData>	existingRatesByName;
 	private PermitTicket			issuedPermitTicket;
-
 	
 	public ScenarioContext() {
-		this.noRateRepositoryPresent = false;
-		this.noPermitRepositoryPresent = false;
-		this.noPaymentRecipientPresent = false;
+		this.existSomeRateRepository = true;
+		this.existSomePermitRepository = true;
+		this.existSomePaymentRecipient = true;
 		this.initialRates = new HashSet<RateData>();
 		this.initialPermits = new HashSet<PermitTicket>();
 	}
 
 
-	boolean isNoRateRepositoryPresent() {
-		return noRateRepositoryPresent;
+	void setExistSomeRateRepository(boolean existSomeRateRepository) {
+		this.existSomeRateRepository = existSomeRateRepository;
 	}
 
-
-	void setNoRateRepositoryPresent(boolean noRateRepositoryPresent) {
-		this.noRateRepositoryPresent = noRateRepositoryPresent;
+	void setExistSomePermitRepository(boolean existSomePermitRepository) {
+		this.existSomePermitRepository = existSomePermitRepository;
 	}
 
-
-	boolean isNoPermitRepositoryPresent() {
-		return noPermitRepositoryPresent;
+	void setExistSomePaymentRecipient(boolean existSomePaymentRecipient) {
+		this.existSomePaymentRecipient = existSomePaymentRecipient;
 	}
-
-
-	void setNoPermitRepositoryPresent(boolean noPermitRepositoryPresent) {
-		this.noPermitRepositoryPresent = noPermitRepositoryPresent;
-	}
-
-
-	boolean isNoPaymentRecipientPresent() {
-		return noPaymentRecipientPresent;
-	}
-
-
-	void setNoPaymentRecipientPresent(boolean noPaymentRecipientPresent) {
-		this.noPaymentRecipientPresent = noPaymentRecipientPresent;
-	}
-
-
-	Set<RateData> getInitialRates() {
-		return initialRates;
-	}
-
 
 	void setInitialRates(Set<RateData> initialRates) {
 		this.initialRates = initialRates;
 	}
 
-
-	Set<PermitTicket> getInitialPermits() {
-		return initialPermits;
-	}
-
-
 	void setInitialPermits(Set<PermitTicket> initialPermits) {
 		this.initialPermits = initialPermits;
 	}
 
-
-	Clock getClockWithCurrentDateTime() {
-		return clockWithCurrentDateTime;
-	}
-
-
-	void setClockWithCurrentDateTime(Clock clockWithCurrentDateTime) {
-		this.clockWithCurrentDateTime = clockWithCurrentDateTime;
-	}
-
-
 	Map<String, RateData> getExistingRatesByName() {
-		return existingRatesByName;
+		return this.existingRatesByName;
 	}
-
 
 	void setExistingRatesByName(Map<String, RateData> existingRatesByName) {
 		this.existingRatesByName = existingRatesByName;
 	}
 
-
 	PermitTicket getIssuedPermitTicket() {
-		return issuedPermitTicket;
+		return this.issuedPermitTicket;
 	}
-
 
 	void setIssuedPermitTicket(PermitTicket issuedPermitTicket) {
 		this.issuedPermitTicket = issuedPermitTicket;
+	}
+
+	ForParkingCars systemUnderTest() {
+		ForObtainingRates rateRepository = rateRepository();
+		ForStoringPermits permitRepository = permitRepository();
+		ForPaying paymentRecipient = paymentRecipient();
+		return SystemUnderTest.provider().buildForParkingCarsFrom(rateRepository,permitRepository,paymentRecipient);
+	}
+		
+	private ForObtainingRates rateRepository() {
+		if ( ! this.existSomeRateRepository ) {
+			return null;
+		}
+		return TestFixture.provider().initRateRepositoryWith ( this.initialRates );
+	}
+	
+	private ForStoringPermits permitRepository() {
+		if ( ! this.existSomePermitRepository ) {
+			return null;
+		}
+		return TestFixture.provider().initPermitRepositoryWith ( this.initialPermits );
+	}
+
+	private ForPaying paymentRecipient() {
+		if ( ! this.existSomePaymentRecipient ) {
+			return null;
+		}
+		return TestFixture.provider().initPaymentRecipient();
 	}
 
 }

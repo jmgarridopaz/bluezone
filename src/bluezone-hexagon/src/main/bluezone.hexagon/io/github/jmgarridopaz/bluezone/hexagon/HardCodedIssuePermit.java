@@ -8,21 +8,20 @@ import java.time.YearMonth;
 
 public final class HardCodedIssuePermit {
 
-	private static final String			EXPECTED_CAR_PLATE				= "0000AAA";
-	private static final String			EXPECTED_RATE_NAME				= "GREEN_ZONE";
-	private static final LocalDateTime	EXPECTED_CURRENT_DATE_TIME		= LocalDateTime.of(2020,Month.APRIL,22,8,0);
-	private static final LocalDateTime	EXPECTED_ENDING_DATE_TIME		= LocalDateTime.of(2020,Month.APRIL,22,10,0);
-	private static final String			EXPECTED_PAYMENT_CARD_NUMBER	= "1234567890123456";
-	private static final String			EXPECTED_PAYMENT_CARD_CVV		= "123";
-	private static final YearMonth		EXPECTED_CARD_EXPIRATION_DATE	= YearMonth.of(2025, Month.JUNE);
+	private static final String			EXPECTED_CAR_PLATE				= "9999ZZZ";
+	private static final String			EXPECTED_RATE_NAME				= "RED_ZONE";
+	private static final LocalDateTime	EXPECTED_CURRENT_DATE_TIME		= LocalDateTime.of(2021,Month.NOVEMBER,16,17,50);
+	private static final LocalDateTime	EXPECTED_ENDING_DATE_TIME		= LocalDateTime.of(2021,Month.NOVEMBER,16,18,35);
+	private static final String			EXPECTED_PAYMENT_CARD_NUMBER	= "9876543210654321";
+	private static final String			EXPECTED_PAYMENT_CARD_CVV		= "321";
+	private static final YearMonth		EXPECTED_CARD_EXPIRATION_DATE	= YearMonth.of(2030, Month.JANUARY);
 	
-	private static final String			RETURNED_PERMIT_TICKET_CODE		= "PT0000000000202004220800";
-	private static final String			RETURNED_CAR_PLATE				= "0000AAA";
-	private static final LocalDateTime	RETURNED_STARTING_DATE_TIME		= LocalDateTime.of(2020,Month.APRIL,22,8,0);;
-	private static final LocalDateTime	RETURNED_ENDING_DATE_TIME		= LocalDateTime.of(2020,Month.APRIL,22,10,0);;
-	private static final String			RETURNED_RATE_NAME				= "GREEN_ZONE";
-	private static final BigDecimal		RETURNED_PRICE_AMOUNT			= new BigDecimal("1.30");
-	private static final String			RETURNED_PRICE_CURRENCY_CODE	= "EUR";
+	private static final String			RETURNED_PERMIT_TICKET_CODE		= "9999252525202111161750";
+	private static final String			RETURNED_CAR_PLATE				= "9999ZZZ";
+	private static final LocalDateTime	RETURNED_STARTING_DATE_TIME		= LocalDateTime.of(2021,Month.NOVEMBER,16,17,50);
+	private static final LocalDateTime	RETURNED_ENDING_DATE_TIME		= LocalDateTime.of(2021,Month.NOVEMBER,16,18,35);
+	private static final String			RETURNED_RATE_NAME				= "RED_ZONE";
+	private static final BigDecimal		RETURNED_PRICE					= new BigDecimal("0.94");
 
 	
 	private HardCodedIssuePermit() {}
@@ -50,7 +49,7 @@ public final class HardCodedIssuePermit {
 		permitTicket.setStartingDateTime	(RETURNED_STARTING_DATE_TIME);
 		permitTicket.setEndingDateTime		(RETURNED_ENDING_DATE_TIME);
 		permitTicket.setRateName			(RETURNED_RATE_NAME);
-		permitTicket.setPrice				(returnedPrice());
+		permitTicket.setPrice				(RETURNED_PRICE);
 		return permitTicket;
 	}
 
@@ -63,12 +62,4 @@ public final class HardCodedIssuePermit {
 		return paymentCardData;
 	}
 
-
-	private static MoneyData returnedPrice() {
-		MoneyData price			= new MoneyData();
-		price.setAmount			(RETURNED_PRICE_AMOUNT);
-		price.setCurrencyCode	(RETURNED_PRICE_CURRENCY_CODE);
-		return price;
-	}
-	
 }

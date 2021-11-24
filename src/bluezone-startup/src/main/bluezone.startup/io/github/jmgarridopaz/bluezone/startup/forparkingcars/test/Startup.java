@@ -12,18 +12,9 @@ import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.ForParkingCar
  */
 public class Startup {
 	
-	private static boolean hardcodedHexagon;
-
-	
 	public static void main ( String[] args ) {
-		Startup.hardcodedHexagon = ( (args.length > 0) && "-hch".equals(args[0]) );
 		ForParkingCarsTestAdapter forParkingCarsTestAdapter = new ForParkingCarsTestAdapter();
 		forParkingCarsTestAdapter.run(args);
-	}
-	
-	
-	static boolean isHardcodedHexagon() {
-		return Startup.hardcodedHexagon;
 	}
 	
 }

@@ -10,10 +10,10 @@ import io.github.jmgarridopaz.bluezone.hexagon.PermitTicket;
 import io.github.jmgarridopaz.bluezone.hexagon.RateData;
 
 
-public interface DrivenSide {
+public interface TestFixture {
 
-	public static DrivenSide getInstance() {
-		return ServiceLoader.load(DrivenSide.class).stream().findFirst().orElseThrow(() -> new RuntimeException("No DrivenSide provider found")).get();		
+	public static TestFixture provider() {
+		return ServiceLoader.load(TestFixture.class).stream().findFirst().orElseThrow(() -> new RuntimeException("No TestFixture provider found")).get();
 	}
 	
 	public ForObtainingRates initRateRepositoryWith ( Set<RateData> rates );

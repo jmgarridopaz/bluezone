@@ -21,8 +21,9 @@ module bluezone.adapter.forparkingcars.test {
 			picocontainer;
 	
 	
-//	SERVICES for accessing driven side and build the hexagon
+//	SERVICES for accessing driven side and build the driver port from it
 	
-//	uses	io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.DriverPortBuilder;
-//	uses	io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.DrivenSide;
+	uses	io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.SystemUnderTest;
+	uses	io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.TestFixture;
+	
 }

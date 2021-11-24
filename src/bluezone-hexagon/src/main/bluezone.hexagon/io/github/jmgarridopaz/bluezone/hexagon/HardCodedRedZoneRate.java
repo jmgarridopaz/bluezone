@@ -3,14 +3,14 @@ package io.github.jmgarridopaz.bluezone.hexagon;
 import java.math.BigDecimal;
 
 
-public final class HardCodedGreenZoneRate {
+public final class HardCodedRedZoneRate {
 	
-	private static final String		NAME				= "GREEN_ZONE";
-	private static final BigDecimal	AMOUNT_PER_HOUR		= new BigDecimal("0.95");
-	private static final int		MIN_MINUTES_ALLOWED	= 60;
-	private static final int		MAX_MINUTES_ALLOWED	= 540;
+	private static final String		NAME				= "RED_ZONE";
+	private static final BigDecimal	AMOUNT_PER_HOUR		= new BigDecimal("1.25");
+	private static final int		MIN_MINUTES_ALLOWED	= 30;
+	private static final int		MAX_MINUTES_ALLOWED	= 60;
 		
-	private HardCodedGreenZoneRate() {}
+	private HardCodedRedZoneRate() {}
 
 	
 	public static RateData get() {		

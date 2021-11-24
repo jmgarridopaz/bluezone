@@ -16,19 +16,19 @@ import java.util.Set;
  * 
  * Port operations takes/return hardcoded values.
  */
-public class HardCodedCarParker implements ForParkingCars {
+class HardCodedCarParker implements ForParkingCars {
 	
-	public HardCodedCarParker() {}
+	HardCodedCarParker() {}
 
 	
 	@Override
 	public Map<String,RateData> getAllRatesByName() {
 		RateData orangeZoneRate = HardCodedOrangeZoneRate.get();
-		RateData greenZoneRate = HardCodedGreenZoneRate.get();
+		RateData redZoneRate = HardCodedRedZoneRate.get();
 		return Map.of
 					(
 					orangeZoneRate.getName(),orangeZoneRate,
-					greenZoneRate.getName(),greenZoneRate
+					redZoneRate.getName(),redZoneRate
 					);
 	}
 

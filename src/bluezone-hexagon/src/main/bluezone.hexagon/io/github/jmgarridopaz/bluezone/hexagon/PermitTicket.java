@@ -1,5 +1,6 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -29,6 +30,6 @@ public class PermitTicket {
 	private LocalDateTime	startingDateTime;
 	private LocalDateTime	endingDateTime;
 	private String			rateName;
-	private MoneyData		price;
+	private BigDecimal		price;
 	
 }
