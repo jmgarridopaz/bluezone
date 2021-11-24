@@ -1,13 +1,13 @@
-Feature: Request parking permit
+Feature: Calculate parking price
 
   AS
   a car driver
   
   I WANT TO
-  request a permit for parking the car at a regulated area until a certain date-time
+  know the price for parking the car at a regulated area until a certain date-time
 
   SO THAT
-  later on I can pay for the permit to get a parking ticket
+  later on I can pay for it
 
 
 @hardCodedHexagon
@@ -17,35 +17,40 @@ Given it does not exist any rate repository
 And it does not exist any permit repository
 And it does not exist any payment recipient
 
-When I do the following issue parking permit request:
-| current date time | carPlate | rateName | endingDateTime   |
-| 2021/11/16 17:50  | 9999ZZZ  | RED_ZONE | 2021/11/16 18:35 |
+When I do the following calculate parking price request:
+| current date time | rate name | until date time  |
+| 2021/11/16 17:50  | RED_ZONE  | 2021/11/16 18:35 |
 
- #paymentCardNumber | paymentCardCvv | paymentCardExpirationDate |
- #9876543210654321  | 321            | 2030/01                   |
- 
-Then the following permit should have been stored:
-| id                     | carPlate | startingDateTime | endingDateTime   | rateName | price | paymentTransactionId |
-| 9999252525202111161750 | 9999ZZZ  | 2021/11/16 17:50 | 2021/11/16 18:35 | RED_ZONE | 0.94  |                      |
-
-And the following issue parking permit response:
-| id                     |
-| 9999252525202111161750 |
+Then I should get the following calculate parking price response:
+| price |
+| 0.94  |
 
 
 Scenario: At Blue Zone during 1 hour 30 minutes
 
 Given there are the following rates at the repository:
-| name       | amountPerHour | minMinutesAllowed | maxMinutesAllowed |
-| BLUE_ZONE  | 0.85          | 35                | 120               |
+| name       | amount per hour | min minutes allowed | max minutes allowed |
+| BLUE_ZONE  | 0.85            | 35                  | 120                 |
 
-When I do the following issue permit request at "2021/11/17 08:15":
-| carPlate | rateName  | endingDateTime   | paymentCardNumber | paymentCardCvv | paymentCardExpirationDate |
-| 6989JJH  | BLUE_ZONE | 2021/11/17 09:45 | 1234567890123456  | 123            | 2025/06                   |
+When I do the following calculate parking price request:
+| current date time | rate name | until date time  |
+| 2021/11/17 08:15  | BLUE_ZONE | 2021/11/17 09:45 |
 
-Then I should get the following issue permit response:
-| ticketCode             | carPlate | startingDateTime | endingDateTime   | rateName  | price | paymentTransactionId |
-| 6989090907202111170815 | 6989JJH  | 2021/11/17 08:15 | 2021/11/17 09:45 | BLUE_ZONE | 1.28  |                      |
+Then I should get the following calculate parking price response:
+| price |
+| 1.28  |
+
+And the following parking price should have been stored at permit repository:
+| rate name | starting date time | ending date time | amount |
+| BLUE_ZONE | 2021/11/17 08:15   | 2021/11/17 09:45 | 1.28   |
+
+#When I do the following issue permit request at "2021/11/17 08:15":
+#| carPlate | rateName  | endingDateTime   | paymentCardNumber | paymentCardCvv | paymentCardExpirationDate |
+#| 6989JJH  | BLUE_ZONE | 2021/11/17 09:45 | 1234567890123456  | 123            | 2025/06                   |
+#
+#Then I should get the following issue permit response:
+#| ticketCode             | carPlate | startingDateTime | endingDateTime   | rateName  | price | paymentTransactionId |
+#| 6989090907202111170815 | 6989JJH  | 2021/11/17 08:15 | 2021/11/17 09:45 | BLUE_ZONE | 1.28  |                      |
 
 #Then I should get the following permit ticket:
 #| code                     | carPlate | startingDateTime | endingDateTime   | rateName  | price |
