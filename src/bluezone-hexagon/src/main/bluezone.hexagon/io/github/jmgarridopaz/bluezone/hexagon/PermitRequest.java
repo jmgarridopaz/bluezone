@@ -1,5 +1,6 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
+import java.time.Clock;
 import java.time.LocalDateTime;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import lombok.ToString;
  * 		carPlate		Plate of the car to get the permit for
  * 		rateName		Rate name of the regulated area where the car will be parked at
  * 		endingDateTime	Expiration datetime of the permit period
- * 		paymentCard		Data of the card to charge the permit price to. @see PaymentCardData
+ * 		paymentCard		Number of the card to charge the permit price to
  */
 @NoArgsConstructor
 @Getter
@@ -22,9 +23,10 @@ import lombok.ToString;
 @ToString
 public class PermitRequest {
 
+	private Clock			clock;
 	private String			carPlate;
 	private String			rateName;
 	private LocalDateTime	endingDateTime;
-	private PaymentCardData	paymentCard;
+	private String			paymentCardNumber;
 
 }

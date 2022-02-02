@@ -34,10 +34,7 @@ class HardCodedCarParker implements ForParkingCars {
 
 
 	@Override
-	public PermitTicket issuePermit ( Clock clock, PermitRequest permitRequest ) {
-		if ( ! HardCodedIssuePermit.expectedCurrentDateTime().equals ( LocalDateTime.now(clock).truncatedTo(ChronoUnit.MINUTES) ) ) {
-			throw new IllegalArgumentException("clock");
-		}
+	public PermitTicket issuePermit ( PermitRequest permitRequest ) {
 		if ( ! HardCodedIssuePermit.expectedPermitRequest().equals ( permitRequest ) ) {
 			throw new IllegalArgumentException("permitRequest");
 		}

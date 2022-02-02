@@ -21,7 +21,7 @@
 		<propertiesMavenPlugin.version>1.0.0</propertiesMavenPlugin.version>
 		<testng.version>7.1.0</testng.version>
 		<hamcrest.version>2.2</hamcrest.version>
-		<reports.output.directory>${project.build.directory}/reports</reports.output.directory>
+		<output.directory>${project.build.directory}</output.directory>
 	</properties>
 
 	<dependencies>

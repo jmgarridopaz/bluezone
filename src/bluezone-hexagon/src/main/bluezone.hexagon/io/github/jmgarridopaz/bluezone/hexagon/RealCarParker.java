@@ -34,7 +34,7 @@ class RealCarParker implements ForParkingCars {
 
 
 	@Override
-	public PermitTicket issuePermit(Clock clock, PermitRequest permitRequest) {
+	public PermitTicket issuePermit(PermitRequest permitRequest) {
 		// TODO Auto-generated method stub
 		return null;
 	}

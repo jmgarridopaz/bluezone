@@ -36,8 +36,8 @@ public class CarParker implements ForParkingCars {
 
 
 	@Override
-	public PermitTicket issuePermit(Clock clock, PermitRequest permitRequest) {
-		return this.forParkingCars.issuePermit(clock, permitRequest);
+	public PermitTicket issuePermit(PermitRequest permitRequest) {
+		return this.forParkingCars.issuePermit( permitRequest);
 	}
 
 }

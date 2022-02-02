@@ -10,7 +10,7 @@ public interface ForParkingCars {
 	/**
 	 * Returns all the available rates in the city, indexed by name.
 	 * 
-	 * @return	a map of RateData objects, with the rate name as the keyDD. @see RateData
+	 * @return	a map of RateData objects, with the rate name as the key. @see RateData
 	 */
 	public Map<String, RateData> getAllRatesByName();
 
@@ -30,6 +30,6 @@ public interface ForParkingCars {
 	 * 
 	 * @return	permitTicket	DTO with the info of the issued permit. @see PermitTicket
 	 */
-	public PermitTicket issuePermit ( Clock clock, PermitRequest permitRequest );
+	public PermitTicket issuePermit ( PermitRequest permitRequest );
 
 }

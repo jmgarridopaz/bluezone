@@ -16,12 +16,12 @@ import java.time.temporal.ChronoUnit;
  * Port operations takes/return hardcoded values.
  */
 public class HardCodedCarChecker implements ForCheckingCars {
-	
-	private static final String			EXPECTED_CAR_PLATE			= "0000AAA";
-	private static final String			EXPECTED_RATE_NAME			= "GREEN_ZONE";
-	private static final LocalDateTime	EXPECTED_CURRENT_DATE_TIME	= LocalDateTime.of(2020,Month.APRIL,22,9,0);
-	private static final boolean		ILLEGALLY_PARKED_CAR		= false;
-	
+
+	private static final LocalDateTime	EXPECTED_CURRENT_DATE_TIME		= LocalDateTime.of(2022, Month.JANUARY, 14, 19, 30);
+	private static final String			EXPECTED_CAR_PLATE				= "9999ZZZ";
+	private static final String			EXPECTED_RATE_NAME				= "RED_ZONE";
+	private static final boolean		RETURNED_ILLEGALLY_PARKED_CAR	= false;
+
 	public HardCodedCarChecker() {}
 
 
@@ -36,7 +36,7 @@ public class HardCodedCarChecker implements ForCheckingCars {
 		if ( ! EXPECTED_RATE_NAME.equals(rateName) ) {
 			throw new IllegalArgumentException("rateName");			
 		}
-		return ILLEGALLY_PARKED_CAR;
+		return RETURNED_ILLEGALLY_PARKED_CAR;
 	}
 
 }
