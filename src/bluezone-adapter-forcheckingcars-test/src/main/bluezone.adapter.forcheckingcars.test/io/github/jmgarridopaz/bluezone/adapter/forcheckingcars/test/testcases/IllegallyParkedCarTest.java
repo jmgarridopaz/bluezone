@@ -1,14 +1,19 @@
 package io.github.jmgarridopaz.bluezone.adapter.forcheckingcars.test.testcases;
 
 import io.github.jmgarridopaz.bluezone.adapter.forcheckingcars.test.ForCheckingCarsTestDriver;
+import io.github.jmgarridopaz.bluezone.adapter.forobtainingrates.stub.ForObtainingRatesStubAdapter;
 import io.github.jmgarridopaz.bluezone.hexagon.*;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 
+import java.math.BigDecimal;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -35,8 +40,8 @@ public class IllegallyParkedCarTest {
 	private static final boolean		EXPECTED_ILLEGALLY_PARKED_CAR	= false;
 	
 	// Test fixture ( driven side )
-	private ForObtainingRates forObtainingRates;
-	private ForStoringPermits forStoringPermits;
+	private ForObtainingRates rateProvider;
+	private ForStoringPermits permitStore;
 	private ForPaying forPaying;
 
 	// Test outcome
@@ -68,16 +73,59 @@ public class IllegallyParkedCarTest {
 		Test case: Exist active permit
 		------------------------------
 			GIVEN
-				the following permit exists at permit repository:
-					| id | car plate | rate name | created at          | ending date time | payment transaction id               |
-					| 1  | 6989JJH   | BLUE_ZONE | 2022/01/05 14:30:19 | 2022/01/05 16:00 | 76d0f01a-25a6-4bd0-88f5-0cd026a06163 |
+				this permit exists at permit repository:
+					| car plate | rate name | created at          | ending date time |
+					| 6989JJH   | BLUE_ZONE | 2022/01/05 14:30:19 | 2022/01/05 16:00 |
+				AND current date time is between "2022/01/05 14:30" and "2022/01/05 16:00"
 			WHEN
-				I check at "2022/01/05 15:45" whether the car with plate "6989HJJ" is illegally parked at an area with rate "BLUE_ZONE"
+				I check whether the car with plate "6989HJJ" is illegally parked at an area with rate "BLUE_ZONE"
 			THEN
 				illegally parked car should be "false"
 	 */
-	@Test(dataProvider = "active-permit")
-	public void existActivePermitTest ( String carPlate, String rateName, LocalDateTime createdAt, LocalDateTime endingDateTime ) {
+	@Test
+	public void testExistActivePermit() {
+		RateData rate = new RateData( "BLUE_ZONE", new BigDecimal("0.80"), 35, 120 );
+		Set<RateData> rates = new HashSet<>(rate);
+		this.rateProvider = new ForObtainingRatesStubAdapter(rates);
+
+		givenThisRateExistsAtRateRepository ( "BLUE_ZONE", "0.80", 35, 120 );
+		givenThisPaymentTransactionHasBeenDone ( "76d0f01a-25a6-4bd0-88f5-0cd026a06163", "4651413851991298", "1.20" );
+		givenThisPermitExistsAtPermitRepository ( "6989JJH", "BLUE_ZONE", "2022/01/05 14:30:19", "2022/01/05 16:00", "76d0f01a-25a6-4bd0-88f5-0cd026a06163" );
+		givenCurrentDateTimeIsBetween ( this.permit.createdAt(), this.permit.endingDateTime() );
+		whenICheckNowWhetherCarIsIllegallyParkedAtAreaWithRate ( this.currentDateTime, this.permit.carPlate(), this.permit.rateName() );
+		thenIllegallyParkedCarShouldBe ( false );
+	}
+
+	private void givenThisPermitExistsAtPermitRepository(String carPlate, String rateName, String creationDTAsString, String endingDTAsString, String paymentTransactionId ) {
+
+		LocalDateTime creationDateTime = LocalDateTime.parse ( endingDTAsString, DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss") );
+		LocalDateTime endingDateTime = LocalDateTime.parse ( endingDTAsString, DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm") );
+
+		Permit permit = new Permit();
+		permit.setCarPlate(carPlate);
+		permit.setRateName(rateName);
+		permit.setCreatedAt(creationDateTime);
+		permit.setEndingDateTime(endingDateTime);
+		this.permitStore = new
+	}
+
+
+	/*
+		Test case: No active permit for the car and rate
+		------------------------------------------------
+			GIVEN
+				these permits exist at permit repository:
+					| car plate | rate name | created at          | ending date time |
+					| 6989JJH   | BLUE_ZONE | 2022/01/05 14:30:19 | 2022/01/05 16:00 |
+					| 6989JJH   | BLUE_ZONE | 2022/01/05 16:05:52 | 2022/01/05 16:30 |
+				AND current date time is at least "2022/01/05 16:30"
+			WHEN
+				I check whether the car with plate "6989HJJ" is illegally parked at an area with rate "BLUE_ZONE"
+			THEN
+				illegally parked car should be "true"
+	 */
+	@Test ( dataProvider="no-active-permit" )
+	public void testExistActivePermit(String carPlate, String rateName, LocalDateTime currentDateTime ) {
 		givenPermitWithTheFollowingDataAtPermitRepository ( carPlate, rateName, createdAt, endingDateTime );
 		givenCurrentDateTimeIsBetween ( this.permit.createdAt(), this.permit.endingDateTime() );
 		whenICheckNowWhetherCarIsIllegallyParkedAtAreaWithRate ( this.currentDateTime, this.permit.carPlate(), this.permit.rateName() );
@@ -95,16 +143,14 @@ public class IllegallyParkedCarTest {
 
 
 
-
-
 	private void givenItDoesNotExistAnyRateRepository() {
 		Reporter.log("GIVEN it does not exist any rate repository");
-		this.forObtainingRates = null;
+		this.rateProvider = null;
 	}
 
 	private void givenItDoesNotExistAnyPermitRepository() {
 		Reporter.log("GIVEN it does not exist any permit repository");
-		this.forStoringPermits = null;
+		this.permitStore = null;
 	}
 
 	private void givenItDoesNotExistAnyPaymentRecipient() {
@@ -114,9 +160,9 @@ public class IllegallyParkedCarTest {
 
 	private void whenICheckNowWhetherCarIsIllegallyParkedAtAreaWithRate ( LocalDateTime currentDateTime, String carPlate, String rateName ) {
 		Reporter.log("WHEN I check now ('"+currentDateTime+"') whether car '"+carPlate+"' is illegally parked at area with rate '"+rateName+"'");
-		ForCheckingCars forCheckingCars = new CarChecker ( this.forObtainingRates, this.forStoringPermits, this.forPaying );
+		ForCheckingCars carChecker = new CarChecker ( this.rateProvider, this.permitStore, this.forPaying );
 		Clock clockWithCurrentDateTime = Clock.fixed ( currentDateTime.toInstant(ZoneOffset.UTC), ZoneOffset.UTC );
-		this.illegallyParkedCar = forCheckingCars.illegallyParkedCar(clockWithCurrentDateTime,carPlate,rateName);
+		this.illegallyParkedCar = carChecker.illegallyParkedCar(clockWithCurrentDateTime,carPlate,rateName);
 	}
 
 	private void thenIllegallyParkedCarShouldBe ( boolean expectedIllegallyParkedCar ) {

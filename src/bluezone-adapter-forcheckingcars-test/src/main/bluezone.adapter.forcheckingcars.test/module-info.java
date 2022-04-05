@@ -3,8 +3,9 @@ module bluezone.adapter.forcheckingcars.test {
 /*
  * DEPENDENCIES: Hexagon, libs, test framework
  */
-	requires bluezone.hexagon;	
-	
+	requires bluezone.hexagon;
+	requires bluezone.adapter.forobtainingrates.stub;
+	requires rt;
 	requires io.github.jmgarridopaz.lib.portsadapters;
 	
 	requires org.testng;

@@ -43,7 +43,11 @@
 			<artifactId>hamcrest</artifactId>
 			<version>${hamcrest.version}</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>io.github.jmgarridopaz.bluezone</groupId>
+            <artifactId>bluezone-adapter-forobtainingrates-stub</artifactId>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<sourceDirectory>src/main/bluezone.adapter.forcheckingcars.test</sourceDirectory>

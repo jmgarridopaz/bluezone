@@ -3,8 +3,10 @@ package io.github.jmgarridopaz.bluezone.hexagon;
 
 public interface ForStoringPermits {
 
-	public void save ( PermitTicket aPermitTicket );
+	public String nextId();
 
-	public PermitTicket findByCode(String permitTicketCode);
+	public void save ( Permit aPermit );
+
+	public Permit findById ( String permitId );
 
 }

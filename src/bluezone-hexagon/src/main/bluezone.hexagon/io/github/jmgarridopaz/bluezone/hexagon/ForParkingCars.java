@@ -33,3 +33,11 @@ public interface ForParkingCars {
 	public PermitTicket issuePermit ( PermitRequest permitRequest );
 
 }
+/*
+
+	1. CD does a requests to park the car
+	2. BZ shows all the rates of the city, indexed by rate name
+	3. CD selects the rate of the zone he wants to park the car at
+2.
+
+ */
