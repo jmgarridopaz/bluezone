@@ -2,8 +2,6 @@ package io.github.jmgarridopaz.bluezone.hexagon;
 
 import java.math.BigDecimal;
 import java.time.*;
-import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 
 
 public final class HardCodedIssuePermit {
@@ -25,8 +23,8 @@ public final class HardCodedIssuePermit {
 	private HardCodedIssuePermit() {}
 
 
-	public static PermitRequest expectedPermitRequest() {
-		PermitRequest permitRequest			= new PermitRequest();
+	public static ParkingRequest expectedPermitRequest() {
+		ParkingRequest permitRequest			= new ParkingRequest();
 		permitRequest.setClock				(expectedClock());
 		permitRequest.setCarPlate			(EXPECTED_CAR_PLATE);
 		permitRequest.setRateName			(EXPECTED_RATE_NAME);

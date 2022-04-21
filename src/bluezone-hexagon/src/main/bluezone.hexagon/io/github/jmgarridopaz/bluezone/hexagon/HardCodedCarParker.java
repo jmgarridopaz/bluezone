@@ -1,10 +1,6 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
-import java.time.Clock;
-import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.Map;
-import java.util.Set;
 
 
 /**
@@ -34,7 +30,7 @@ class HardCodedCarParker implements ForParkingCars {
 
 
 	@Override
-	public PermitTicket issuePermit ( PermitRequest permitRequest ) {
+	public PermitTicket issuePermit ( ParkingRequest permitRequest ) {
 		if ( ! HardCodedIssuePermit.expectedPermitRequest().equals ( permitRequest ) ) {
 			throw new IllegalArgumentException("permitRequest");
 		}

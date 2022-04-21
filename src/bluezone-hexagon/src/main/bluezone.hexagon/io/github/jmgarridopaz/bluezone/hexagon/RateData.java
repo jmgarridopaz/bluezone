@@ -4,7 +4,13 @@ import java.math.BigDecimal;
 
 import lombok.*;
 
+/**
+ * DTO class with data of a rate:
+ *		name			Rate name. Unique. Two uppercase words separated by _
+ * 		amountPerHour	Cost in euros of parking the car during one hour
+ */
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -13,7 +19,5 @@ public class RateData {
 	
 	private String		name;
 	private BigDecimal	amountPerHour;
-	private int			minMinutesAllowed;
-	private int			maxMinutesAllowed;
 
 }

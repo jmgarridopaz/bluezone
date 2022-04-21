@@ -1,10 +1,6 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
-import java.time.Clock;
-import java.time.LocalDateTime;
 import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 
 /**
@@ -36,7 +32,7 @@ public class CarParker implements ForParkingCars {
 
 
 	@Override
-	public PermitTicket issuePermit(PermitRequest permitRequest) {
+	public PermitTicket issuePermit(ParkingRequest permitRequest) {
 		return this.forParkingCars.issuePermit( permitRequest);
 	}
 

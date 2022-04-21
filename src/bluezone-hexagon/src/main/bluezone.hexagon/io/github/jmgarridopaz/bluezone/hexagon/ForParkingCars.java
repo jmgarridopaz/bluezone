@@ -1,8 +1,8 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
-import java.time.Clock;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.Map;
-import java.util.Set;
 
 
 public interface ForParkingCars {
@@ -10,34 +10,28 @@ public interface ForParkingCars {
 	/**
 	 * Returns all the available rates in the city, indexed by name.
 	 * 
-	 * @return	a map of RateData objects, with the rate name as the key. @see RateData
+	 * @return	a map of RateData objects, with the rate name as the key. {@link RateData}
 	 */
 	public Map<String, RateData> getAllRatesByName();
 
-	
 	/**
-	 * Issues a permit for a car parked at a regulated area, valid until a datetime, paying it with a card.
-	 * Returns a ticket with the permit information.
-	 * 
-	 * First the permit price is calculated, depending on the number of minutes of the permit period,
-	 * according to the rate of the area where the car is parked at.
-	 * Then, permit price is charged to the payment card.
-	 * And finally the permit is stored.
-	 * 
-	 * @param	clock			Clock to get current datetime from, since it will be the starting datetime of the permit period
-	 * 
-	 * @param	permitRequest	DTO with the info needed for issuing the permit. @see PermitRequest
-	 * 
-	 * @return	permitTicket	DTO with the info of the issued permit. @see PermitTicket
+	 * Calculates how much it would cost to park a car at a regulated area with a given rate,
+	 * according to the number of minutes between two given date-times.
+	 *
+	 * @param rateName
+	 * @param startingDateTime
+	 * @param endingDateTime
+	 * @return
 	 */
-	public PermitTicket issuePermit ( PermitRequest permitRequest );
+	public BigDecimal calculatePrice ( String rateName, LocalDateTime startingDateTime, LocalDateTime endingDateTime );
+
+
+	/**
+	 * It pays and stores the parking permit with the given data
+	 *
+	 * @param	permitRequest	info needed to create and pay for a parking permit. {@link PermitRequest}
+	 * @return	a PermitTicket object with the info of the permit that has been paid. {@link PermitTicket}
+	 */
+	public PermitTicket payPermit ( PermitRequest permitRequest );
 
 }
-/*
-
-	1. CD does a requests to park the car
-	2. BZ shows all the rates of the city, indexed by rate name
-	3. CD selects the rate of the zone he wants to park the car at
-2.
-
- */

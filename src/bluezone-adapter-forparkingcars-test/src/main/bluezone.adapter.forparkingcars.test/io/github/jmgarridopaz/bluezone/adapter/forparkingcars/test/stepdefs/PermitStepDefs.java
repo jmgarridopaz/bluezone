@@ -5,20 +5,16 @@ import static org.hamcrest.Matchers.is;
 import java.math.BigDecimal;
 import java.time.Clock;
 import java.time.LocalDateTime;
-import java.time.YearMonth;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
-
-import org.hamcrest.Matcher;
 
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
-import io.github.jmgarridopaz.bluezone.hexagon.PaymentCardData;
-import io.github.jmgarridopaz.bluezone.hexagon.PermitRequest;
+import io.github.jmgarridopaz.bluezone.hexagon.ParkingRequest;
 import io.github.jmgarridopaz.bluezone.hexagon.PermitTicket;
 
 
@@ -37,7 +33,7 @@ public class PermitStepDefs {
 	}
 
 	@When("I do the following issue permit request:")
-	public void iDoTheFollowingIssuePermitRequest ( PermitRequest permitRequest ) {
+	public void iDoTheFollowingIssuePermitRequest ( ParkingRequest permitRequest ) {
 		ForParkingCars forParkingCars = this.scenarioContext.systemUnderTest();
 		PermitTicket permitTicket = forParkingCars.issuePermit ( permitRequest );
 		this.scenarioContext.setIssuedPermitTicket(permitTicket);
@@ -66,14 +62,14 @@ public class PermitStepDefs {
 		
 	
 	@DataTableType
-	public PermitRequest permitRequestEntry ( Map<String, String> dataTableEntry ) {
+	public ParkingRequest permitRequestEntry (Map<String, String> dataTableEntry ) {
 
 		LocalDateTime currentDateTime = LocalDateTime.parse ( dataTableEntry.get("current date time"), DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss") );
 		Clock clockWithCurrentDateTime = Clock.fixed ( currentDateTime.toInstant(ZoneOffset.UTC), ZoneOffset.UTC );
 
 		LocalDateTime endingDateTime = LocalDateTime.parse ( dataTableEntry.get("ending date time"), DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm") );
 
-		PermitRequest permitRequest = new PermitRequest();
+		ParkingRequest permitRequest = new ParkingRequest();
 		permitRequest.setClock(clockWithCurrentDateTime);
 		permitRequest.setCarPlate(dataTableEntry.get("car plate"));
 		permitRequest.setRateName(dataTableEntry.get("rate name"));
