@@ -1,17 +1,13 @@
 package io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.stepdefs;
 
-import java.time.Clock;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.TestFixture;
 import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.SystemUnderTest;
-import io.github.jmgarridopaz.bluezone.hexagon.ForObtainingRates;
 import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
-import io.github.jmgarridopaz.bluezone.hexagon.ForPaying;
-import io.github.jmgarridopaz.bluezone.hexagon.ForStoringPermits;
-import io.github.jmgarridopaz.bluezone.hexagon.PermitTicket;
+import io.github.jmgarridopaz.bluezone.hexagon.Ticket;
 import io.github.jmgarridopaz.bluezone.hexagon.RateData;
 
 /**
@@ -29,16 +25,16 @@ public class ScenarioContext {
 	private boolean					existSomePermitRepository;
 	private boolean					existSomePaymentRecipient;
 	private Set<RateData>			initialRates;
-	private Set<PermitTicket>		initialPermits;
+	private Set<Ticket>		initialPermits;
 	private Map<String,RateData>	existingRatesByName;
-	private PermitTicket			issuedPermitTicket;
+	private Ticket issuedPermitTicket;
 	
 	public ScenarioContext() {
 		this.existSomeRateRepository = true;
 		this.existSomePermitRepository = true;
 		this.existSomePaymentRecipient = true;
 		this.initialRates = new HashSet<RateData>();
-		this.initialPermits = new HashSet<PermitTicket>();
+		this.initialPermits = new HashSet<Ticket>();
 	}
 
 
@@ -58,7 +54,7 @@ public class ScenarioContext {
 		this.initialRates = initialRates;
 	}
 
-	void setInitialPermits(Set<PermitTicket> initialPermits) {
+	void setInitialPermits(Set<Ticket> initialPermits) {
 		this.initialPermits = initialPermits;
 	}
 
@@ -70,11 +66,11 @@ public class ScenarioContext {
 		this.existingRatesByName = existingRatesByName;
 	}
 
-	PermitTicket getIssuedPermitTicket() {
+	Ticket getIssuedPermitTicket() {
 		return this.issuedPermitTicket;
 	}
 
-	void setIssuedPermitTicket(PermitTicket issuedPermitTicket) {
+	void setIssuedPermitTicket(Ticket issuedPermitTicket) {
 		this.issuedPermitTicket = issuedPermitTicket;
 	}
 

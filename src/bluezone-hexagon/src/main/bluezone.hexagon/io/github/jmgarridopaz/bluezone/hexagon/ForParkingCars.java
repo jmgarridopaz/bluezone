@@ -1,37 +1,32 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.Map;
 
 
 public interface ForParkingCars {
 
 	/**
-	 * Returns all the available rates in the city, indexed by name.
-	 * 
-	 * @return	a map of RateData objects, with the rate name as the key. {@link RateData}
+	 * Returns the available rates in the city, indexed by name.
+	 *
+	 * @return	a map of RateData objects, with the rate name as the key.
+	 * @see RateData
 	 */
 	public Map<String, RateData> getAllRatesByName();
 
 	/**
-	 * Calculates how much it would cost to park a car at a regulated area with a given rate,
-	 * according to the number of minutes between two given date-times.
+	 * Pays an amount for a ticket, valid for parking a car at a zone during a period of time.
+	 * The ticket period starts at current date-time.
+	 * The ending date-time is calculated from the paid amount, according to the rate of the zone the car is parked at.
+	 * The payment is done by charging the amount to the wallet associated to the car.
 	 *
-	 * @param rateName
-	 * @param startingDateTime
-	 * @param endingDateTime
-	 * @return
+	 * @param ticketRequest	Data needed for buying a parking ticket.
+	 * @return				A Ticket object with the data of the parking period that has been paid for.
+	 * @throws NotEnoughMoneyException
+	 * 						When the amount in the wallet associated to the car is lower than the amount to pay for the ticket.
+	 * @see TicketRequest
+	 * @see Ticket
+	 * @see NotEnoughMoneyException
 	 */
-	public BigDecimal calculatePrice ( String rateName, LocalDateTime startingDateTime, LocalDateTime endingDateTime );
-
-
-	/**
-	 * It pays and stores the parking permit with the given data
-	 *
-	 * @param	permitRequest	info needed to create and pay for a parking permit. {@link PermitRequest}
-	 * @return	a PermitTicket object with the info of the permit that has been paid. {@link PermitTicket}
-	 */
-	public PermitTicket payPermit ( PermitRequest permitRequest );
+	public Ticket purchaseTicket ( TicketRequest ticketRequest );
 
 }

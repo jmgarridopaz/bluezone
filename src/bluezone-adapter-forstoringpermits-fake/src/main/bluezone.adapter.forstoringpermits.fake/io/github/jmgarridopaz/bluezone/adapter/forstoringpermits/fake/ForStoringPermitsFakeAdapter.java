@@ -6,9 +6,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 
-import io.github.jmgarridopaz.bluezone.hexagon.ForStoringPermits;
-import io.github.jmgarridopaz.bluezone.hexagon.Permit;
-import io.github.jmgarridopaz.bluezone.hexagon.PermitTicket;
+import io.github.jmgarridopaz.bluezone.hexagon.Ticket;
 
 /**
  * 
@@ -45,7 +43,7 @@ public class ForStoringPermitsFakeAdapter implements ForStoringPermits {
 	}
 
 	@Override
-	public void save(PermitTicket aPermitTicket) {
+	public void save(Ticket aPermitTicket) {
 		if ( exists(aPermitTicket.getCode()) ) {
 			throw new RuntimeException("Cannot store permit ticket. Code '"+aPermitTicket.getCode()+"' already exists.");
 		}
@@ -53,7 +51,7 @@ public class ForStoringPermitsFakeAdapter implements ForStoringPermits {
 	}
 
 	@Override
-	public PermitTicket findByCode(String permitTicketCode) {
+	public Ticket findByCode(String permitTicketCode) {
 		return this.permits.get(permitTicketCode);
 	}
 

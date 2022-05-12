@@ -6,12 +6,8 @@ import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.TestFixture;
 import io.github.jmgarridopaz.bluezone.adapter.forparkingcars.test.SystemUnderTest;
 import io.github.jmgarridopaz.bluezone.adapter.forpaying.mock.ForPayingMockAdapter;
 import io.github.jmgarridopaz.bluezone.adapter.forstoringpermits.fake.ForStoringPermitsFakeAdapter;
-import io.github.jmgarridopaz.bluezone.hexagon.CarParker;
-import io.github.jmgarridopaz.bluezone.hexagon.ForObtainingRates;
 import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
-import io.github.jmgarridopaz.bluezone.hexagon.ForPaying;
-import io.github.jmgarridopaz.bluezone.hexagon.ForStoringPermits;
-import io.github.jmgarridopaz.bluezone.hexagon.PermitTicket;
+import io.github.jmgarridopaz.bluezone.hexagon.Ticket;
 import io.github.jmgarridopaz.bluezone.hexagon.RateData;
 
 
@@ -31,7 +27,7 @@ public class DependencyConfigurator implements TestFixture, SystemUnderTest {
 	}
 
 	@Override
-	public ForStoringPermits initPermitRepositoryWith(Set<PermitTicket> permits) {
+	public ForStoringPermits initPermitRepositoryWith(Set<Ticket> permits) {
 		return new ForStoringPermitsFakeAdapter(permits);
 	}
 

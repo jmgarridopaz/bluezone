@@ -14,8 +14,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
-import io.github.jmgarridopaz.bluezone.hexagon.ParkingRequest;
-import io.github.jmgarridopaz.bluezone.hexagon.PermitTicket;
+import io.github.jmgarridopaz.bluezone.hexagon.TicketRequest;
+import io.github.jmgarridopaz.bluezone.hexagon.Ticket;
 
 
 public class PermitStepDefs {
@@ -33,14 +33,14 @@ public class PermitStepDefs {
 	}
 
 	@When("I do the following issue permit request:")
-	public void iDoTheFollowingIssuePermitRequest ( ParkingRequest permitRequest ) {
+	public void iDoTheFollowingIssuePermitRequest ( TicketRequest permitRequest ) {
 		ForParkingCars forParkingCars = this.scenarioContext.systemUnderTest();
-		PermitTicket permitTicket = forParkingCars.issuePermit ( permitRequest );
+		Ticket permitTicket = forParkingCars.calculatePrice( permitRequest );
 		this.scenarioContext.setIssuedPermitTicket(permitTicket);
 	}
 
 	@Then("I should obtain the following issue permit response:")
-	public void iShouldObtainTheFollowingIssuePermitResponse ( PermitTicket expectedPermitTicket ) {
+	public void iShouldObtainTheFollowingIssuePermitResponse ( Ticket expectedPermitTicket ) {
 		assertThat ( this.scenarioContext.getIssuedPermitTicket(), is(expectedPermitTicket) );
 	}
 
@@ -62,14 +62,14 @@ public class PermitStepDefs {
 		
 	
 	@DataTableType
-	public ParkingRequest permitRequestEntry (Map<String, String> dataTableEntry ) {
+	public TicketRequest permitRequestEntry (Map<String, String> dataTableEntry ) {
 
 		LocalDateTime currentDateTime = LocalDateTime.parse ( dataTableEntry.get("current date time"), DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss") );
 		Clock clockWithCurrentDateTime = Clock.fixed ( currentDateTime.toInstant(ZoneOffset.UTC), ZoneOffset.UTC );
 
 		LocalDateTime endingDateTime = LocalDateTime.parse ( dataTableEntry.get("ending date time"), DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm") );
 
-		ParkingRequest permitRequest = new ParkingRequest();
+		TicketRequest permitRequest = new TicketRequest();
 		permitRequest.setClock(clockWithCurrentDateTime);
 		permitRequest.setCarPlate(dataTableEntry.get("car plate"));
 		permitRequest.setRateName(dataTableEntry.get("rate name"));
@@ -81,12 +81,12 @@ public class PermitStepDefs {
 
 	
 	@DataTableType
-	public PermitTicket permitTicketEntry ( Map<String, String> dataTableEntry ) {
+	public Ticket permitTicketEntry (Map<String, String> dataTableEntry ) {
 
 		LocalDateTime startingDateTime = LocalDateTime.parse ( dataTableEntry.get("starting date time"), DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm") );
 		LocalDateTime endingDateTime = LocalDateTime.parse ( dataTableEntry.get("ending date time"), DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm") );
 		
-		PermitTicket permitTicket = new PermitTicket();
+		Ticket permitTicket = new Ticket();
 		permitTicket.setCode(dataTableEntry.get("code"));
 		permitTicket.setCarPlate(dataTableEntry.get("car plate"));
 		permitTicket.setStartingDateTime(startingDateTime);

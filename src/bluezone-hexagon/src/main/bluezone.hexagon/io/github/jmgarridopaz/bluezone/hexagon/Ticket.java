@@ -2,17 +2,16 @@ package io.github.jmgarridopaz.bluezone.hexagon;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
 import lombok.*;
 
 /**
- * DTO with the info returned when paying for a parking permit:
+ * DTO with the data of a parking ticket:
  * 		code				Unique identifier of the ticket
  * 		carPlate			Plate of the car that has been parked
- * 		rateName			Rate name of the regulated area where the car is parked at
- * 		startingDateTime	When the permit period begins
- * 		endingDateTime		When the permit period expires
- * 		price				Amount of money paid for the permit
+ * 		rateName			Rate name of the zone where the car is parked at
+ * 		startingDateTime	When the parking period begins
+ * 		endingDateTime		When the parking period expires
+ * 		price				Amount of money paid for the ticket
  */
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,7 +19,7 @@ import lombok.*;
 @Setter
 @EqualsAndHashCode
 @ToString
-public class PermitTicket {
+public class Ticket {
 
 	private String			code;
 	private String			carPlate;

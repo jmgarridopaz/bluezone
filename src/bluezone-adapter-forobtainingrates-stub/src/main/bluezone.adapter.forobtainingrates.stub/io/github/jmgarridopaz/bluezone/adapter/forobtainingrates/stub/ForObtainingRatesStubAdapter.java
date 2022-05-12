@@ -1,11 +1,8 @@
 package io.github.jmgarridopaz.bluezone.adapter.forobtainingrates.stub;
 
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-import io.github.jmgarridopaz.bluezone.hexagon.ForObtainingRates;
 import io.github.jmgarridopaz.bluezone.hexagon.RateData;
 
 /**
