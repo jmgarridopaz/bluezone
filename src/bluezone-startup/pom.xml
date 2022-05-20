@@ -29,23 +29,7 @@
 		</dependency>
 		<dependency>
 			<groupId>io.github.jmgarridopaz.bluezone</groupId>
-			<artifactId>bluezone-adapter-forparkingcars-test</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.github.jmgarridopaz.bluezone</groupId>
-			<artifactId>bluezone-adapter-forcheckingcars-test</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.github.jmgarridopaz.bluezone</groupId>
-			<artifactId>bluezone-adapter-forobtainingrates-stub</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.github.jmgarridopaz.bluezone</groupId>
-			<artifactId>bluezone-adapter-forstoringpermits-fake</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.github.jmgarridopaz.bluezone</groupId>
-			<artifactId>bluezone-adapter-forpaying-mock</artifactId>
+			<artifactId>bluezone-driver-forparkingcars-test</artifactId>
 		</dependency>
 	</dependencies>
 

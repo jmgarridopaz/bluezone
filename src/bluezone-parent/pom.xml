@@ -25,12 +25,7 @@
 		<mavenCompilerPlugin.version>3.8.1</mavenCompilerPlugin.version>
 		<!-- Version of BlueZone projects -->
 		<bluezone.hexagon.version>1.0.0</bluezone.hexagon.version>
-		<bluezone.startup.version>1.0.0</bluezone.startup.version>
-		<bluezone.adapter.forparkingcars.test.version>1.0.0</bluezone.adapter.forparkingcars.test.version>
-		<bluezone.adapter.forcheckingcars.test.version>1.0.0</bluezone.adapter.forcheckingcars.test.version>
-		<bluezone.adapter.forobtainingrates.stub.version>1.0.0</bluezone.adapter.forobtainingrates.stub.version>
-		<bluezone.adapter.forstoringpermits.fake.version>1.0.0</bluezone.adapter.forstoringpermits.fake.version>
-		<bluezone.adapter.forpaying.mock.version>1.0.0</bluezone.adapter.forpaying.mock.version>
+		<bluezone.driver.forparkingcars.test.version>1.0.0</bluezone.driver.forparkingcars.test.version>
 		<!-- Version of external dependencies -->
 		<lib.javalangutils.version>1.0.0</lib.javalangutils.version>
 		<lib.portsadapters.version>1.0.0</lib.portsadapters.version>
@@ -65,28 +60,8 @@
 			</dependency>
 			<dependency>
 				<groupId>io.github.jmgarridopaz.bluezone</groupId>
-				<artifactId>bluezone-adapter-forparkingcars-test</artifactId>
-				<version>${bluezone.adapter.forparkingcars.test.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.github.jmgarridopaz.bluezone</groupId>
-				<artifactId>bluezone-adapter-forcheckingcars-test</artifactId>
-				<version>${bluezone.adapter.forcheckingcars.test.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.github.jmgarridopaz.bluezone</groupId>
-				<artifactId>bluezone-adapter-forobtainingrates-stub</artifactId>
-				<version>${bluezone.adapter.forobtainingrates.stub.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.github.jmgarridopaz.bluezone</groupId>
-				<artifactId>bluezone-adapter-forstoringpermits-fake</artifactId>
-				<version>${bluezone.adapter.forstoringpermits.fake.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.github.jmgarridopaz.bluezone</groupId>
-				<artifactId>bluezone-adapter-forpaying-mock</artifactId>
-				<version>${bluezone.adapter.forpaying.mock.version}</version>
+				<artifactId>bluezone-driver-forparkingcars-test</artifactId>
+				<version>${bluezone.driver.forparkingcars.test.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

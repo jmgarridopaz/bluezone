@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>io.github.jmgarridopaz.bluezone</groupId>
+		<artifactId>bluezone-parent</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../bluezone-parent</relativePath>
+	</parent>
+
+	<artifactId>bluezone-driver-forparkingcars-test</artifactId>
+
+	<packaging>jar</packaging>
+
+	<name>BlueZone - ForParkingCars Test Driver</name>
+
+	<properties>
+		<cucumber.version>6.10.1</cucumber.version>
+		<hamcrest.version>2.2</hamcrest.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>io.github.jmgarridopaz.bluezone</groupId>
+			<artifactId>bluezone-hexagon</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>${cucumber.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+			<version>${hamcrest.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-picocontainer</artifactId>
+			<version>${cucumber.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<sourceDirectory>src/main/bluezone.driver.forparkingcars.test</sourceDirectory>
+	</build>
+
+</project>

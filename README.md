@@ -5,20 +5,20 @@ See the article series: [https://jmgarridopaz.github.io/content/hexagonalarchite
 
 ![BlueZone: Hexagonal Application Figure](bluezone.png)
 
-__BlueZone__ allows car drivers to pay remotely for parking cars at regulated parking areas in a city, instead of paying with coins using parking meters.
+__BlueZone__ allows car drivers to pay remotely for parking cars at zones in a city, instead of paying with coins using parking meters.
 
 - Users (driver actors) of the application are _car drivers_ and _parking inspectors_.
 
   - Car drivers will access the application using a Web UI (User Interface), and they can do the following:
     
-    - Query all the available rates in the city, in order to choose the one of the regulated area he wants to park the at.
-    - Get a parking permit, providing the ending datetime of the permit period (the starting datetime is the one at which the permit is requested), and paying for the permit using a card.
+    - Query all the available rates in the city, in order to choose the one of the zone he wants to park the at.
+    - Purchase a parking ticket, paying an amount of money for parking a car at a zone, during a period of time. This period starts at current date-time. The ending date-time is calculated from the paid amount, according to the rate of the zone.
 
   - Parking inspectors will access the application using a terminal with a CLI (Command Line Interface), and they can do the following:
   
-    - Check whether a parked car doesn't have any active permit for the rate of the area the car is parked at.
+    - Check whether a car is illegally parked at a zone. This will happen if there is no valid ticket for the car and the rate of the zone. A ticket is valid if current date-time is between the starting and ending date-time of the ticket period.
     
-- Driven actors needed by the application are: a rate repository, a permit repository, and a payment system.
+- Driven actors needed by the application are: a rate repository, a ticket repository, and a payment service.
 
 ### Development environment:
 
@@ -26,9 +26,9 @@ __BlueZone__ allows car drivers to pay remotely for parking cars at regulated pa
 
 - Maven 3.5.4
 
-- Eclipse IDE 2019-12 (4.14.0)
+- IntelliJ IDEA 2021.3.3 (Community Edition)
 
-- Ubuntu 18.04.5 LTS (Linux 5.4.0-48-generic)
+- Ubuntu 20.04.4 LTS (Linux 5.13.0-40-generic)
 
 ### Instructions:
 
@@ -41,14 +41,9 @@ __BlueZone__ allows car drivers to pay remotely for parking cars at regulated pa
   ./scripts/build.sh
   ~~~
 
-- Run hardcoded driver ports tests:
+- Run the entry point to the app:
   
   ~~~
   cd <bluezone_dir>
-  ./scripts/hardcodedhexagon/run_forparkingcars_test.sh
-  ~~~
-  
-  ~~~
-  cd <bluezone_root_dir>
-  ./scripts/hardcodedhexagon/run_forcheckingcars_test.sh
+  ./scripts/run_startup.sh
   ~~~

@@ -2,7 +2,9 @@ package io.github.jmgarridopaz.bluezone.hexagon;
 
 import java.util.Map;
 
-
+/**
+ * DRIVER PORT
+ */
 public interface ForParkingCars {
 
 	/**
@@ -13,20 +15,31 @@ public interface ForParkingCars {
 	 */
 	public Map<String, RateData> getAllRatesByName();
 
+
 	/**
-	 * Pays an amount for a ticket, valid for parking a car at a zone during a period of time.
-	 * The ticket period starts at current date-time.
-	 * The ending date-time is calculated from the paid amount, according to the rate of the zone the car is parked at.
+	 * It pays for a parking ticket, which will be valid for the following period of time:
+	 *		- Starting:	Current date-time.
+	 *		- Ending:	Date-time calculated from the payment amount, according to the rate of the zone the car is parked at.
 	 * The payment is done by charging the amount to the wallet associated to the car.
 	 *
-	 * @param ticketRequest	Data needed for buying a parking ticket.
-	 * @return				A Ticket object with the data of the parking period that has been paid for.
+	 * @param purchaseTicketRequest	Data needed for purchasing a parking ticket.
+	 * @return						The code of the purchased ticket, useful for retrieving the whole ticket data later on.
 	 * @throws NotEnoughMoneyException
-	 * 						When the amount in the wallet associated to the car is lower than the amount to pay for the ticket.
-	 * @see TicketRequest
+	 * 								When the amount in the wallet associated to the car is lower than the amount to pay for the ticket.
+	 * @see PurchaseTicketRequest
 	 * @see Ticket
 	 * @see NotEnoughMoneyException
 	 */
-	public Ticket purchaseTicket ( TicketRequest ticketRequest );
+	public String purchaseTicket ( PurchaseTicketRequest purchaseTicketRequest );
+
+
+	/**
+	 * Given the code of a previously purchased ticket, returns the whole data of the ticket.
+	 *
+	 * @param ticketCode	Code of a purchased ticket.
+	 * @return				The ticket with the given ticket code,
+	 * 						or null if it doesn't exist any ticket with such a code.
+	 */
+	public Ticket getTicket ( String ticketCode );
 
 }
