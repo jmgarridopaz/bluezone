@@ -2,6 +2,8 @@ package io.github.jmgarridopaz.bluezone.driver.forparkingcars.test;
 
 
 import io.github.jmgarridopaz.bluezone.driver.forparkingcars.test.stepdefs.ScenarioContext;
+import io.github.jmgarridopaz.bluezone.hexagon.ForConfiguringApp;
+import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
 
 /**
  * 
@@ -21,12 +23,20 @@ import io.github.jmgarridopaz.bluezone.driver.forparkingcars.test.stepdefs.Scena
  * 
  */
 public class ForParkingCarsTestDriver {
-	
+
+	public static ForParkingCars CAR_PARKER;
+	public static ForConfiguringApp APP_CONFIGURATOR;
+
+	public ForParkingCarsTestDriver (ForParkingCars carParker, ForConfiguringApp appConfigurator ) {
+		CAR_PARKER = carParker;
+		APP_CONFIGURATOR = appConfigurator;
+	}
+
 	/**
 	 * Launches Cucumber to run feature files at "src/main/resources/testcases/"
 	 * Creates a html report at the URL given in the console output
 	 */
-	public static void main ( String[] args ) {
+	public void run() {
 
 		// Calling Cucumber with command line args
 		String[] cucumberArgs = new String[]

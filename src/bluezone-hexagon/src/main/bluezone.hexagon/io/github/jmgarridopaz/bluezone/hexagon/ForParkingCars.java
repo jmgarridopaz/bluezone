@@ -10,10 +10,10 @@ public interface ForParkingCars {
 	/**
 	 * Returns the available rates in the city, indexed by name.
 	 *
-	 * @return	a map of RateData objects, with the rate name as the key.
-	 * @see RateData
+	 * @return	a map of Rate objects, with the rate name as the key.
+	 * @see Rate
 	 */
-	public Map<String, RateData> getAllRatesByName();
+	public Map<String, Rate> getAllRatesByName();
 
 
 	/**

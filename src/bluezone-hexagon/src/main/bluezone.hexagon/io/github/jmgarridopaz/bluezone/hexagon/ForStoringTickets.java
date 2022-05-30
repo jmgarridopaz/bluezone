@@ -16,4 +16,12 @@ public interface ForStoringTickets {
 
     public Set<Ticket> findByDateTimeInPeriod ( String carPlate, String rateName, LocalDateTime dateTime);
 
+    public void delete ( String ticketCode );
+
+    public boolean exists ( String ticketCode );
+
+    public void setNextCode ( String ticketCode );
+
+    public String nextAvailableCode();
+
 }

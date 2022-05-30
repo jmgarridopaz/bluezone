@@ -13,14 +13,14 @@ Feature: Get ticket
   Scenario: Can get an existing ticket
 
     Given there is the following ticket at ticket repository:
-      | code       | car plate | rate name  | starting date time | ending date time | price |
-      | 0000000019 | 7607KWH   | GREEN_ZONE | 2022/05/19 17:00   | 2022/05/19 17:30 | 0.60  |
+      | code       | carPlate | rateName   | startingDateTime | endingDateTime   | price |
+      | 0000000019 | 7607KWH  | GREEN_ZONE | 2022/05/19 17:00 | 2022/05/19 17:30 | 0.60  |
 
     When I ask for getting the ticket with code "0000000019"
 
     Then I should obtain the following ticket:
-      | code       | car plate | rate name  | starting date time | ending date time | price |
-      | 0000000019 | 7607KWH   | GREEN_ZONE | 2022/05/19 17:00   | 2022/05/19 17:30 | 0.60  |
+      | code       | carPlate | rateName   | startingDateTime | endingDateTime   | price |
+      | 0000000019 | 7607KWH  | GREEN_ZONE | 2022/05/19 17:00 | 2022/05/19 17:30 | 0.60  |
 
 
 

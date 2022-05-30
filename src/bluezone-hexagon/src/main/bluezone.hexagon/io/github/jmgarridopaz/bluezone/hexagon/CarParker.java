@@ -8,22 +8,22 @@ import java.util.*;
 public class CarParker implements ForParkingCars {
 
     private final ForObtainingRates rateProvider;
-    private final ForPaying eWalletService;
     private final ForStoringTickets ticketStore;
+    private final ForPaying eWalletService;
 
-    public CarParker(ForObtainingRates rateProvider, ForPaying eWalletService, ForStoringTickets ticketStore) {
+    public CarParker(ForObtainingRates rateProvider, ForStoringTickets ticketStore, ForPaying eWalletService) {
         this.rateProvider = rateProvider;
-        this.eWalletService = eWalletService;
         this.ticketStore = ticketStore;
+        this.eWalletService = eWalletService;
     }
 
     @Override
-    public Map<String, RateData> getAllRatesByName() {
-        Map<String,RateData> allRatesByName = new HashMap<String,RateData>();
-        Set<RateData> allRates = this.rateProvider.findAll();
-        Iterator<RateData> ratesIterator = allRates.iterator();
+    public Map<String, Rate> getAllRatesByName() {
+        Map<String, Rate> allRatesByName = new HashMap<String, Rate>();
+        Set<Rate> allRates = this.rateProvider.findAll();
+        Iterator<Rate> ratesIterator = allRates.iterator();
         while (ratesIterator.hasNext()) {
-            RateData rate = ratesIterator.next();
+            Rate rate = ratesIterator.next();
             allRatesByName.put ( rate.getName(), rate );
         }
         return allRatesByName;
@@ -41,7 +41,7 @@ public class CarParker implements ForParkingCars {
         this.eWalletService.payWithWallet ( carPlate, moneyToPay );
         // Calc ending date-time
         String rateName = purchaseTicketRequest.getRateName();
-        RateData rate = this.rateProvider.findByName(rateName);
+        Rate rate = this.rateProvider.findByName(rateName);
         RateCalculator rateCalculator = new RateCalculator(rate);
         Clock clock = purchaseTicketRequest.getClock();
         LocalDateTime starting = LocalDateTime.now(clock);

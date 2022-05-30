@@ -26,6 +26,9 @@
 		<!-- Version of BlueZone projects -->
 		<bluezone.hexagon.version>1.0.0</bluezone.hexagon.version>
 		<bluezone.driver.forparkingcars.test.version>1.0.0</bluezone.driver.forparkingcars.test.version>
+		<bluezone.adapter.forobtainingrates.stub.version>1.0.0</bluezone.adapter.forobtainingrates.stub.version>
+		<bluezone.adapter.forstoringtickets.fake.version>1.0.0</bluezone.adapter.forstoringtickets.fake.version>
+		<bluezone.adapter.forpaying.spy.version>1.0.0</bluezone.adapter.forpaying.spy.version>
 		<!-- Version of external dependencies -->
 		<lib.javalangutils.version>1.0.0</lib.javalangutils.version>
 		<lib.portsadapters.version>1.0.0</lib.portsadapters.version>
@@ -62,6 +65,21 @@
 				<groupId>io.github.jmgarridopaz.bluezone</groupId>
 				<artifactId>bluezone-driver-forparkingcars-test</artifactId>
 				<version>${bluezone.driver.forparkingcars.test.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.jmgarridopaz.bluezone</groupId>
+				<artifactId>bluezone-adapter-forobtainingrates-stub</artifactId>
+				<version>${bluezone.adapter.forobtainingrates.stub.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.jmgarridopaz.bluezone</groupId>
+				<artifactId>bluezone-adapter-forstoringtickets-fake</artifactId>
+				<version>${bluezone.adapter.forstoringtickets.fake.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.jmgarridopaz.bluezone</groupId>
+				<artifactId>bluezone-adapter-forpaying-spy</artifactId>
+				<version>${bluezone.adapter.forpaying.spy.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

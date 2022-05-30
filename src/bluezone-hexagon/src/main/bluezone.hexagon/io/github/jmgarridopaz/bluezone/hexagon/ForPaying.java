@@ -11,4 +11,6 @@ public interface ForPaying {
 
     public void payWithWallet ( String walletOwner, BigDecimal amount );
 
+    public void newWallet ( String walletOwner, BigDecimal initialAmount);
+
 }

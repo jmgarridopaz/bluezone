@@ -31,6 +31,18 @@
 			<groupId>io.github.jmgarridopaz.bluezone</groupId>
 			<artifactId>bluezone-driver-forparkingcars-test</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>io.github.jmgarridopaz.bluezone</groupId>
+			<artifactId>bluezone-adapter-forobtainingrates-stub</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jmgarridopaz.bluezone</groupId>
+			<artifactId>bluezone-adapter-forstoringtickets-fake</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jmgarridopaz.bluezone</groupId>
+			<artifactId>bluezone-adapter-forpaying-spy</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

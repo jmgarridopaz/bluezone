@@ -14,7 +14,7 @@ import lombok.*;
 @Setter
 @EqualsAndHashCode
 @ToString
-public class RateData {
+public class Rate {
 	
 	private String		name;
 	private BigDecimal	amountPerHour;

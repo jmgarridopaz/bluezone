@@ -7,8 +7,12 @@ import java.util.Set;
  */
 public interface ForObtainingRates {
 
-    public Set<RateData> findAll();
+    public Set<Rate> findAll();
 
-    public RateData findByName ( String rateName );
+    public Rate findByName (String rateName );
+
+    public void addRate ( Rate rate );
+
+    public boolean exists ( String rateName );
 
 }

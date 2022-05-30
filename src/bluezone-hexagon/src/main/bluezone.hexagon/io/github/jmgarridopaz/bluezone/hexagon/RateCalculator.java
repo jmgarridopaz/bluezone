@@ -6,9 +6,9 @@ import java.time.LocalDateTime;
 
 public class RateCalculator {
 
-    private final RateData rate;
+    private final Rate rate;
 
-    public RateCalculator ( RateData rate ) {
+    public RateCalculator ( Rate rate ) {
         this.rate = rate;
     }
 

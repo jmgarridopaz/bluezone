@@ -13,15 +13,15 @@ Feature: Get all rates by name
 Scenario: BLUE, GREEN and ORANGE rates
 
 Given there are the following rates at rate repository:
-| name        | amount per hour |
-| BLUE_ZONE   | 0.80            |
-| ORANGE_ZONE | 0.95            |
-| GREEN_ZONE  | 1.20            |
+| name        | amountPerHour |
+| BLUE_ZONE   | 0.80          |
+| ORANGE_ZONE | 0.95          |
+| GREEN_ZONE  | 1.20          |
 
 When I ask for getting all rates by name
 
 Then I should obtain the following rates indexed by name:
-|             | name        | amount per hour |
-| BLUE_ZONE   | BLUE_ZONE   | 0.80            |
-| GREEN_ZONE  | GREEN_ZONE  | 1.20            |
-| ORANGE_ZONE | ORANGE_ZONE | 0.95            |
+|             | name        | amountPerHour |
+| BLUE_ZONE   | BLUE_ZONE   | 0.80          |
+| GREEN_ZONE  | GREEN_ZONE  | 1.20          |
+| ORANGE_ZONE | ORANGE_ZONE | 0.95          |
