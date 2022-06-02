@@ -1,6 +1,7 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 /**
  * Exception to be thrown during the purchasing of a parking ticket,
@@ -17,4 +18,28 @@ public class NotEnoughMoneyException extends RuntimeException {
         this.requestedAmount = requestedAmount;
     }
 
+    @Override
+    public boolean equals ( Object other ) {
+        if ( other == null ) {
+            return false;
+        }
+        if ( this == other ) {
+            return true;
+        }
+        if ( this.getClass() != other.getClass() ) {
+            return false;
+        }
+        NotEnoughMoneyException that = (NotEnoughMoneyException) other;
+        return
+                (
+                ( this.availableAmount.compareTo(that.availableAmount) == 0 )
+                &&
+                ( this.requestedAmount.compareTo(that.requestedAmount) == 0 )
+                );
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(availableAmount, requestedAmount);
+    }
 }

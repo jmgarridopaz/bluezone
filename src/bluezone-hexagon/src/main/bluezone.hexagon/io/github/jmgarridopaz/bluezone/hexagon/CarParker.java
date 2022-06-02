@@ -33,11 +33,7 @@ public class CarParker implements ForParkingCars {
     public String purchaseTicket ( PurchaseTicketRequest purchaseTicketRequest ) {
         // Pay
         String carPlate = purchaseTicketRequest.getCarPlate();
-        BigDecimal moneyInWallet = this.eWalletService.getMoneyInWallet ( carPlate );
         BigDecimal moneyToPay = purchaseTicketRequest.getAmount();
-        if ( moneyInWallet.compareTo(moneyToPay)==-1 ) {
-            throw new NotEnoughMoneyException(moneyInWallet,moneyToPay);
-        }
         this.eWalletService.payWithWallet ( carPlate, moneyToPay );
         // Calc ending date-time
         String rateName = purchaseTicketRequest.getRateName();

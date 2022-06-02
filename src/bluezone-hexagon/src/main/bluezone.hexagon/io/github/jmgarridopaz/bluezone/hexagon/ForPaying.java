@@ -7,9 +7,9 @@ import java.math.BigDecimal;
  */
 public interface ForPaying {
 
-    public BigDecimal getMoneyInWallet ( String walletOwner );
+    public BigDecimal getMoneyInWallet(String walletOwner);
 
-    public void payWithWallet ( String walletOwner, BigDecimal amount );
+    public void payWithWallet ( String walletOwner, BigDecimal amount ) throws NotEnoughMoneyException;
 
     public void newWallet ( String walletOwner, BigDecimal initialAmount);
 
