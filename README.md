@@ -43,7 +43,14 @@ __BlueZone__ allows car drivers to pay remotely for parking cars at zones in a c
 
 - Run the entry point to the app:
   
-  ~~~
-  cd <bluezone_dir>
-  ./scripts/run_startup.sh
-  ~~~
+  - "for parking cars" test driver:
+    ~~~
+    cd <bluezone_dir>
+    ./scripts/run_startup_forparkingcars.sh
+    ~~~
+
+  - "for checking cars" test driver:
+    ~~~
+    cd <bluezone_dir>
+    ./scripts/run_startup_forcheckingcars.sh
+    ~~~
