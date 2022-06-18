@@ -2,6 +2,8 @@ package io.github.jmgarridopaz.bluezone.hexagon;
 
 import java.time.Clock;
 import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 
@@ -15,12 +17,13 @@ public class CarChecker implements ForCheckingCars {
 
     @Override
     public boolean illegallyParkedCar(Clock clock, String carPlate, String rateName) {
-        LocalDateTime currentDateTime = LocalDateTime.now(clock);
-        Set<Ticket> validTickets = this.ticketStore.findByDateTimeInPeriod ( carPlate, rateName, currentDateTime );
-        if ( validTickets==null || validTickets.isEmpty() ) {
+        List<Ticket> ticketsOfCarAndRate = this.ticketStore.findByCarRateOrderByEndingDateTimeDesc ( carPlate, rateName );
+        if ( ticketsOfCarAndRate==null || ticketsOfCarAndRate.isEmpty() ) {
             return true;
         }
-        return false;
+        LocalDateTime currentDateTime = LocalDateTime.now(clock);
+        LocalDateTime latestEndingDateTime = ticketsOfCarAndRate.get(0).getEndingDateTime();
+        return currentDateTime.isAfter(latestEndingDateTime);
     }
 
 }

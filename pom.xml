@@ -18,6 +18,7 @@
 		<module>src/bluezone-startup</module>
 		<module>src/bluezone-hexagon</module>
 		<module>src/bluezone-driver-forparkingcars-test</module>
+		<module>src/bluezone-driver-forcheckingcars-test</module>
 		<module>src/bluezone-adapter-forobtainingrates-stub</module>
 		<module>src/bluezone-adapter-forstoringtickets-fake</module>
 		<module>src/bluezone-adapter-forpaying-spy</module>

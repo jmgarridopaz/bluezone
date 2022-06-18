@@ -1,7 +1,6 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
-import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 /**
  * DRIVEN PORT
@@ -14,7 +13,7 @@ public interface ForStoringTickets {
 
     public void store ( Ticket ticket );
 
-    public Set<Ticket> findByDateTimeInPeriod ( String carPlate, String rateName, LocalDateTime dateTime);
+    public List<Ticket> findByCarRateOrderByEndingDateTimeDesc(String carPlate, String rateName);
 
     public void delete ( String ticketCode );
 

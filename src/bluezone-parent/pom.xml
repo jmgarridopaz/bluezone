@@ -26,6 +26,7 @@
 		<!-- Version of BlueZone projects -->
 		<bluezone.hexagon.version>1.0.0</bluezone.hexagon.version>
 		<bluezone.driver.forparkingcars.test.version>1.0.0</bluezone.driver.forparkingcars.test.version>
+		<bluezone.driver.forcheckingcars.test.version>1.0.0</bluezone.driver.forcheckingcars.test.version>
 		<bluezone.adapter.forobtainingrates.stub.version>1.0.0</bluezone.adapter.forobtainingrates.stub.version>
 		<bluezone.adapter.forstoringtickets.fake.version>1.0.0</bluezone.adapter.forstoringtickets.fake.version>
 		<bluezone.adapter.forpaying.spy.version>1.0.0</bluezone.adapter.forpaying.spy.version>
@@ -65,6 +66,11 @@
 				<groupId>io.github.jmgarridopaz.bluezone</groupId>
 				<artifactId>bluezone-driver-forparkingcars-test</artifactId>
 				<version>${bluezone.driver.forparkingcars.test.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.jmgarridopaz.bluezone</groupId>
+				<artifactId>bluezone-driver-forcheckingcars-test</artifactId>
+				<version>${bluezone.driver.forcheckingcars.test.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>io.github.jmgarridopaz.bluezone</groupId>

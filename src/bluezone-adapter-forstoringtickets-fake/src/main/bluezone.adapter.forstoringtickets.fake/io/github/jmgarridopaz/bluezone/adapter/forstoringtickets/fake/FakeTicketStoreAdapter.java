@@ -1,9 +1,7 @@
 package io.github.jmgarridopaz.bluezone.adapter.forstoringtickets.fake;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 import io.github.jmgarridopaz.bluezone.hexagon.Ticket;
 import io.github.jmgarridopaz.bluezone.hexagon.ForStoringTickets;
@@ -73,8 +71,32 @@ public class FakeTicketStoreAdapter implements ForStoringTickets {
     }
 
     @Override
-    public Set<Ticket> findByDateTimeInPeriod(String carPlate, String rateName, LocalDateTime dateTime) {
-        return null;
+    public List<Ticket> findByCarRateOrderByEndingDateTimeDesc ( String carPlate, String rateName ) {
+        List<Ticket> ticketsOfCarAndRate = new ArrayList<Ticket>();
+        if ( this.ticketsByCode==null || this.ticketsByCode.isEmpty() ) {
+            return ticketsOfCarAndRate;
+        }
+        for ( Ticket ticket : this.ticketsByCode.values() ) {
+            if ( ticket.getCarPlate().equals(carPlate) && ticket.getRateName().equals(rateName) ) {
+                ticketsOfCarAndRate.add(ticket);
+            }
+        }
+        Comparator<Ticket> byEndingDateTimeDescTicketComparator = new Comparator<Ticket>() {
+            @Override
+            public int compare(Ticket ticket1, Ticket ticket2) {
+                LocalDateTime endingDateTime1 = ticket1.getEndingDateTime();
+                LocalDateTime endingDateTime2 = ticket2.getEndingDateTime();
+                if ( endingDateTime1.isAfter(endingDateTime2) ) {
+                    return -1;
+                }
+                if ( endingDateTime1.isBefore(endingDateTime2) ) {
+                    return 1;
+                }
+                return 0;
+            }
+        };
+        ticketsOfCarAndRate.sort(byEndingDateTimeDescTicketComparator);
+        return ticketsOfCarAndRate;
     }
 
     @Override

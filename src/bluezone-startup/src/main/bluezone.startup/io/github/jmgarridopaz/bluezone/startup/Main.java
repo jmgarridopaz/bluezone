@@ -1,9 +1,9 @@
 package io.github.jmgarridopaz.bluezone.startup;
 
-
 import io.github.jmgarridopaz.bluezone.adapter.forobtainingrates.stub.StubRateProviderAdapter;
 import io.github.jmgarridopaz.bluezone.adapter.forpaying.spy.SpyEWalletServiceAdapter;
 import io.github.jmgarridopaz.bluezone.adapter.forstoringtickets.fake.FakeTicketStoreAdapter;
+import io.github.jmgarridopaz.bluezone.driver.forcheckingcars.test.ForCheckingCarsTestDriver;
 import io.github.jmgarridopaz.bluezone.driver.forparkingcars.test.ForParkingCarsTestDriver;
 import io.github.jmgarridopaz.bluezone.hexagon.*;
 
@@ -23,8 +23,15 @@ public class Main {
         BlueZoneApp blueZoneApp = new BlueZoneApp(rateProvider, ticketStore,eWalletService);
         // Driver Side
         ForParkingCarsTestDriver forParkingCarsTestDriver = new ForParkingCarsTestDriver(blueZoneApp.carParker(), blueZoneApp.appConfigurator());
+        ForCheckingCarsTestDriver forCheckingCarsTestDriver = new ForCheckingCarsTestDriver(blueZoneApp.carChecker(), blueZoneApp.appConfigurator());
         // Run drivers
-        forParkingCarsTestDriver.run();
+        if ( "for-parking-cars".equals(args[0]) ) {
+            forParkingCarsTestDriver.run();
+        } else if ( "for-checking-cars".equals(args[0]) ) {
+            forCheckingCarsTestDriver.run();
+        } else {
+            throw new IllegalArgumentException ( "Argument '" + args[0] + "' not valid" );
+        }
     }
 
 }

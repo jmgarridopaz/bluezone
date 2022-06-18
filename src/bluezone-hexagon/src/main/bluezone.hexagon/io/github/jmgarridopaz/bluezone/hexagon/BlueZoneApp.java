@@ -3,7 +3,7 @@ package io.github.jmgarridopaz.bluezone.hexagon;
 /**
  * Application
  * Offers driver ports as API.
- * Has a configurable dependency on driven ports.
+ * Has a configurable dependency on driven ports as RI (required interface).
  */
 public class BlueZoneApp {
 
@@ -16,7 +16,7 @@ public class BlueZoneApp {
     private ForCheckingCars carChecker;
     private ForConfiguringApp appConfigurator;
 
-    public BlueZoneApp( ForObtainingRates rateProvider, ForStoringTickets ticketStore, ForPaying eWalletService ) {
+    public BlueZoneApp ( ForObtainingRates rateProvider, ForStoringTickets ticketStore, ForPaying eWalletService ) {
         this.rateProvider = rateProvider;
         this.ticketStore = ticketStore;
         this.eWalletService = eWalletService;
