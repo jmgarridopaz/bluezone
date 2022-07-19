@@ -16,16 +16,17 @@
 
 	<properties>
 		<!-- Char encoding -->
-		<project.enconding>UTF-8</project.enconding>
-		<project.build.sourceEncoding>${project.enconding}</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>${project.enconding}</project.reporting.outputEncoding>
+		<project.encoding>UTF-8</project.encoding>
+		<project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>${project.encoding}</project.reporting.outputEncoding>
 		<!-- Java -->
-		<java.version>9</java.version>
+		<java.version>11</java.version>
 		<!-- Plugins -->
 		<mavenCompilerPlugin.version>3.8.1</mavenCompilerPlugin.version>
 		<!-- Version of BlueZone projects -->
 		<bluezone.hexagon.version>1.0.0</bluezone.hexagon.version>
 		<bluezone.driver.forparkingcars.test.version>1.0.0</bluezone.driver.forparkingcars.test.version>
+		<bluezone.adapter.forparkingcars.webui.version>1.0.0</bluezone.adapter.forparkingcars.webui.version>
 		<bluezone.driver.forcheckingcars.test.version>1.0.0</bluezone.driver.forcheckingcars.test.version>
 		<bluezone.adapter.forobtainingrates.stub.version>1.0.0</bluezone.adapter.forobtainingrates.stub.version>
 		<bluezone.adapter.forstoringtickets.fake.version>1.0.0</bluezone.adapter.forstoringtickets.fake.version>
@@ -34,10 +35,19 @@
 		<lib.javalangutils.version>1.0.0</lib.javalangutils.version>
 		<lib.portsadapters.version>1.0.0</lib.portsadapters.version>
 		<lombok.version>1.18.20</lombok.version>
+		<spring.boot.version>2.7.1</spring.boot.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- Spring Boot Dependencies without starter parent -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring.boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
 			<!-- My Java language Utils Library -->
 			<dependency>
 				<groupId>io.github.jmgarridopaz.lib.javalangutils</groupId>
@@ -66,6 +76,11 @@
 				<groupId>io.github.jmgarridopaz.bluezone</groupId>
 				<artifactId>bluezone-driver-forparkingcars-test</artifactId>
 				<version>${bluezone.driver.forparkingcars.test.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.jmgarridopaz.bluezone</groupId>
+				<artifactId>bluezone-adapter-forparkingcars-webui</artifactId>
+				<version>${bluezone.adapter.forparkingcars.webui.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>io.github.jmgarridopaz.bluezone</groupId>

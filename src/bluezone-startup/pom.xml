@@ -21,7 +21,7 @@
 			<mavenDependencyPlugin.version>3.1.1</mavenDependencyPlugin.version>
 			<bluezone.mp>${project.build.directory}/bzmodulepath</bluezone.mp>
 	</properties>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>io.github.jmgarridopaz.bluezone</groupId>
@@ -30,6 +30,10 @@
 		<dependency>
 			<groupId>io.github.jmgarridopaz.bluezone</groupId>
 			<artifactId>bluezone-driver-forparkingcars-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.github.jmgarridopaz.bluezone</groupId>
+			<artifactId>bluezone-adapter-forparkingcars-webui</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>io.github.jmgarridopaz.bluezone</groupId>
