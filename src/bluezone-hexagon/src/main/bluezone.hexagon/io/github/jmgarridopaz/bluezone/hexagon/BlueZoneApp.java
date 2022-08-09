@@ -1,9 +1,13 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
+/**
+ * API
+ * Driver ports
+ */
 public interface BlueZoneApp {
 
-    public static BlueZoneApp instance ( ForObtainingRates rateProvider, ForStoringTickets ticketStore, ForPaying eWalletService ) {
-        return new AppFromDrivenSide(rateProvider,ticketStore,eWalletService);
+    public static BlueZoneApp getInstance ( ForObtainingRates rateProvider, ForStoringTickets ticketStore, ForPaying paymentService ) {
+        return new AppFromDrivenSide(rateProvider,ticketStore,paymentService);
     }
     public ForParkingCars carParker();
     public ForCheckingCars carChecker();

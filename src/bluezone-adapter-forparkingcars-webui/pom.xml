@@ -27,6 +27,10 @@
 			<artifactId>bluezone-hexagon</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>io.github.jmgarridopaz.lib.portsadapters</groupId>
+			<artifactId>lib-portsadapters</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>

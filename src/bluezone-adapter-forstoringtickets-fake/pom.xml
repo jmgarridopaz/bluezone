@@ -22,6 +22,10 @@
 			<groupId>io.github.jmgarridopaz.bluezone</groupId>
 			<artifactId>bluezone-hexagon</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>io.github.jmgarridopaz.lib.portsadapters</groupId>
+			<artifactId>lib-portsadapters</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

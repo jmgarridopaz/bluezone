@@ -1,9 +1,8 @@
 module bluezone.adapter.forparkingcars.webui {
 
+	// DEPENDS ON
 	requires bluezone.hexagon;
-
-	uses io.github.jmgarridopaz.bluezone.adapter.forparkingcars.webui.ForParkingCarsGetter;
-
+	requires io.github.jmgarridopaz.lib.portsadapters;
 	requires spring.boot.starter.web;
 	requires spring.boot.starter.thymeleaf;
 	requires bootstrap;
@@ -14,27 +13,12 @@ module bluezone.adapter.forparkingcars.webui {
 	requires spring.web;
 	requires org.apache.tomcat.embed.core;
 	requires thymeleaf;
-//	requires thymeleaf.spring5;
-//
+	requires thymeleaf.spring5;
+    requires spring.webmvc;
 
+    // PUBLISHES
 	exports io.github.jmgarridopaz.bluezone.adapter.forparkingcars.webui;
-
 	opens io.github.jmgarridopaz.bluezone.adapter.forparkingcars.webui
 	to spring.core;
-
-
-
-
-
-//	exports io.github.jmgarridopaz.webapp.library;
-//
-//	exports io.github.jmgarridopaz.webapp.library.business
-//			to spring.beans;
-//
-//	exports io.github.jmgarridopaz.webapp.library.presentation
-//			to spring.beans, spring.web;
-//
-//	opens io.github.jmgarridopaz.webapp.library
-//			to spring.core;
 
 }

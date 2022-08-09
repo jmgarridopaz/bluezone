@@ -3,21 +3,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>BlueZone: eParking Meter</title>
+    <title>BlueZone - eParkingMeter</title>
     <link rel="stylesheet" th:href="@{webjars/bootstrap/5.0.2/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/main.css}"/>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" th:href="@{/index}">BlueZone: eParking Meter</a>
+        <a class="navbar-brand" th:href="@{/index}">Home Page</a>
+        <a class="navbar-brand" th:href="@{/parkcar}">Park a car</a>
     </nav>
     <main role="main" class="container">
         <div th:insert="${content}" class="starter-template"></div>
     </main>
-    <!-- /.container -->
     <footer>
-        Hexagonal Architecture Implementation Example - Juan Manuel Garrido de Paz - 2022
+        <p>Hexagonal Architecture Implementation Example - Juan Manuel Garrido de Paz - 2022</p>
     </footer>
     <script type="text/javascript" th:src="@{webjars/bootstrap/5.0.2/js/bootstrap.min.js}"></script>
 </body>

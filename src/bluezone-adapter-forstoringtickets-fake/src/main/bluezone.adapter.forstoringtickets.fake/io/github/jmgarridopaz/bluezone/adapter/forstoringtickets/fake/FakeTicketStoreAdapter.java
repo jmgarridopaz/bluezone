@@ -5,11 +5,13 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 import io.github.jmgarridopaz.bluezone.hexagon.Ticket;
 import io.github.jmgarridopaz.bluezone.hexagon.ForStoringTickets;
+import io.github.jmgarridopaz.lib.portsadapters.Adapter;
 
 
 /**
  * Driven adapter that implements "forstoringtickets" port with a fake (in-memory db) test double.
  */
+@Adapter(name="test-double")
 public class FakeTicketStoreAdapter implements ForStoringTickets {
 
     private static final int MAX_TICKET_CODE_LENGTH = 10;

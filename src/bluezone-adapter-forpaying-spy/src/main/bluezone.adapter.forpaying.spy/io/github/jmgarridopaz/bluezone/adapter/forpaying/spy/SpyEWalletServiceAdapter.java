@@ -2,6 +2,7 @@ package io.github.jmgarridopaz.bluezone.adapter.forpaying.spy;
 
 import io.github.jmgarridopaz.bluezone.hexagon.ForPaying;
 import io.github.jmgarridopaz.bluezone.hexagon.NotEnoughMoneyException;
+import io.github.jmgarridopaz.lib.portsadapters.Adapter;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -10,6 +11,7 @@ import java.util.Map;
 /**
  * Driven adapter that implements "forpaying" port with a "spy" test double.
  */
+@Adapter(name="test-double")
 public class SpyEWalletServiceAdapter implements ForPaying {
 
     private Map<String,BigDecimal> balanceByWalletOwner;

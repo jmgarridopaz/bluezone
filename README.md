@@ -22,9 +22,9 @@ __BlueZone__ allows car drivers to pay remotely for parking cars at zones in a c
 
 ### Development environment:
 
-- Java 9 (jdk-9.0.4)
+- Java 11 (version "11.0.15.1" 2022-04-22 LTS)
 
-- Maven 3.5.4
+- Maven 3.8.6
 
 - IntelliJ IDEA 2021.3.3 (Community Edition)
 
@@ -35,22 +35,18 @@ __BlueZone__ allows car drivers to pay remotely for parking cars at zones in a c
 - Download and extract this github repo to a local directory on your computer ( `<bluezone_dir>` )
 
 - Compile all modules (you need to do this just the first time before running):
-  
-  ~~~
-  cd <bluezone_dir>
-  ./scripts/build.sh
-  ~~~
+
+    ~~~
+    cd <bluezone_dir>
+    ./scripts/build.sh
+    ~~~
+
+- Select the adapters to be plugged-in at each port, editing the "ports-adapters.properties" file, located in the "<bluezone_dir>/scripts" directory.
+
 
 - Run the entry point to the app:
-  
-  - "for parking cars" test driver:
-    ~~~
-    cd <bluezone_dir>
-    ./scripts/run_startup_forparkingcars.sh
-    ~~~
 
-  - "for checking cars" test driver:
     ~~~
     cd <bluezone_dir>
-    ./scripts/run_startup_forcheckingcars.sh
+    ./scripts/run_bluezone.sh
     ~~~

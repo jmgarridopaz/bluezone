@@ -24,6 +24,10 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>io.github.jmgarridopaz.lib.javalangutils</groupId>
+			<artifactId>lib-javalangutils</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>io.github.jmgarridopaz.bluezone</groupId>
 			<artifactId>bluezone-hexagon</artifactId>
 		</dependency>
@@ -77,6 +81,7 @@
 							<overWriteSnapshots>false</overWriteSnapshots>
 							<overWriteIfNewer>true</overWriteIfNewer>
 							<excludeTransitive>false</excludeTransitive>
+							<excludeArtifactIds>aopalliance</excludeArtifactIds>
 						</configuration>
 					</execution>
 					<!--

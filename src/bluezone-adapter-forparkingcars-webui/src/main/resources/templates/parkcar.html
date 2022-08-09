@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html th:replace="~{mainlayout :: layout(~{::div})}" xmlns:th="http://www.thymeleaf.org">
+<div>
+        <h2>Park a car</h2>
+        <form th:action="@{/parkcar}" th:object="${purchaseTicketRequest}" method="post">
+                <p>
+                <label for="car">Car plate</label>
+                <input type="text" id="car" th:field="*{carPlate}" />
+                </p>
+                <p>
+                <label for="rate">Rate</label>
+                <select id="rate" th:field="*{rateName}">
+                        <option th:each="rate : ${rates}" th:value="${rate.name}" th:text="${rate}"></option>
+                </select>
+                </p>
+                <p>
+                <label for="amount">Amount ( € )</label>
+                <input type="text" id="amount" th:field="*{amount}" />
+                </p>
+                <p>
+                <input type="submit" value="Purchase Ticket" />
+                </p>
+        </form>
+</div>

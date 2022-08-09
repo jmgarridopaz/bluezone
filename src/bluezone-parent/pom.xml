@@ -32,8 +32,8 @@
 		<bluezone.adapter.forstoringtickets.fake.version>1.0.0</bluezone.adapter.forstoringtickets.fake.version>
 		<bluezone.adapter.forpaying.spy.version>1.0.0</bluezone.adapter.forpaying.spy.version>
 		<!-- Version of external dependencies -->
-		<lib.javalangutils.version>1.0.0</lib.javalangutils.version>
-		<lib.portsadapters.version>1.0.0</lib.portsadapters.version>
+		<lib.javalangutils.version>1.1.0</lib.javalangutils.version>
+		<lib.portsadapters.version>1.1.0</lib.portsadapters.version>
 		<lombok.version>1.18.20</lombok.version>
 		<spring.boot.version>2.7.1</spring.boot.version>
 	</properties>

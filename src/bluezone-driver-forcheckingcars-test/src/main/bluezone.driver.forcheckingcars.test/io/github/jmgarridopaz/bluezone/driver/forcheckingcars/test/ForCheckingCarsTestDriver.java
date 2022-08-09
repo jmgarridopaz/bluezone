@@ -1,5 +1,6 @@
 package io.github.jmgarridopaz.bluezone.driver.forcheckingcars.test;
 
+import io.github.jmgarridopaz.lib.portsadapters.Driver;
 import org.testng.TestNG;
 import org.testng.xml.*;
 import io.github.jmgarridopaz.bluezone.hexagon.ForCheckingCars;
@@ -13,7 +14,7 @@ import java.util.List;
  * Test cases for the methods of "forcheckingcars" port.
  * It uses TestNG framework.
  */
-public class ForCheckingCarsTestDriver {
+public class ForCheckingCarsTestDriver implements Driver {
 
 	private static final String REPORTS_DIRECTORY =
 												System.getProperty("user.home") +
@@ -40,7 +41,8 @@ public class ForCheckingCarsTestDriver {
 	 * TestNG suite ==> test ==> test class ==> test method.
 	 * Generates HTML report in the 'path-to-user-home-directory/.testng/reports' directory.
 	 */
-	public void run () {
+	@Override
+	public void run ( String... args ) {
 
 		// Set the 2 driver ports as the system under test
 		SystemUnderTest.instance().setCarChecker( this.carChecker );

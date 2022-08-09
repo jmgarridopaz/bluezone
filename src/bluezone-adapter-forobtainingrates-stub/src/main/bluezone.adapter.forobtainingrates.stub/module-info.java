@@ -1,13 +1,14 @@
 module bluezone.adapter.forobtainingrates.stub {
 
-	
-	exports io.github.jmgarridopaz.bluezone.adapter.forobtainingrates.stub;
-	
-/*
- * DEPENDENCIES: Hexagon, libs
- */
-	requires bluezone.hexagon;		
+	// DEPENDS ON
+	requires bluezone.hexagon;
 	requires io.github.jmgarridopaz.lib.portsadapters;
 
-	
+	// PUBLISHES
+	exports io.github.jmgarridopaz.bluezone.adapter.forobtainingrates.stub;
+
+	// SERVICES
+	provides io.github.jmgarridopaz.bluezone.hexagon.ForObtainingRates
+		with io.github.jmgarridopaz.bluezone.adapter.forobtainingrates.stub.StubRateProviderAdapter;
+
 }

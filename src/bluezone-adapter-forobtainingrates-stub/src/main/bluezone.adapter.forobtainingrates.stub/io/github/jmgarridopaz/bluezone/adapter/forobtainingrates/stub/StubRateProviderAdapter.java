@@ -2,6 +2,7 @@ package io.github.jmgarridopaz.bluezone.adapter.forobtainingrates.stub;
 
 import io.github.jmgarridopaz.bluezone.hexagon.ForObtainingRates;
 import io.github.jmgarridopaz.bluezone.hexagon.Rate;
+import io.github.jmgarridopaz.lib.portsadapters.Adapter;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,6 +10,7 @@ import java.util.Set;
 /**
  * Driven adapter that implements "forobtainingrates" port with a stub test double.
  */
+@Adapter(name="test-double")
 public class StubRateProviderAdapter implements ForObtainingRates {
 
 	private Set<Rate> rates;
