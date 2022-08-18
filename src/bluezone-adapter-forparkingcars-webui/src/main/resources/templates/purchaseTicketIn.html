@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html th:replace="~{mainlayout :: layout(~{::div})}" xmlns:th="http://www.thymeleaf.org">
+<div>
+        <h4>Park a car</h4>
+        <form th:action="@{/purchaseTicket}" th:object="${purchaseTicketRequest}" method="post">
+                <div class="form-group row">
+                        <label for="inputCarPlate" class="col-sm-2 col-form-label">Car Plate:</label>
+                        <div class="col-sm-10">
+                                <input type="text" id="inputCarPlate" th:field="*{carPlate}" placeholder="type a car plate ..."  class="form-control">
+                        </div>
+                </div>
+                <div class="form-group row">
+                        <label for="selectRateName" class="col-sm-2 col-form-label">Rate:</label>
+                        <div class="col-sm-10">
+                                <select id="selectRateName" th:field="*{rateName}" class="form-control">
+                                        <option value="">select a rate ...</option>
+                                        <option th:each="rate : ${rates}" th:value="${rate.name}" th:text="${rate}"></option>
+                                </select>
+                        </div>
+                </div>
+                <div class="form-group row">
+                        <label for="inputAmount" class="col-sm-2 col-form-label">Amount (€):</label>
+                        <div class="col-sm-10">
+                                <input type="text" id="inputAmount" th:field="*{amount}" placeholder="type an amount in euros ..."  class="form-control">
+                        </div>
+                </div>
+                <div class="form-group row">
+                        <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">Purchase Ticket</button>
+                        </div>
+                </div>
+        </form>
+</div>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html th:replace="~{mainlayout :: layout(~{::div})}" xmlns:th="http://www.thymeleaf.org">
+<div>
+        <h4>Ticket successfully purchased.</h4>
+        <p>Click on the button below to view ticket details.</p>
+        <div>
+        <form th:action="@{/getTicket}" method="post">
+                <input type="hidden" name="ticketCode" th:value="${ticketCode}">
+                <button type="submit" class="btn btn-primary">View Ticket</button>
+        </form>
+        </div>
+</div>
+</html>

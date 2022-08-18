@@ -27,4 +27,10 @@ public class WebUISpringBootApp {
         new SpringApplicationBuilder(WebUISpringBootApp.class).web(WebApplicationType.SERVLET).run(args);
     }
 
+
+    @Bean
+    public ForParkingCars carParker() {
+        return ForParkingCarsWebUIDriver.carParker();
+    }
+
 }

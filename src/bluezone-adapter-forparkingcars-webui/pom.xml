@@ -18,6 +18,7 @@
 	<name>BlueZone - ForParkingCars WewbUI Adapter</name>
 
 	<properties>
+		<start-class>io.github.jmgarridopaz.bluezone.adapter.forparkingcars.webui.WebUISpringBootApp</start-class>
 		<bootstrap.version>5.0.2</bootstrap.version>
 	</properties>
 
@@ -37,6 +38,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-java8time</artifactId>
 		</dependency>
 		<!-- hot swapping, disable cache for template, enable live reload -->
 <!--		<dependency>-->

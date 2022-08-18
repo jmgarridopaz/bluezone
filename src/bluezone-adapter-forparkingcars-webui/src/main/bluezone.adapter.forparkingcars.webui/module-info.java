@@ -1,4 +1,5 @@
-module bluezone.adapter.forparkingcars.webui {
+open module bluezone.adapter.forparkingcars.webui {
+// Opened because Thymeleaf needs access to templates resources at runtime
 
 	// DEPENDS ON
 	requires bluezone.hexagon;
@@ -14,11 +15,10 @@ module bluezone.adapter.forparkingcars.webui {
 	requires org.apache.tomcat.embed.core;
 	requires thymeleaf;
 	requires thymeleaf.spring5;
+	requires thymeleaf.extras.java8time;
     requires spring.webmvc;
 
     // PUBLISHES
 	exports io.github.jmgarridopaz.bluezone.adapter.forparkingcars.webui;
-	opens io.github.jmgarridopaz.bluezone.adapter.forparkingcars.webui
-	to spring.core;
 
 }

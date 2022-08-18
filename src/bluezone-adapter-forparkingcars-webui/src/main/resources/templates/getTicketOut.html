@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html th:replace="~{mainlayout :: layout(~{::div})}" xmlns:th="http://www.thymeleaf.org">
+<div>
+        <h4>Ticket details</h4>
+        <div class="row">
+                <div class="col-sm-4 align-self-end">Code:</div>
+                <div class="col-sm-8 align-self-start"><span th:text="${ticket.code}"></span></div>
+        </div>
+        <div class="row">
+                <div class="col-sm-4 align-self-end">Car plate:</div>
+                <div class="col-sm-8 align-self-start"><span th:text="${ticket.carPlate}"></span></div>
+        </div>
+        <div class="row">
+                <div class="col-sm-4 align-self-end">Rate:</div>
+                <div class="col-sm-8 align-self-start"><span th:text="${ticketRate}"></span></div>
+        </div>
+        <div class="row">
+                <div class="col-sm-4 align-self-end">Starts:</div>
+                <div class="col-sm-8 align-self-start"><span th:text="${#temporals.format(ticket.startingDateTime,'yyyy/MM/dd HH:mm')}"></span></div>
+        </div>
+        <div class="row">
+                <div class="col-sm-4 align-self-end">Ends:</div>
+                <div class="col-sm-8 align-self-start"><span th:text="${#temporals.format(ticket.endingDateTime,'yyyy/MM/dd HH:mm')}"></span></div>
+        </div>
+        <div class="row">
+                <div class="col-sm-4 align-self-end">Price (€):</div>
+                <div class="col-sm-8 align-self-start"><span th:text="${ticket.price}"></span></div>
+        </div>
+</div>
+</html>
