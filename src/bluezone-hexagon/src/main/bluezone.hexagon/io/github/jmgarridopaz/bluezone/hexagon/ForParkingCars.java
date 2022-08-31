@@ -24,13 +24,13 @@ public interface ForParkingCars {
 	 *
 	 * @param purchaseTicketRequest	Data needed for purchasing a parking ticket.
 	 * @return						The code of the purchased ticket, useful for retrieving the whole ticket data later on.
-	 * @throws NotEnoughMoneyException
+	 * @throws PayErrorException
 	 * 								When the amount in the wallet associated to the car is lower than the amount to pay for the ticket.
 	 * @see PurchaseTicketRequest
 	 * @see Ticket
-	 * @see NotEnoughMoneyException
+	 * @see PayErrorException
 	 */
-	public String purchaseTicket ( PurchaseTicketRequest purchaseTicketRequest );
+	public String purchaseTicket ( PurchaseTicketRequest purchaseTicketRequest ) throws PayErrorException;
 
 
 	/**

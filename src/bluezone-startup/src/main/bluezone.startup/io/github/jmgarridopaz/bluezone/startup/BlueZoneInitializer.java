@@ -16,8 +16,6 @@ public class BlueZoneInitializer {
         initialRates.add(new Rate("ORANGE_RATE", new BigDecimal("0.95")));
         initialRates.add(new Rate("GREEN_RATE", new BigDecimal("1.20")));
         eParkingMeter.appConfigurator().createRates(initialRates);
-        // payment
-        eParkingMeter.appConfigurator().createWalletOfOwnerWithAmount("9896HJJ", new BigDecimal("10.00"));
     }
 
 }

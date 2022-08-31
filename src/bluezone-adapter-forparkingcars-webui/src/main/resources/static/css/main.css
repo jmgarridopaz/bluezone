@@ -7,10 +7,19 @@ body {
   text-align: center;
 }
 
-h1{
+h1 {
 	color:#0000FF;
 }
 
-h2{
+h2 {
 	color:#FF0000;
+}
+
+nav {
+    padding-left: 0.5rem;
+}
+
+footer, footer a {
+    padding: 0.5rem;
+    color:#FFFFFF;
 }

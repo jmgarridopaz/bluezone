@@ -8,16 +8,17 @@ public class AppConfigurator implements ForConfiguringApp {
 
     private final ForObtainingRates rateProvider;
     private final ForStoringTickets ticketStore;
-    private final ForPaying eWalletService;
+    private final ForPaying paymentService;
 
-    public AppConfigurator(ForObtainingRates rateProvider, ForStoringTickets ticketStore, ForPaying eWalletService) {
+    public AppConfigurator(ForObtainingRates rateProvider, ForStoringTickets ticketStore, ForPaying paymentService) {
         this.rateProvider = rateProvider;
         this.ticketStore = ticketStore;
-        this.eWalletService = eWalletService;
+        this.paymentService = paymentService;
     }
 
     @Override
     public void createRates ( List<Rate> rates ) {
+        this.rateProvider.empty();
         for ( Rate rate : rates ) {
             if ( ! this.rateProvider.exists(rate.getName()) ) {
                 this.rateProvider.addRate ( rate );
@@ -45,18 +46,13 @@ public class AppConfigurator implements ForConfiguringApp {
     }
 
     @Override
-    public void createWalletOfOwnerWithAmount ( String walletOwner, BigDecimal initialAmount ) {
-        this.eWalletService.newWallet(walletOwner,initialAmount);
-    }
-
-    @Override
     public String getNextTicketCodeToReturn() {
         return this.ticketStore.nextAvailableCode();
     }
 
     @Override
-    public BigDecimal getEurosInWallet(String walletOwner) {
-        return this.eWalletService.getMoneyInWallet(walletOwner);
+    public PayRequest getLastPayRequestDone() {
+        return this.paymentService.lastPayRequest();
     }
 
 }

@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html th:replace="~{mainlayout :: layout(~{::div})}" xmlns:th="http://www.thymeleaf.org">
 <div>
-        <h4>Park a car</h4>
+        <h3>Park a car</h3>
         <form th:action="@{/purchaseTicket}" th:object="${purchaseTicketRequest}" method="post">
-                <div class="form-group row">
-                        <label for="inputCarPlate" class="col-sm-2 col-form-label">Car Plate:</label>
-                        <div class="col-sm-10">
-                                <input type="text" id="inputCarPlate" th:field="*{carPlate}" placeholder="type a car plate ..."  class="form-control">
+                <div class="form-group row pt-3">
+                        <div class="col text-end">
+                                <label for="inputCarPlate" class="form-label">Car Plate:</label>
+                        </div>
+                        <div class="col">
+                                <input type="text" id="inputCarPlate" th:field="*{carPlate}" placeholder="Enter a car plate ..."  class="form-control">
                         </div>
                 </div>
-                <div class="form-group row">
-                        <label for="selectRateName" class="col-sm-2 col-form-label">Rate:</label>
-                        <div class="col-sm-10">
+                <div class="form-group row pt-3">
+                        <div class="col text-end">
+                                <label for="selectRateName" class="form-label">Rate:</label>
+                        </div>
+                        <div class="col">
                                 <select id="selectRateName" th:field="*{rateName}" class="form-control">
-                                        <option value="">select a rate ...</option>
+                                        <option value="">Select a rate ...</option>
                                         <option th:each="rate : ${rates}" th:value="${rate.name}" th:text="${rate}"></option>
                                 </select>
                         </div>
                 </div>
-                <div class="form-group row">
-                        <label for="inputAmount" class="col-sm-2 col-form-label">Amount (€):</label>
-                        <div class="col-sm-10">
-                                <input type="text" id="inputAmount" th:field="*{amount}" placeholder="type an amount in euros ..."  class="form-control">
+                <div class="form-group row pt-3">
+                        <div class="col text-end">
+                                <label for="inputAmount" class="form-label">Amount (€):</label>
+                        </div>
+                        <div class="col">
+                                <input type="text" id="inputAmount" th:field="*{amount}" placeholder="Enter an amount in euros ..."  class="form-control">
                         </div>
                 </div>
-                <div class="form-group row">
-                        <div class="col-sm-10">
-                                <button type="submit" class="btn btn-primary">Purchase Ticket</button>
+                <div class="form-group row pt-3">
+                        <div class="col">
+                                <button type="submit" class="btn btn-dark">Purchase Ticket</button>
                         </div>
                 </div>
         </form>

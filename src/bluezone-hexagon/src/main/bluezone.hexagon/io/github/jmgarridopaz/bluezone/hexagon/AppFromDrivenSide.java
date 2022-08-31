@@ -14,18 +14,18 @@ public class AppFromDrivenSide implements BlueZoneApp {
     // Driven ports
     private final ForObtainingRates rateProvider;
     private final ForStoringTickets ticketStore;
-    private final ForPaying eWalletService;
+    private final ForPaying paymentService;
 
-    public AppFromDrivenSide(ForObtainingRates rateProvider, ForStoringTickets ticketStore, ForPaying eWalletService ) {
+    public AppFromDrivenSide(ForObtainingRates rateProvider, ForStoringTickets ticketStore, ForPaying paymentService ) {
         this.rateProvider = rateProvider;
         this.ticketStore = ticketStore;
-        this.eWalletService = eWalletService;
+        this.paymentService = paymentService;
     }
 
     @Override
     public ForParkingCars carParker() {
         if ( this.carParker == null ) {
-            this.carParker = new CarParker(this.rateProvider, this.ticketStore, this.eWalletService);
+            this.carParker = new CarParker(this.rateProvider, this.ticketStore, this.paymentService);
         }
         return this.carParker;
     }
@@ -41,7 +41,7 @@ public class AppFromDrivenSide implements BlueZoneApp {
     @Override
     public ForConfiguringApp appConfigurator() {
         if ( this.appConfigurator == null ) {
-            this.appConfigurator = new AppConfigurator(this.rateProvider,this.ticketStore,this.eWalletService);
+            this.appConfigurator = new AppConfigurator(this.rateProvider,this.ticketStore,this.paymentService);
         }
         return this.appConfigurator;
     }

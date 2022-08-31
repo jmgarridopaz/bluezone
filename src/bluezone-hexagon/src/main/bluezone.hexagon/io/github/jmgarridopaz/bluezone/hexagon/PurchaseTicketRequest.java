@@ -23,5 +23,6 @@ public class PurchaseTicketRequest {
 	private String		rateName;
 	private Clock		clock;
 	private BigDecimal	amount;
+	private String		paymentCard;
 
 }

@@ -1,20 +1,23 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
+import io.github.jmgarridopaz.lib.javalangutils.StringUtils;
+
 import java.math.BigDecimal;
 import java.time.Clock;
 import java.time.LocalDateTime;
 import java.util.*;
 
+
 public class CarParker implements ForParkingCars {
 
     private final ForObtainingRates rateProvider;
     private final ForStoringTickets ticketStore;
-    private final ForPaying eWalletService;
+    private final ForPaying paymentService;
 
     public CarParker(ForObtainingRates rateProvider, ForStoringTickets ticketStore, ForPaying eWalletService) {
         this.rateProvider = rateProvider;
         this.ticketStore = ticketStore;
-        this.eWalletService = eWalletService;
+        this.paymentService = eWalletService;
     }
 
     @Override
@@ -32,9 +35,11 @@ public class CarParker implements ForParkingCars {
     @Override
     public String purchaseTicket ( PurchaseTicketRequest purchaseTicketRequest ) {
         // Pay
-        String carPlate = purchaseTicketRequest.getCarPlate();
+        String ticketCode = this.ticketStore.nextCode();
+        String paymentCard = purchaseTicketRequest.getPaymentCard();
         BigDecimal moneyToPay = purchaseTicketRequest.getAmount();
-        this.eWalletService.payWithWallet ( carPlate, moneyToPay );
+        PayRequest payRequest = new PayRequest ( ticketCode, paymentCard, moneyToPay );
+        this.paymentService.pay ( payRequest );
         // Calc ending date-time
         String rateName = purchaseTicketRequest.getRateName();
         Rate rate = this.rateProvider.findByName(rateName);
@@ -43,7 +48,7 @@ public class CarParker implements ForParkingCars {
         LocalDateTime starting = LocalDateTime.now(clock);
         LocalDateTime ending = rateCalculator.getUntilGivenAmount ( starting, moneyToPay );
         // Store
-        String ticketCode = this.ticketStore.nextCode();
+        String carPlate = purchaseTicketRequest.getCarPlate();
         Ticket ticket = new Ticket(ticketCode,carPlate,rateName,starting,ending,moneyToPay);
         this.ticketStore.store(ticket);
         return ticketCode;

@@ -15,4 +15,5 @@ public interface ForObtainingRates {
 
     public boolean exists ( String rateName );
 
+    public void empty();
 }

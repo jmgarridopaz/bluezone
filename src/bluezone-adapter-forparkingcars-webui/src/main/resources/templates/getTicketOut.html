@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html th:replace="~{mainlayout :: layout(~{::div})}" xmlns:th="http://www.thymeleaf.org">
 <div>
-        <h4>Ticket details</h4>
-        <div class="row">
-                <div class="col-sm-4 align-self-end">Code:</div>
-                <div class="col-sm-8 align-self-start"><span th:text="${ticket.code}"></span></div>
+        <h3>Ticket successfully purchased</h3>
+        <hr>
+        <p>You've just purchased the following ticket for parking your car</p>
+        <div class="row pt-3">
+                <div class="col text-end">Ticket code:</div>
+                <div class="col text-start"><span th:text="${ticket.code}"></span></div>
         </div>
-        <div class="row">
-                <div class="col-sm-4 align-self-end">Car plate:</div>
-                <div class="col-sm-8 align-self-start"><span th:text="${ticket.carPlate}"></span></div>
+        <div class="row pt-3">
+                <div class="col text-end">Car plate:</div>
+                <div class="col text-start"><span th:text="${ticket.carPlate}"></span></div>
         </div>
-        <div class="row">
-                <div class="col-sm-4 align-self-end">Rate:</div>
-                <div class="col-sm-8 align-self-start"><span th:text="${ticketRate}"></span></div>
+        <div class="row pt-3">
+                <div class="col text-end">Rate:</div>
+                <div class="col text-start"><span th:text="${ticketRate}"></span></div>
         </div>
-        <div class="row">
-                <div class="col-sm-4 align-self-end">Starts:</div>
-                <div class="col-sm-8 align-self-start"><span th:text="${#temporals.format(ticket.startingDateTime,'yyyy/MM/dd HH:mm')}"></span></div>
+        <div class="row pt-3">
+                <div class="col text-end">Starting date-time:</div>
+                <div class="col text-start"><span th:text="${#temporals.format(ticket.startingDateTime,'yyyy/MM/dd HH:mm')}"></span></div>
         </div>
-        <div class="row">
-                <div class="col-sm-4 align-self-end">Ends:</div>
-                <div class="col-sm-8 align-self-start"><span th:text="${#temporals.format(ticket.endingDateTime,'yyyy/MM/dd HH:mm')}"></span></div>
+        <div class="row pt-3">
+                <div class="col text-end">Ending date-time:</div>
+                <div class="col text-start"><span th:text="${#temporals.format(ticket.endingDateTime,'yyyy/MM/dd HH:mm')}"></span></div>
         </div>
-        <div class="row">
-                <div class="col-sm-4 align-self-end">Price (€):</div>
-                <div class="col-sm-8 align-self-start"><span th:text="${ticket.price}"></span></div>
+        <div class="row pt-3">
+                <div class="col text-end">Price (€):</div>
+                <div class="col text-start"><span th:text="${ticket.price}"></span></div>
+        </div>
+        <div class="row pt-3">
+                <div class="col">
+                        <a th:href="@{/}" class="btn btn-dark" role="button">Go To BlueZone Home Page</a>
+                </div>
         </div>
 </div>
 </html>

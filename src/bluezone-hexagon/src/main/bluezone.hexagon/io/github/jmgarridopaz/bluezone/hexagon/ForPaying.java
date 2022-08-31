@@ -1,16 +1,12 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
-import java.math.BigDecimal;
-
 /**
  * DRIVEN PORT
  */
 public interface ForPaying {
 
-    public BigDecimal getMoneyInWallet(String walletOwner);
+    public void pay ( PayRequest payRequest ) throws PayErrorException;
 
-    public void payWithWallet ( String walletOwner, BigDecimal amount ) throws NotEnoughMoneyException;
-
-    public void newWallet ( String walletOwner, BigDecimal initialAmount);
+    public PayRequest lastPayRequest();
 
 }

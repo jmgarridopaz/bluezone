@@ -56,4 +56,9 @@ public class StubRateProviderAdapter implements ForObtainingRates {
 		return ( findByName(rateName) != null );
 	}
 
+	@Override
+	public void empty() {
+		this.rates = new HashSet<Rate>();
+	}
+
 }

@@ -4,11 +4,7 @@ import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.jmgarridopaz.bluezone.hexagon.NotEnoughMoneyException;
-import io.github.jmgarridopaz.bluezone.hexagon.PurchaseTicketRequest;
-import io.github.jmgarridopaz.bluezone.hexagon.Rate;
-import io.github.jmgarridopaz.bluezone.hexagon.Ticket;
-
+import io.github.jmgarridopaz.bluezone.hexagon.*;
 import java.math.BigDecimal;
 import java.time.Clock;
 import java.time.LocalDateTime;
@@ -16,24 +12,16 @@ import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 
-public class AllStepDefs {
+public class TicketStepDefs {
 
     private final ScenarioContext scenarioContext;
 
-    public AllStepDefs ( ScenarioContext scenarioContext ) {
+    public TicketStepDefs(ScenarioContext scenarioContext ) {
         this.scenarioContext = scenarioContext;
-    }
-
-    @DataTableType
-    public Rate rateEntry ( Map<String, String> row ) {
-        String name = row.get("name");
-        BigDecimal amountPerHour = new BigDecimal(row.get("amountPerHour"));
-        return new Rate(name,amountPerHour);
     }
 
     @DataTableType
@@ -54,24 +42,8 @@ public class AllStepDefs {
         LocalDateTime currentDateTime = LocalDateTime.parse ( row.get("clock"), DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm") );
         Clock clock = Clock.fixed(currentDateTime.toInstant(ZoneOffset.UTC),ZoneOffset.UTC);
         BigDecimal amount = new BigDecimal(row.get("amount"));
-        return new PurchaseTicketRequest ( carPlate, rateName, clock, amount );
-    }
-
-
-    @Given("there are the following rates at rate repository:")
-    public void thereAreTheFollowingRatesAtRateRepository ( List<Rate> rates ) {
-        this.scenarioContext.appConfigurator().createRates ( rates );
-    }
-
-    @When("I ask for getting all rates by name")
-    public void iAskForGettingAllRatesByName() {
-        Map<String,Rate> ratesByName = this.scenarioContext.carParker().getAllRatesByName();
-        this.scenarioContext.setCurrentRatesByName ( ratesByName );
-    }
-
-    @Then("I should obtain the following rates indexed by name:")
-    public void iShouldObtainTheFollowingRatesIndexedByName ( Map<String, Rate> expectedRatesByName ) {
-        assertThat(this.scenarioContext.currentRatesByName(),is(expectedRatesByName));
+        String paymentCard = row.get("paymentCard");
+        return new PurchaseTicketRequest ( carPlate, rateName, clock, amount, paymentCard );
     }
 
     @Given("there is the following ticket at ticket repository:")
@@ -107,18 +79,13 @@ public class AllStepDefs {
         this.scenarioContext.appConfigurator().setNextTicketCodeToReturn(ticketCode);
     }
 
-    @Given("the wallet owned by the car {string} has {string} euros")
-    public void theWalletOwnedByTheCarHasEuros(String carPlate, String amount) {
-        this.scenarioContext.appConfigurator().createWalletOfOwnerWithAmount(carPlate,new BigDecimal(amount));
-    }
-
     @When("I do the following purchase ticket request:")
     public void iDoTheFollowingPurchaseTicketRequest ( PurchaseTicketRequest purchaseTicketRequest ) {
         try {
             String ticketCode = this.scenarioContext.carParker().purchaseTicket(purchaseTicketRequest);
             this.scenarioContext.setPurchasedTicketCode(ticketCode);
-        } catch ( NotEnoughMoneyException notEnoughMoneyException ) {
-            this.scenarioContext.setNotEnoughMoneyException(notEnoughMoneyException);
+        } catch ( PayErrorException payErrorException ) {
+            this.scenarioContext.setPayErrorException(payErrorException);
         }
     }
 
@@ -139,13 +106,6 @@ public class AllStepDefs {
         assertThat(currentNextTicketCode,is(expectedNextTicketCode));
     }
 
-    @Then("the wallet owned by the car {string} should have {string} euros")
-    public void theWalletOwnedByTheCarShouldHaveEuros(String carPlate, String amount) {
-        BigDecimal currentEurosInWallet = this.scenarioContext.appConfigurator().getEurosInWallet ( carPlate );
-        BigDecimal expectedEurosInWallet = new BigDecimal(amount);
-        assertThat(currentEurosInWallet,comparesEqualTo(expectedEurosInWallet));
-    }
-
     @Then("I should obtain no ticket code")
     public void iShouldObtainNoTicketCode() {
         assertThat(this.scenarioContext.purchasedTicketCode(),is(nullValue()));
@@ -155,17 +115,6 @@ public class AllStepDefs {
     public void thereShouldBeNoTicketWithCodeAtTicketRepository(String ticketCode) {
         Ticket ticketAtRepo = this.scenarioContext.carParker().getTicket(ticketCode);
         assertThat(ticketAtRepo,is(nullValue()));
-    }
-
-    @Then("a NotEnoughMoneyException with {string} euros available and {string} euros requested should have been thrown")
-    public void aNotEnoughMoneyExceptionWithEurosAvailableAndEurosRequestedShouldHaveBeenThrown(String expectedAvailableAmount, String expectedRequestedAmount) {
-        NotEnoughMoneyException notEnoughMoneyExceptionThrown = this.scenarioContext.notEnoughMoneyException();
-        NotEnoughMoneyException expectedNotEnoughMoneyException = new NotEnoughMoneyException
-                                                                        (
-                                                                        new BigDecimal(expectedAvailableAmount),
-                                                                        new BigDecimal(expectedRequestedAmount)
-                                                                        );
-        assertThat(notEnoughMoneyExceptionThrown,is(expectedNotEnoughMoneyException));
     }
 
 }

@@ -21,7 +21,7 @@ public class ScenarioContext {
 	private Map<String, Rate> currentRatesByName;
 	private Ticket currentTicketWithCode;
 	private String purchasedTicketCode;
-	private NotEnoughMoneyException notEnoughMoneyException;
+	private PayErrorException payErrorException;
 
 	public ScenarioContext() {
 		this.carParker = ForParkingCarsTestDriver.CAR_PARKER;
@@ -58,11 +58,11 @@ public class ScenarioContext {
 		this.purchasedTicketCode = ticketCode;
 	}
 
-	public NotEnoughMoneyException notEnoughMoneyException() {
-		return this.notEnoughMoneyException;
+	public PayErrorException payErrorException() {
+		return this.payErrorException;
 	}
 
-	public void setNotEnoughMoneyException ( NotEnoughMoneyException notEnoughMoneyException) {
-		this.notEnoughMoneyException = notEnoughMoneyException;
+	public void setPayErrorException(PayErrorException payErrorException) {
+		this.payErrorException = payErrorException;
 	}
 }

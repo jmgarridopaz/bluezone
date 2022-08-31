@@ -18,6 +18,9 @@ public class Rate {
 	private String		name;
 	private BigDecimal	amountPerHour;
 
+
+
+
 	@Override
 	public String toString() {
 		return this.name + " ( " + this.amountPerHour + "€ / hour )";

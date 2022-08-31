@@ -20,11 +20,9 @@ Feature: Purchase ticket
 
     And there is no ticket with code "0000000001" at ticket repository
 
-    And the wallet owned by the car "6989JJH" has "5.00" euros
-
     When I do the following purchase ticket request:
-      | carPlate | rateName    | clock            | amount |
-      | 6989JJH  | ORANGE_ZONE | 2022/05/11 10:00 | 1.90   |
+      | carPlate | rateName    | clock            | amount | paymentCard      |
+      | 6989JJH  | ORANGE_ZONE | 2022/05/11 10:00 | 1.90   | 5200828282828210 |
 
     Then I should obtain the ticket code "0000000001"
 
@@ -34,10 +32,12 @@ Feature: Purchase ticket
 
     And next available ticket code should be "0000000002"
 
-    And the wallet owned by the car "6989JJH" should have "3.10" euros
+    And the following pay request should have been done to payment service:
+      | ticketCode | paymentCard      | amount |
+      | 0000000001 | 5200828282828210 | 1.90   |
 
 
-  Scenario: Not enough money in wallet
+  Scenario: Generic pay error
 
     Given there are the following rates at rate repository:
       | name      | amountPerHour |
@@ -47,18 +47,18 @@ Feature: Purchase ticket
 
     And there is no ticket with code "0000000010" at ticket repository
 
-    And the wallet owned by the car "8149GRH" has "1.19" euros
-
     When I do the following purchase ticket request:
-      | carPlate | rateName  | clock            | amount |
-      | 8149GRH  | BLUE_ZONE | 2022/05/12 07:00 | 1.20   |
+      | carPlate | rateName  | clock            | amount | paymentCard      |
+      | 8149GRH  | BLUE_ZONE | 2022/05/12 07:00 | 1.20   | 4000000000000002 |
 
     Then I should obtain no ticket code
 
     And there should be no ticket with code "0000000010" at ticket repository
 
-    And next available ticket code should be "0000000010"
+    And next available ticket code should be "0000000011"
 
-    And the wallet owned by the car "8149GRH" should have "1.19" euros
+    And the following pay request should have been done to payment service:
+      | ticketCode | paymentCard      | amount |
+      | 0000000010 | 4000000000000002 | 1.20   |
 
-    And a NotEnoughMoneyException with "1.19" euros available and "1.20" euros requested should have been thrown
+    And a PayErrorException should have been thrown

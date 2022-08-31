@@ -12,6 +12,7 @@ import lombok.*;
  * 		startingDateTime	When the parking period begins
  * 		endingDateTime		When the parking period expires
  * 		price				Amount of money paid for the ticket
+ * 		paymentId			Id of the ticket purchasing transaction in the payment service
  */
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,5 +28,5 @@ public class Ticket {
 	private LocalDateTime	startingDateTime;
 	private LocalDateTime	endingDateTime;
 	private BigDecimal		price;
-	
+
 }
