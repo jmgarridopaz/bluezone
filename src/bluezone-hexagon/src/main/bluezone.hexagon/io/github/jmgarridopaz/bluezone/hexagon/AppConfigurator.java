@@ -17,7 +17,7 @@ public class AppConfigurator implements ForConfiguringApp {
     }
 
     @Override
-    public void createRates ( List<Rate> rates ) {
+    public void initRateProviderWith(List<Rate> rates ) {
         this.rateProvider.empty();
         for ( Rate rate : rates ) {
             if ( ! this.rateProvider.exists(rate.getName()) ) {
@@ -53,6 +53,11 @@ public class AppConfigurator implements ForConfiguringApp {
     @Override
     public PayRequest getLastPayRequestDone() {
         return this.paymentService.lastPayRequest();
+    }
+
+    @Override
+    public void setPaymentErrorPercentage(int percent) {
+        this.paymentService.setPayErrorGenerationPercentage(percent);
     }
 
 }

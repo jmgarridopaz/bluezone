@@ -52,31 +52,20 @@ public class TicketStepDefs {
         this.scenarioContext.appConfigurator().createTicket(ticket);
     }
 
-    @When("I ask for getting the ticket with code {string}")
-    public void iAskForGettingTheTicketWithCode(String ticketCode) {
-        Ticket ticket = this.scenarioContext.carParker().getTicket(ticketCode);
-        this.scenarioContext.setCurrentTicketWithCode ( ticket );
-    }
-
-    @Then("I should obtain the following ticket:")
-    public void iShouldObtainTheFollowingTicket ( List<Ticket> tickets ) {
-        Ticket expectedTicketWithCode = tickets.get(0);
-        assertThat( this.scenarioContext.currentTicketWithCode(), is(expectedTicketWithCode) );
-    }
-
     @Given("there is no ticket with code {string} at ticket repository")
     public void thereIsNoTicketWithCodeAtTicketRepository ( String ticketCode ) {
         this.scenarioContext.appConfigurator().eraseTicket(ticketCode);
     }
 
-    @Then("I should obtain no ticket")
-    public void iShouldObtainNoTicket() {
-        assertThat ( this.scenarioContext.currentTicketWithCode(),is(nullValue()) );
-    }
-
     @Given("next available ticket code is {string}")
     public void nextAvailableTicketCodeIs(String ticketCode) {
         this.scenarioContext.appConfigurator().setNextTicketCodeToReturn(ticketCode);
+    }
+
+    @When("I ask for getting the ticket with code {string}")
+    public void iAskForGettingTheTicketWithCode(String ticketCode) {
+        Ticket ticket = this.scenarioContext.carParker().getTicket(ticketCode);
+        this.scenarioContext.setCurrentTicketWithCode ( ticket );
     }
 
     @When("I do the following purchase ticket request:")
@@ -87,6 +76,17 @@ public class TicketStepDefs {
         } catch ( PayErrorException payErrorException ) {
             this.scenarioContext.setPayErrorException(payErrorException);
         }
+    }
+
+    @Then("I should obtain the following ticket:")
+    public void iShouldObtainTheFollowingTicket ( List<Ticket> tickets ) {
+        Ticket expectedTicketWithCode = tickets.get(0);
+        assertThat( this.scenarioContext.currentTicketWithCode(), is(expectedTicketWithCode) );
+    }
+
+    @Then("I should obtain no ticket")
+    public void iShouldObtainNoTicket() {
+        assertThat ( this.scenarioContext.currentTicketWithCode(),is(nullValue()) );
     }
 
     @Then("I should obtain the ticket code {string}")

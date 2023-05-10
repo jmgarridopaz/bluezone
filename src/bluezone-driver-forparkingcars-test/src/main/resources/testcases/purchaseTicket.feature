@@ -20,6 +20,8 @@ Feature: Purchase ticket
 
     And there is no ticket with code "0000000001" at ticket repository
 
+    And the payment is valid
+
     When I do the following purchase ticket request:
       | carPlate | rateName    | clock            | amount | paymentCard      |
       | 6989JJH  | ORANGE_ZONE | 2022/05/11 10:00 | 1.90   | 5200828282828210 |
@@ -36,6 +38,8 @@ Feature: Purchase ticket
       | ticketCode | paymentCard      | amount |
       | 0000000001 | 5200828282828210 | 1.90   |
 
+    And no PayErrorException should have been thrown
+
 
   Scenario: Generic pay error
 
@@ -46,6 +50,8 @@ Feature: Purchase ticket
     And next available ticket code is "0000000010"
 
     And there is no ticket with code "0000000010" at ticket repository
+
+    And the payment is not valid
 
     When I do the following purchase ticket request:
       | carPlate | rateName  | clock            | amount | paymentCard      |

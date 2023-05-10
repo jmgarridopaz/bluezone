@@ -7,7 +7,7 @@ import java.util.List;
  */
 public interface ForConfiguringApp {
 
-    public void createRates ( List<Rate> rates );
+    public void initRateProviderWith(List<Rate> rates );
 
     public void createTicket ( Ticket ticket );
 
@@ -18,4 +18,6 @@ public interface ForConfiguringApp {
     public String getNextTicketCodeToReturn();
 
     public PayRequest getLastPayRequestDone();
+
+    public void setPaymentErrorPercentage(int percent);
 }

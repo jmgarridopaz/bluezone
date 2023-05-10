@@ -10,12 +10,14 @@ import java.util.List;
 public class BlueZoneInitializer {
 
     public static void init(BlueZoneApp eParkingMeter) {
-        // rates
+        // rate provider
         List<Rate> initialRates = new ArrayList<Rate>();
-        initialRates.add(new Rate("BLUE_RATE", new BigDecimal("0.80")));
-        initialRates.add(new Rate("ORANGE_RATE", new BigDecimal("0.95")));
-        initialRates.add(new Rate("GREEN_RATE", new BigDecimal("1.20")));
-        eParkingMeter.appConfigurator().createRates(initialRates);
+        initialRates.add(new Rate("BLUE_ZONE", new BigDecimal("0.80")));
+        initialRates.add(new Rate("ORANGE_ZONE", new BigDecimal("0.95")));
+        initialRates.add(new Rate("GREEN_ZONE", new BigDecimal("1.20")));
+        eParkingMeter.appConfigurator().initRateProviderWith(initialRates);
+        // payment service
+        eParkingMeter.appConfigurator().setPaymentErrorPercentage(10);
     }
 
 }

@@ -17,6 +17,7 @@ open module bluezone.adapter.forparkingcars.webui {
 	requires thymeleaf.spring5;
 	requires thymeleaf.extras.java8time;
     requires spring.webmvc;
+	requires spring.core;
 
     // PUBLISHES
 	exports io.github.jmgarridopaz.bluezone.adapter.forparkingcars.webui;

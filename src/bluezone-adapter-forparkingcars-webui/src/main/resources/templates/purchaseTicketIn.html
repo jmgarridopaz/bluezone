@@ -31,6 +31,14 @@
                         </div>
                 </div>
                 <div class="form-group row pt-3">
+                        <div class="col text-end">
+                                <label for="inputPaymentCard" class="form-label">Card Number:</label>
+                        </div>
+                        <div class="col">
+                                <input type="text" id="inputPaymentCard" th:field="*{paymentCard}" placeholder="Enter a cad number to pay with ..."  class="form-control">
+                        </div>
+                </div>
+                <div class="form-group row pt-3">
                         <div class="col">
                                 <button type="submit" class="btn btn-dark">Purchase Ticket</button>
                         </div>

@@ -20,12 +20,12 @@ public interface ForParkingCars {
 	 * It pays for a parking ticket, which will be valid for the following period of time:
 	 *		- Starting:	Current date-time.
 	 *		- Ending:	Date-time calculated from the payment amount, according to the rate of the zone the car is parked at.
-	 * The payment is done by charging the amount to the wallet associated to the car.
+	 * The payment is done by charging the amount to the card given in the purchase ticket request.
 	 *
 	 * @param purchaseTicketRequest	Data needed for purchasing a parking ticket.
 	 * @return						The code of the purchased ticket, useful for retrieving the whole ticket data later on.
 	 * @throws PayErrorException
-	 * 								When the amount in the wallet associated to the car is lower than the amount to pay for the ticket.
+	 * 								When any error occur paying the amount with the card.
 	 * @see PurchaseTicketRequest
 	 * @see Ticket
 	 * @see PayErrorException

@@ -9,4 +9,6 @@ public interface ForPaying {
 
     public PayRequest lastPayRequest();
 
+    public void setPayErrorGenerationPercentage(int percent);
+
 }

@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
 import org.springframework.web.servlet.ViewResolver;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
@@ -26,7 +27,6 @@ public class WebUISpringBootApp {
     public static void main(String[] args) {
         new SpringApplicationBuilder(WebUISpringBootApp.class).web(WebApplicationType.SERVLET).run(args);
     }
-
 
     @Bean
     public ForParkingCars carParker() {

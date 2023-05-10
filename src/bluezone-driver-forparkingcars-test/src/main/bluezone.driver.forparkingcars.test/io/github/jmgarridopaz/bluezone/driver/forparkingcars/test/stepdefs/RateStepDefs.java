@@ -29,7 +29,7 @@ public class RateStepDefs {
 
     @Given("there are the following rates at rate repository:")
     public void thereAreTheFollowingRatesAtRateRepository(List<Rate> rates) {
-        this.scenarioContext.appConfigurator().createRates(rates);
+        this.scenarioContext.appConfigurator().initRateProviderWith(rates);
     }
 
     @When("I ask for getting all rates by name")

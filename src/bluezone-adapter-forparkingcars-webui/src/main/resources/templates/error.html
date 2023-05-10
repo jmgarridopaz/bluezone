@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>BlueZone Application - Error Page</title>
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/5.0.2/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <span class="navbar-brand">BlueZone Application Error</span>
+    </nav>
+    <main role="main" class="container">
+        <div class="starter-template">
+            <p th:text="${status}"></p>
+            <p th:text="${error}"></p>
+            <p th:text="${exception}"></p>
+<!--            <p th:text="${errorMessage}"></p>-->
+            <a th:href="@{/}" class="btn btn-dark" role="button">Go To BlueZone Home Page</a>
+        </div>
+    </main>
+    <script type="text/javascript" th:src="@{webjars/bootstrap/5.0.2/js/bootstrap.min.js}"></script>
+</body>
+</html>
