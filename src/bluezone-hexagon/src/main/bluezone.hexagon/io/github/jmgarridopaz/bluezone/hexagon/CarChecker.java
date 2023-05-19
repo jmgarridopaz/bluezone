@@ -1,10 +1,12 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forstoringtickets.ForStoringTickets;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forstoringtickets.Ticket;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forcheckingcars.ForCheckingCars;
+
 import java.time.Clock;
 import java.time.LocalDateTime;
-import java.time.chrono.ChronoLocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 
 public class CarChecker implements ForCheckingCars {

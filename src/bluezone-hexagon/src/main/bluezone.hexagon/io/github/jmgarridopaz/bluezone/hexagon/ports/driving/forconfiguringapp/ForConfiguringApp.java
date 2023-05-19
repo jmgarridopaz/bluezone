@@ -1,4 +1,8 @@
-package io.github.jmgarridopaz.bluezone.hexagon;
+package io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forconfiguringapp;
+
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forobtainingrates.Rate;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forpaying.PayRequest;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forstoringtickets.Ticket;
 
 import java.util.List;
 

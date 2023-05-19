@@ -1,7 +1,7 @@
 package io.github.jmgarridopaz.bluezone.startup;
 
-import io.github.jmgarridopaz.bluezone.hexagon.BlueZoneApp;
-import io.github.jmgarridopaz.bluezone.hexagon.Rate;
+import io.github.jmgarridopaz.bluezone.hexagon.factory.BlueZoneApp;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forobtainingrates.Rate;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;

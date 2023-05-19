@@ -1,3 +1,5 @@
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forstoringtickets.ForStoringTickets;
+
 module bluezone.adapter.forstoringtickets.fake {
 
 	// DEPENDS ON
@@ -8,7 +10,7 @@ module bluezone.adapter.forstoringtickets.fake {
 	exports io.github.jmgarridopaz.bluezone.adapter.forstoringtickets.fake;
 
 	// SERVICES
-	provides io.github.jmgarridopaz.bluezone.hexagon.ForStoringTickets
+	provides ForStoringTickets
 	with io.github.jmgarridopaz.bluezone.adapter.forstoringtickets.fake.FakeTicketStoreAdapter;
 	
 }

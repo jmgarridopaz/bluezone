@@ -3,8 +3,8 @@ package io.github.jmgarridopaz.bluezone.adapter.forstoringtickets.fake;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
-import io.github.jmgarridopaz.bluezone.hexagon.Ticket;
-import io.github.jmgarridopaz.bluezone.hexagon.ForStoringTickets;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forstoringtickets.Ticket;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forstoringtickets.ForStoringTickets;
 import io.github.jmgarridopaz.lib.portsadapters.Adapter;
 
 

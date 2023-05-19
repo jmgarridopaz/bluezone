@@ -1,4 +1,4 @@
-package io.github.jmgarridopaz.bluezone.hexagon;
+package io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forpaying;
 
 /**
  * Exception thrown by the pay method in the "for paying" port,

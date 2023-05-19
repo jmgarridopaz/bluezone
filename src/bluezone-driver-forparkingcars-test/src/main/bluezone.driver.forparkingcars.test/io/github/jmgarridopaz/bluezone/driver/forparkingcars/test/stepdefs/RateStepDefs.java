@@ -4,7 +4,7 @@ import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.jmgarridopaz.bluezone.hexagon.Rate;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forobtainingrates.Rate;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;

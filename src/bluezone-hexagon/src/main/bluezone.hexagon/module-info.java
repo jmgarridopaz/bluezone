@@ -8,8 +8,14 @@ module bluezone.hexagon {
 	requires io.github.jmgarridopaz.lib.javalangutils;
 
 	// PUBLISHES
-	// just the ports and the data they use
-	// TODO
-	exports io.github.jmgarridopaz.bluezone.hexagon;
+	// driving ports
+	exports io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forparkingcars;
+	exports io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forcheckingcars;
+	exports io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forconfiguringapp;
+	// driven ports
+	exports io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forobtainingrates;
+	exports io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forstoringtickets;
+	exports io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forpaying;
 
+	exports io.github.jmgarridopaz.bluezone.hexagon.factory;
 }

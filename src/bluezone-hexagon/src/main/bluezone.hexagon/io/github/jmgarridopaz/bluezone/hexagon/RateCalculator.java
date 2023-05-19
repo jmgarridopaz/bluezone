@@ -1,5 +1,7 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forobtainingrates.Rate;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 

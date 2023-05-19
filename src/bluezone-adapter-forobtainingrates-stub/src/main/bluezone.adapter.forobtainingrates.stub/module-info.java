@@ -1,3 +1,5 @@
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forobtainingrates.ForObtainingRates;
+
 module bluezone.adapter.forobtainingrates.stub {
 
 	// DEPENDS ON
@@ -8,7 +10,7 @@ module bluezone.adapter.forobtainingrates.stub {
 	exports io.github.jmgarridopaz.bluezone.adapter.forobtainingrates.stub;
 
 	// SERVICES
-	provides io.github.jmgarridopaz.bluezone.hexagon.ForObtainingRates
+	provides ForObtainingRates
 		with io.github.jmgarridopaz.bluezone.adapter.forobtainingrates.stub.StubRateProviderAdapter;
 
 }

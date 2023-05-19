@@ -1,7 +1,7 @@
 package io.github.jmgarridopaz.bluezone.adapter.forobtainingrates.stub;
 
-import io.github.jmgarridopaz.bluezone.hexagon.ForObtainingRates;
-import io.github.jmgarridopaz.bluezone.hexagon.Rate;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forobtainingrates.ForObtainingRates;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forobtainingrates.Rate;
 import io.github.jmgarridopaz.lib.portsadapters.Adapter;
 
 import java.util.HashSet;

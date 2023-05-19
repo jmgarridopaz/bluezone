@@ -1,4 +1,5 @@
 import io.github.jmgarridopaz.bluezone.adapter.forpaying.spy.SpyPaymentServiceAdapter;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forpaying.ForPaying;
 
 module bluezone.adapter.forpaying.spy {
 
@@ -10,6 +11,6 @@ module bluezone.adapter.forpaying.spy {
 	exports io.github.jmgarridopaz.bluezone.adapter.forpaying.spy;
 
 	// SERVICES
-	provides io.github.jmgarridopaz.bluezone.hexagon.ForPaying
+	provides ForPaying
 		with SpyPaymentServiceAdapter;
 }

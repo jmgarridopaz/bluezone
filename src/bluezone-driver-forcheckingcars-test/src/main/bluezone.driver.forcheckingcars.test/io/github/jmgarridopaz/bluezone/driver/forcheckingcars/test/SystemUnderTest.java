@@ -1,7 +1,7 @@
 package io.github.jmgarridopaz.bluezone.driver.forcheckingcars.test;
 
-import io.github.jmgarridopaz.bluezone.hexagon.ForCheckingCars;
-import io.github.jmgarridopaz.bluezone.hexagon.ForConfiguringApp;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forcheckingcars.ForCheckingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forconfiguringapp.ForConfiguringApp;
 
 
 public enum SystemUnderTest {

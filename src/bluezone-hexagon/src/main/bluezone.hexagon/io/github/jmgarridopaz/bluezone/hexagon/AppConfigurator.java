@@ -1,6 +1,13 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
-import java.math.BigDecimal;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forobtainingrates.ForObtainingRates;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forobtainingrates.Rate;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forpaying.ForPaying;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forpaying.PayRequest;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forstoringtickets.ForStoringTickets;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forstoringtickets.Ticket;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forconfiguringapp.ForConfiguringApp;
+
 import java.util.List;
 
 

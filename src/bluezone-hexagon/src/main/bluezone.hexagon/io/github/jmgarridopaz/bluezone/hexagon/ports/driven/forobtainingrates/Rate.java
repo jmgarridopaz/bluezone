@@ -1,4 +1,4 @@
-package io.github.jmgarridopaz.bluezone.hexagon;
+package io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forobtainingrates;
 
 import java.math.BigDecimal;
 import lombok.*;

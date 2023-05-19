@@ -1,5 +1,13 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
+import io.github.jmgarridopaz.bluezone.hexagon.factory.BlueZoneApp;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forobtainingrates.ForObtainingRates;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forpaying.ForPaying;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forstoringtickets.ForStoringTickets;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forcheckingcars.ForCheckingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forconfiguringapp.ForConfiguringApp;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forparkingcars.ForParkingCars;
+
 /**
  * Application
  * Offers driver ports as API.

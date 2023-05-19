@@ -1,7 +1,11 @@
 package io.github.jmgarridopaz.bluezone.driver.forparkingcars.test.stepdefs;
 
 import io.github.jmgarridopaz.bluezone.driver.forparkingcars.test.ForParkingCarsTestDriver;
-import io.github.jmgarridopaz.bluezone.hexagon.*;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forobtainingrates.Rate;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forpaying.PayErrorException;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forstoringtickets.Ticket;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forconfiguringapp.ForConfiguringApp;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forparkingcars.ForParkingCars;
 
 import java.util.Map;
 

@@ -1,7 +1,7 @@
 package io.github.jmgarridopaz.bluezone.driver.forcheckingcars.test.illegallyparkedcar;
 
 import io.github.jmgarridopaz.bluezone.driver.forcheckingcars.test.SystemUnderTest;
-import io.github.jmgarridopaz.bluezone.hexagon.Ticket;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forstoringtickets.Ticket;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;

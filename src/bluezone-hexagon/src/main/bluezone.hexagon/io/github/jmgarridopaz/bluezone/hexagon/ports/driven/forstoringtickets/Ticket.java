@@ -1,4 +1,4 @@
-package io.github.jmgarridopaz.bluezone.hexagon;
+package io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forstoringtickets;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

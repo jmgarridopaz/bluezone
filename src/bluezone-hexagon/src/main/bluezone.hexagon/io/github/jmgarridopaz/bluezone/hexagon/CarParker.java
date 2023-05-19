@@ -1,6 +1,13 @@
 package io.github.jmgarridopaz.bluezone.hexagon;
 
-import io.github.jmgarridopaz.lib.javalangutils.StringUtils;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forobtainingrates.ForObtainingRates;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forobtainingrates.Rate;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forpaying.ForPaying;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forpaying.PayRequest;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forstoringtickets.ForStoringTickets;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forstoringtickets.Ticket;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forparkingcars.ForParkingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forparkingcars.PurchaseTicketRequest;
 
 import java.math.BigDecimal;
 import java.time.Clock;
@@ -55,7 +62,7 @@ public class CarParker implements ForParkingCars {
     }
 
     @Override
-    public Ticket getTicket ( String ticketCode ) {
+    public Ticket getTicket (String ticketCode ) {
         return this.ticketStore.findByCode ( ticketCode);
     }
     

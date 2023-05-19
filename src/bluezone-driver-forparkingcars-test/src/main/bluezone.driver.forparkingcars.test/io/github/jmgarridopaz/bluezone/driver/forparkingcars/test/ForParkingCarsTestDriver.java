@@ -1,8 +1,8 @@
 package io.github.jmgarridopaz.bluezone.driver.forparkingcars.test;
 
 import io.github.jmgarridopaz.bluezone.driver.forparkingcars.test.stepdefs.ScenarioContext;
-import io.github.jmgarridopaz.bluezone.hexagon.ForConfiguringApp;
-import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forconfiguringapp.ForConfiguringApp;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forparkingcars.ForParkingCars;
 import io.github.jmgarridopaz.lib.portsadapters.Driver;
 
 /**

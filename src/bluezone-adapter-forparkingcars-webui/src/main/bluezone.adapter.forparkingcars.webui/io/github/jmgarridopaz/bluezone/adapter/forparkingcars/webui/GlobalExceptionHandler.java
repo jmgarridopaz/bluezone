@@ -1,6 +1,6 @@
 //package io.github.jmgarridopaz.bluezone.adapter.forparkingcars.webui;
 //
-//import io.github.jmgarridopaz.bluezone.hexagon.PayErrorException;
+//import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forpaying.PayErrorException;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.core.env.Environment;
 //import org.springframework.http.HttpStatus;

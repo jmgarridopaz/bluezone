@@ -1,8 +1,8 @@
 package io.github.jmgarridopaz.bluezone.adapter.forparkingcars.webui;
 
-import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
-import io.github.jmgarridopaz.bluezone.hexagon.PurchaseTicketRequest;
-import io.github.jmgarridopaz.bluezone.hexagon.Rate;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forparkingcars.ForParkingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forparkingcars.PurchaseTicketRequest;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forobtainingrates.Rate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

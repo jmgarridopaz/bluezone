@@ -1,4 +1,4 @@
-package io.github.jmgarridopaz.bluezone.hexagon;
+package io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forparkingcars;
 
 import java.math.BigDecimal;
 import java.time.Clock;

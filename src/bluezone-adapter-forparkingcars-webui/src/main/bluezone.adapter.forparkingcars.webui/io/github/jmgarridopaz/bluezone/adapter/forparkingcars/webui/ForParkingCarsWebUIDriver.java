@@ -1,6 +1,6 @@
 package io.github.jmgarridopaz.bluezone.adapter.forparkingcars.webui;
 
-import io.github.jmgarridopaz.bluezone.hexagon.ForParkingCars;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forparkingcars.ForParkingCars;
 import io.github.jmgarridopaz.lib.portsadapters.Driver;
 
 

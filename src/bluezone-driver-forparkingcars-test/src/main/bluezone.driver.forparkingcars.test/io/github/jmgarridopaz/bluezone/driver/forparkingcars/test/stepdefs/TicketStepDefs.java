@@ -4,7 +4,10 @@ import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.github.jmgarridopaz.bluezone.hexagon.*;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forpaying.PayErrorException;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forstoringtickets.Ticket;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forparkingcars.PurchaseTicketRequest;
+
 import java.math.BigDecimal;
 import java.time.Clock;
 import java.time.LocalDateTime;
@@ -25,7 +28,7 @@ public class TicketStepDefs {
     }
 
     @DataTableType
-    public Ticket ticketEntry ( Map<String, String> row ) {
+    public Ticket ticketEntry (Map<String, String> row ) {
         String code = row.get("code");
         String carPlate = row.get("carPlate");
         String rateName = row.get("rateName");
@@ -43,7 +46,7 @@ public class TicketStepDefs {
         Clock clock = Clock.fixed(currentDateTime.toInstant(ZoneOffset.UTC),ZoneOffset.UTC);
         BigDecimal amount = new BigDecimal(row.get("amount"));
         String paymentCard = row.get("paymentCard");
-        return new PurchaseTicketRequest ( carPlate, rateName, clock, amount, paymentCard );
+        return new PurchaseTicketRequest( carPlate, rateName, clock, amount, paymentCard );
     }
 
     @Given("there is the following ticket at ticket repository:")

@@ -1,4 +1,8 @@
-package io.github.jmgarridopaz.bluezone.hexagon;
+package io.github.jmgarridopaz.bluezone.hexagon.ports.driving.forparkingcars;
+
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forobtainingrates.Rate;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forpaying.PayErrorException;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forstoringtickets.Ticket;
 
 import java.util.Map;
 
@@ -40,6 +44,6 @@ public interface ForParkingCars {
 	 * @return				The ticket with the given ticket code,
 	 * 						or null if it doesn't exist any ticket with such a code.
 	 */
-	public Ticket getTicket ( String ticketCode );
+	public Ticket getTicket (String ticketCode );
 
 }

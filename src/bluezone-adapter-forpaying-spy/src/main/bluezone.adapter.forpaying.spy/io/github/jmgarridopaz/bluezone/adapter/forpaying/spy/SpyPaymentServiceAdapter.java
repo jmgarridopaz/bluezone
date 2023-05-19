@@ -1,8 +1,8 @@
 package io.github.jmgarridopaz.bluezone.adapter.forpaying.spy;
 
-import io.github.jmgarridopaz.bluezone.hexagon.ForPaying;
-import io.github.jmgarridopaz.bluezone.hexagon.PayErrorException;
-import io.github.jmgarridopaz.bluezone.hexagon.PayRequest;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forpaying.ForPaying;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forpaying.PayErrorException;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forpaying.PayRequest;
 import io.github.jmgarridopaz.lib.portsadapters.Adapter;
 import java.util.ArrayList;
 import java.util.List;

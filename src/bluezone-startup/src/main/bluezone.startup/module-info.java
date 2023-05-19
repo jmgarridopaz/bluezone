@@ -1,3 +1,7 @@
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forobtainingrates.ForObtainingRates;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forpaying.ForPaying;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forstoringtickets.ForStoringTickets;
+
 module bluezone.startup {
 
 	// DEPENDS ON
@@ -13,8 +17,8 @@ module bluezone.startup {
 	requires io.github.jmgarridopaz.lib.javalangutils;
 
 	// SERVICES
-	uses io.github.jmgarridopaz.bluezone.hexagon.ForObtainingRates;
-	uses io.github.jmgarridopaz.bluezone.hexagon.ForStoringTickets;
-	uses io.github.jmgarridopaz.bluezone.hexagon.ForPaying;
+	uses ForObtainingRates;
+	uses ForStoringTickets;
+	uses ForPaying;
 
 }

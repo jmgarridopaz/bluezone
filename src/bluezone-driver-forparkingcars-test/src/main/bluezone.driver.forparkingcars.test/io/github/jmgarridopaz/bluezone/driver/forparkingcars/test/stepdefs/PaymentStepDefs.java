@@ -1,10 +1,9 @@
 package io.github.jmgarridopaz.bluezone.driver.forparkingcars.test.stepdefs;
 
 import io.cucumber.java.DataTableType;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.github.jmgarridopaz.bluezone.hexagon.PayRequest;
+import io.github.jmgarridopaz.bluezone.hexagon.ports.driven.forpaying.PayRequest;
 import java.math.BigDecimal;
 import java.util.Map;
 import static org.hamcrest.MatcherAssert.assertThat;
